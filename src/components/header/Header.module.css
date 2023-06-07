@@ -1,0 +1,14 @@
+.headerList{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: teal;
+}
+
+.headerItem{
+	list-style-type: none;	
+}
+
+.headerItemLink{
+	text-decoration: none;
+}
