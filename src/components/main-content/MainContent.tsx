@@ -1,13 +1,13 @@
 import React from "react";
-import Navigation from "../navigation/Navigation.tsx";
-import Technologies from "../technologies/Technologies.tsx";
+import Navigation from "./components/navigation/Navigation.tsx";
 import clasess from "./MainContent.module.scss";
+import Layout from "./components/layout/Layout.tsx";
 
 const MainContent = () => {
   return (
     <main className={clasess.mainContainer}>
       <Navigation />
-      <Technologies />
+      <Layout />
     </main>
   );
 };
