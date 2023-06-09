@@ -1,13 +1,14 @@
 import React from "react";
+import "./App.scss";
 import Header from "./components/header/Header.tsx";
-import Technologies from "./components/technologies/Technologies.tsx";
 import Footer from "./components/footer/Footer.tsx";
+import MainContent from "./components/main-content/MainContent.tsx";
 
 const App = () => {
   return (
     <div className="App">
       <Header />
-      <Technologies />
+      <MainContent />
       <Footer />
     </div>
   );

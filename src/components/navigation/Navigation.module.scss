@@ -1,0 +1,19 @@
+@import '../../styles/varibales.scss';
+
+.navigationList {
+	display: flex;
+	flex-direction: column;
+
+	.navigationItem {
+		list-style-type: none;
+
+		.navigationItemLink {
+			color: $secondary-color;
+			text-decoration: none;
+		}
+
+		.navigationItemLink:is(:hover, :active, ) {
+			color: red;
+		}
+	}
+}
