@@ -1,9 +1,9 @@
 @import '../../styles/varibales.scss';
 
 .mainContainer {
-	color: $secondary-color;
+	height: 100%;
 	background-color: $primary-color;
 	display: flex;
 	justify-content: space-between;
-	flex-grow: 1;
+	flex: 1;
 }

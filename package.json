@@ -10,6 +10,7 @@
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.12.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -38,6 +39,8 @@
     ]
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.0.1",
+    "@types/react-router-dom": "^5.3.3",
     "typescript": "^5.1.3"
   }
 }

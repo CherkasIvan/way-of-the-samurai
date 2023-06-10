@@ -1,0 +1,10 @@
+@import '../../../../../../../styles/varibales.scss';
+
+.postsContainer {
+	display: flex;
+	flex-direction: column;
+
+	.postsTitle {
+		color: red;
+	}
+}

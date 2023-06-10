@@ -1,10 +1,12 @@
 import React from "react";
 import classes from "./Profile.module.scss";
+import Posts from "./posts/Posts.tsx";
 
 const Profile = () => {
   return (
     <div className={classes.profileContainer}>
-      Profile and some text
+      img + des
+      <Posts></Posts>
     </div>
   );
 };
