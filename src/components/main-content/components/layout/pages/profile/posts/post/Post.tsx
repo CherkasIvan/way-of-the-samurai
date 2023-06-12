@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Post.module.scss";
 
-const Post = ({ message, likeCounter }) => {
+const Post = ({ message }) => {
+  const [conter, setCount] = useState(0);
   return (
     <div className={classes.PostContainer}>
       <img
@@ -12,7 +13,10 @@ const Post = ({ message, likeCounter }) => {
       <p className={classes.PostUserText}> {message}</p>
 
       <div className={classes.ButtonContainer}>
-        <button className={classes.PostUserLike}>
+        <button
+          className={classes.PostUserLike}
+          onClick={() => setCount(Number(conter + 1))}
+        >
           <img
             src={
               require("../../../../../../../../assets/img/like.svg")
@@ -23,7 +27,7 @@ const Post = ({ message, likeCounter }) => {
           ></img>
         </button>
         <span className={classes.PostUserLikeCounter}>
-          {likeCounter || 0}
+          {conter}
         </span>
       </div>
     </div>

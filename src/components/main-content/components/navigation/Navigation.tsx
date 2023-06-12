@@ -8,6 +8,7 @@ const Navigation = () => {
       <a
         href={el.href}
         className={classes.navigationItemLink}
+        activeClassName={classes.activeLink}
       >
         {el.label}
       </a>

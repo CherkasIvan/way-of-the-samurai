@@ -16,6 +16,11 @@ code {
     monospace;
 }
 
+p{
+	padding: 0;
+	margin: 0;
+}
+
 
 button, input[type="submit"], input[type="reset"] {
 	background: none;
