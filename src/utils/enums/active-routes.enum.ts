@@ -1,7 +1,7 @@
 export enum ActiveRoutes {
 	DEFAULT = '/',
 	PROFILE = "/profile",
-	MESSAGES = "/messages",
+	DIALOGS = "/dialogs",
 	NEWS = "/news",
 	MUSIC = "/music",
 	SETTINGS = "/settings",

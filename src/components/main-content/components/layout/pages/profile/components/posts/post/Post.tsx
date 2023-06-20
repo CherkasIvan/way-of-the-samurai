@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import classes from "./Post.module.scss";
+import ProfileInfo from "../../profileUnfo/ProfileInfo.tsx";
 
-const Post = ({ message }) => {
+const Post = ({ message, name }) => {
   const [conter, setCount] = useState(0);
   return (
     <div className={classes.PostContainer}>
-      <img
-        src={require("../../../../../../../../assets/img/avatar.jpg")}
-        alt="logo.jpg"
-        className={classes.PostUserImg}
-      ></img>
-      <p className={classes.PostUserText}> {message}</p>
+      <ProfileInfo
+        message={message}
+        name={name}
+      ></ProfileInfo>
 
       <div className={classes.ButtonContainer}>
         <button
@@ -19,7 +18,7 @@ const Post = ({ message }) => {
         >
           <img
             src={
-              require("../../../../../../../../assets/img/like.svg")
+              require("../../../../../../../../../assets/img/like.svg")
                 .default
             }
             alt="like-logo.jpg"

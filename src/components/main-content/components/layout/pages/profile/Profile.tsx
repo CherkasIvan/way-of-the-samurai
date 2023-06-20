@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Profile.module.scss";
-import Posts from "./posts/Posts.tsx";
+import Posts from "./components/posts/Posts.tsx";
 
 const Profile = () => {
   return (

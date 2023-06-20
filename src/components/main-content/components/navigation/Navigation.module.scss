@@ -12,12 +12,8 @@
 			text-decoration: none;
 		}
 
-		.navigationItemLink:is(:hover) {
+		.active {
 			color: red;
-		}
-
-		.navigationItemLink a.activeLink {
-			color: blue !important;
 		}
 	}
 }

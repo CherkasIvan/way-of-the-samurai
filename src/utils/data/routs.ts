@@ -1,4 +1,4 @@
-import { IRoutes } from "../../components/main-content/models/navigation.interface";
+import { IRoutes } from "../../components/main-content/models/routes.interface";
 import { ActiveRoutes } from "../enums/active-routes.enum.ts";
 
 export const Routes: IRoutes[] = [
@@ -7,8 +7,8 @@ export const Routes: IRoutes[] = [
 		label: "Profile",
 	},
 	{
-		href: ActiveRoutes.MESSAGES,
-		label: "Messages",
+		href: ActiveRoutes.DIALOGS,
+		label: "Dialogs",
 	},
 	{
 		href: ActiveRoutes.NEWS,
