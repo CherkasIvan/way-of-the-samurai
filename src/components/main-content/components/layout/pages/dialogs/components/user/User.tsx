@@ -4,12 +4,13 @@ import { NavLink } from "react-router-dom";
 import { ActiveRoutes } from "../../../../../../../../utils/enums/active-routes.enum.ts";
 import Message from "../message/Message.tsx";
 
-export interface propsIUser {
+export interface IUserProps {
   id: number;
   name: string;
+  message: string;
 }
 
-const User = ({ id, name, message }: propsIUser) => {
+const User: FC<IUserProps> = ({ id, name, message }) => {
   return (
     <div className={classes.userContainer}>
       <div className={classes.userName}>

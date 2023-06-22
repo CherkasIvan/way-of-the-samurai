@@ -1,7 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 import classes from "./ProfileInfo.module.scss";
 
-const ProfileInfo = ({ message, name }) => {
+interface IProfileInfoProps {
+  message: string;
+  name: string;
+}
+
+const ProfileInfo: FC<IProfileInfoProps> = ({
+  message,
+  name,
+}) => {
   return (
     <div className={classes.ProfileContainer}>
       <div className={classes.userContainer}>

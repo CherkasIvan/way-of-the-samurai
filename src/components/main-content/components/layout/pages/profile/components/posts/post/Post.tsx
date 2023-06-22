@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import classes from "./Post.module.scss";
 import ProfileInfo from "../../profileUnfo/ProfileInfo.tsx";
 
-const Post = ({ message, name }) => {
-  const [conter, setCount] = useState(0);
+interface IPostProps {
+  message: string;
+  name: string;
+  id: number;
+  counter: number;
+}
+
+const Post: FC<IPostProps> = ({
+  message,
+  name,
+  id,
+  counter,
+}) => {
+  const [conter, setCount] = useState(counter);
   return (
     <div className={classes.PostContainer}>
       <ProfileInfo

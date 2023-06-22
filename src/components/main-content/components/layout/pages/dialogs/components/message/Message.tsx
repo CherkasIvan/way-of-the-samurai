@@ -1,13 +1,15 @@
 import React from "react";
 import classes from "./Message.module.scss";
 
-const Message = (props) => {
+interface IMessageProps {
+  text: string;
+}
+
+const Message: FC<IMessageProps> = ({ text }) => {
   return (
     <div>
       <div className={classes.messageText}>
-        <p className={classes.messageTextItem}>
-          {props.text}
-        </p>
+        <p className={classes.messageTextItem}>{text}</p>
       </div>
     </div>
   );

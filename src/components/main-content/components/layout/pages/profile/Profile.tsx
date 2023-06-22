@@ -2,11 +2,12 @@ import React from "react";
 import classes from "./Profile.module.scss";
 import Posts from "./components/posts/Posts.tsx";
 
-const Profile = () => {
+
+const Profile = ({ postsData }) => {
   return (
     <div className={classes.profileContainer}>
       img + des
-      <Posts></Posts>
+      <Posts postsData={postsData}></Posts>
     </div>
   );
 };

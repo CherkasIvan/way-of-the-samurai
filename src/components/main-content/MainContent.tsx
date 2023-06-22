@@ -5,12 +5,15 @@ import Layout from "./components/layout/Layout.tsx";
 
 import { BrowserRouter } from "react-router-dom";
 
-const MainContent = () => {
+const MainContent = ({ postsData, dialogsData }) => {
   return (
     <main className={clasess.mainContainer}>
       <BrowserRouter>
         <Navigation />
-        <Layout />
+        <Layout
+          postsData={postsData}
+          dialogsData={dialogsData}
+        />
       </BrowserRouter>
     </main>
   );
