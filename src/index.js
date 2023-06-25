@@ -2,14 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-import { ActiveDialogs } from "./utils/data/active-dialogs.ts";
+import { State } from "./utils/data/state.ts";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root")
 );
-root.render(
-  <App
-    postsData={ActiveDialogs}
-    dialogsData={ActiveDialogs}
-  />
-);
+root.render(<App state={State} />);

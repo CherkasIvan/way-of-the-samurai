@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./User.module.scss";
 import { NavLink } from "react-router-dom";
 import { ActiveRoutes } from "../../../../../../../../utils/enums/active-routes.enum.ts";
-import Message from "../message/Message.tsx";
 
 export interface IUserProps {
   id: number;
@@ -24,7 +23,6 @@ const User: FC<IUserProps> = ({ id, name, message }) => {
           </NavLink>
         </div>
       </div>
-      <Message text={message}></Message>
     </div>
   );
 };

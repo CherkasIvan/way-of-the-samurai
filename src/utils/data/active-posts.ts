@@ -1,6 +1,4 @@
-import { IDialog } from "../../components/main-content/models/dialog.interface.ts";
-
-export const ActiveDialogs
+export const ActivePosts
 	: IDialog[] = [
 		{
 			id: 1,

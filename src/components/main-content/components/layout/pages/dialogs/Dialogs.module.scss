@@ -1,8 +1,15 @@
 .dialogsContainer {
-	display: grid;
-	grid-template-columns: 1fr;
+	display: flex;
 	background: yellowgreen;
 	width: 100%;
+
+	.users,
+	.messages {
+		margin: 10px;
+		display: grid;
+		grid-template-columns: 1fr;
+		row-gap: 10px;
+	}
 
 	.messageName,
 	.messageText {

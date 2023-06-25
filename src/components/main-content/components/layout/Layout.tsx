@@ -8,7 +8,7 @@ import { ActiveRoutes } from "../../../../utils/enums/active-routes.enum.ts";
 import Dialogs from "./pages/dialogs/Dialogs.tsx";
 import Profile from "./pages/profile/Profile.tsx";
 
-const Layout = ({ postsData, dialogsData }) => {
+const Layout = ({ postsData, usersData, messagesData }) => {
   return (
     <div className={classes.profileContainer}>
       <Routes>
@@ -22,11 +22,21 @@ const Layout = ({ postsData, dialogsData }) => {
         />
         <Route
           path={ActiveRoutes.DIALOGS}
-          element={<Dialogs dialogsData={dialogsData} />}
+          element={
+            <Dialogs
+              usersData={usersData}
+              messagesData={messagesData}
+            />
+          }
         />
         <Route
           path={ActiveRoutes.DIALOGS + "/*"}
-          element={<Dialogs dialogsData={dialogsData} />}
+          element={
+            <Dialogs
+              usersData={usersData}
+              messagesData={messagesData}
+            />
+          }
         />
         <Route
           path={ActiveRoutes.MUSIC}
