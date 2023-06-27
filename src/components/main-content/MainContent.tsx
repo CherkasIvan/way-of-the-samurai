@@ -1,11 +1,20 @@
-import React from "react";
-import Navigation from "./components/navigation/Navigation.tsx";
+import React, {FC} from "react";
+import Navigation from "./components/navigation/Navigation";
 import clasess from "./MainContent.module.scss";
-import Layout from "./components/layout/Layout.tsx";
+import Layout from "./components/layout/Layout";
 
 import { BrowserRouter } from "react-router-dom";
+import { IDialog } from "./models/dialog.interface";
+import { IUsers } from "./models/users.interface";
+import { IMessage } from "./models/messages.interface";
 
-const MainContent = ({
+interface MainContentProps{
+  postsData: IDialog[],
+  usersData: IUsers[],
+  messagesData: IMessage[]
+}
+
+const MainContent: FC<MainContentProps> = ({
   postsData,
   usersData,
   messagesData,

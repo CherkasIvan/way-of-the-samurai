@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.scss";
-import Header from "./components/header/Header.tsx";
-import Footer from "./components/footer/Footer.tsx";
-import MainContent from "./components/main-content/MainContent.tsx";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import MainContent from "./components/main-content/MainContent";
 
 const App = ({ state }) => {
   return (

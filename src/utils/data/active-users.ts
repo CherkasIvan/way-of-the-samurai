@@ -1,3 +1,5 @@
+import { IUsers } from "../../components/main-content/models/users.interface";
+
 export const ActiveUsers
 	: IUsers[] = [
 		{

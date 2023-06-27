@@ -1,5 +1,5 @@
 import { IRoutes } from "../../components/main-content/models/routes.interface";
-import { ActiveRoutes } from "../enums/active-routes.enum.ts";
+import { ActiveRoutes } from "../enums/active-routes.enum";
 
 export const Routes: IRoutes[] = [
 	{

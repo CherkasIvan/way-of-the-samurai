@@ -1,15 +1,14 @@
-import React from "react";
+import React, {FC} from "react";
 import classes from "./User.module.scss";
 import { NavLink } from "react-router-dom";
-import { ActiveRoutes } from "../../../../../../../../utils/enums/active-routes.enum.ts";
+import { ActiveRoutes } from "../../../../../../../../utils/enums/active-routes.enum";
 
 export interface IUserProps {
   id: number;
   name: string;
-  message: string;
 }
 
-const User: FC<IUserProps> = ({ id, name, message }) => {
+const User: FC<IUserProps> = ({ id, name }) => {
   return (
     <div className={classes.userContainer}>
       <div className={classes.userName}>

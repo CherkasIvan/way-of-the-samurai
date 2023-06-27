@@ -1,6 +1,6 @@
 import React, { useState, FC } from "react";
 import classes from "./Post.module.scss";
-import ProfileInfo from "../../profileUnfo/ProfileInfo.tsx";
+import ProfileInfo from "../../profileUnfo/ProfileInfo";
 
 interface IPostProps {
   message: string;

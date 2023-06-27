@@ -4,22 +4,22 @@ export const ActiveMessages
 	: IMessage[] = [
 		{
 			id: 1,
-			message: "hi!",
+			text: "hi!",
 		},
 		{
 			id: 2,
-			message: "helloe",
+			text: "helloe",
 		},
 		{
 			id: 3,
-			message: "Good job",
+			text: "Good job",
 		},
 		{
 			id: 4,
-			message: "Music is everething!",
+			text: "Music is everething!",
 		},
 		{
 			id: 5,
-			message: "Car wash",
+			text: "Car wash",
 		},
 	];

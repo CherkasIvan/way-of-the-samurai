@@ -1,3 +1,5 @@
+import { IDialog } from "../../components/main-content/models/dialog.interface";
+
 export const ActivePosts
 	: IDialog[] = [
 		{

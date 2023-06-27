@@ -1,14 +1,23 @@
-import React from "react";
+import React, {FC} from "react";
 import classes from "./Layout.module.scss";
 import { Route, Routes, Navigate } from "react-router-dom";
-import Music from "./pages/music/Music.tsx";
-import News from "./pages/news/News.tsx";
-import Settings from "./pages/settings/Settings.tsx";
-import { ActiveRoutes } from "../../../../utils/enums/active-routes.enum.ts";
-import Dialogs from "./pages/dialogs/Dialogs.tsx";
-import Profile from "./pages/profile/Profile.tsx";
+import Music from "./pages/music/Music";
+import News from "./pages/news/News";
+import Settings from "./pages/settings/Settings";
+import { ActiveRoutes } from "../../../../utils/enums/active-routes.enum";
+import Dialogs from "./pages/dialogs/Dialogs";
+import Profile from "./pages/profile/Profile";
+import { IDialog } from "../../models/dialog.interface";
+import { IUsers } from "../../models/users.interface";
+import { IMessage } from "../../models/messages.interface";
 
-const Layout = ({ postsData, usersData, messagesData }) => {
+interface ILayoutProps {
+  postsData:IDialog[],
+  usersData: IUsers[],
+  messagesData:IMessage[]
+}
+
+const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData }) => {
   return (
     <div className={classes.profileContainer}>
       <Routes>

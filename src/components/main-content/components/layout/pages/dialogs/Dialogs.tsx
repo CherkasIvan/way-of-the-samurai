@@ -1,19 +1,25 @@
-import React from "react";
+import React, { FC } from "react";
 import classes from "./Dialogs.module.scss";
-import User from "./components/user/User.tsx";
-import Message from "./components/message/Message.tsx";
+import User from "./components/user/User";
+import Message from "./components/message/Message";
+import { IMessage } from "../../../../models/messages.interface";
+import { IUsers } from "../../../../models/users.interface";
 
-const Dialogs = ({ usersData, messagesData }) => {
+interface IDialogsProps {
+  usersData: IUsers[],
+  messagesData: IMessage[]
+}
+
+const Dialogs: FC<IDialogsProps> = ({ usersData, messagesData }) => {
   const users = usersData.map((el, index) => (
     <User
-      message={el.message}
       name={el.name}
       id={el.id}
       key={el.id}
     ></User>
   ));
   const messages = messagesData.map((el, index) => (
-    <Message text={el.message}></Message>
+    <Message text={el.text}></Message>
   ));
   return (
     <div className={classes.dialogsContainer}>

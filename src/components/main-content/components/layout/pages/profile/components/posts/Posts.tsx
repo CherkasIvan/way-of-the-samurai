@@ -1,13 +1,11 @@
 import React, { FC } from "react";
-import Post from "../../components/posts/post/Post.tsx";
-import clasess from "./Posts.module.scss";
-import AddPost from "../../../../../../../shared/add-post/AddPost.tsx";
+import Post from "../../components/posts/post/Post";
+import classes from "./Posts.module.scss";
+import AddPost from "../../../../../../../shared/add-post/AddPost";
+import { IDialog } from "../../../../../../models/dialog.interface";
 
 interface IPostProps {
-  message: string;
-  name: strig;
-  id: number;
-  counter: number;
+  postsData:IDialog[]
 }
 
 const Posts: FC<IPostProps> = ({ postsData }) => {
@@ -21,8 +19,8 @@ const Posts: FC<IPostProps> = ({ postsData }) => {
     ></Post>
   ));
   return (
-    <div className={clasess.postsContainer}>
-      <p className={clasess.postsTitle}>Here is my posts</p>
+    <div className={classes.postsContainer}>
+      <p className={classes.postsTitle}>Here is my posts</p>
       {posts}
       <AddPost></AddPost>
     </div>
