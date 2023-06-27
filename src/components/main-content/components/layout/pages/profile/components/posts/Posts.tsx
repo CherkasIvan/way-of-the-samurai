@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Post from "../../components/posts/post/Post";
 import classes from "./Posts.module.scss";
-import AddPost from "../../../../../../../shared/add-post/AddPost";
 import { IDialog } from "../../../../../../models/dialog.interface";
+import AddTextAreaMessage from "../../../../../../../shared/add-post/AddTextAreaMessage";
 
 interface IPostProps {
   postsData:IDialog[]
@@ -22,7 +22,7 @@ const Posts: FC<IPostProps> = ({ postsData }) => {
     <div className={classes.postsContainer}>
       <p className={classes.postsTitle}>Here is my posts</p>
       {posts}
-      <AddPost></AddPost>
+      <AddTextAreaMessage data={posts} textAreaLAbel="post"/>
     </div>
   );
 };

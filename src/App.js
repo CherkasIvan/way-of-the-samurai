@@ -1,10 +1,9 @@
-import React from "react";
 import "./App.scss";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import MainContent from "./components/main-content/MainContent";
 
-const App = ({ state }) => {
+const App  = ({ state }) => {
   return (
     <div className="App">
       <Header />
