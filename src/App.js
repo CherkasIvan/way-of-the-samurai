@@ -10,7 +10,7 @@ const App  = ({ state }) => {
       <MainContent
         postsData={state.profilePage.posts}
         usersData={state.dialogsPage.users}
-        messagesData={state.dialogsPage.messages}
+        messagesData={state.dialogsPage.messages}  
       />
       <Footer />
     </div>

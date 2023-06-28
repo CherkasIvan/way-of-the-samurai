@@ -1,23 +1,27 @@
-import React, {FC} from "react";
+import {FC, SetStateAction, useState} from "react";
 import classes from "./AddPost.module.scss";
-import { IDialog } from "../../main-content/models/dialog.interface";
-import { IMessage } from "../../main-content/models/messages.interface";
+import { addMessage } from "../../../utils/data/state";
 
 interface IAddPost {
- data: IDialog[] | IMessage[]
  textAreaLabel: string
+ page: string
 }
 
-const AddTextAreaMessage: FC<IAddPost> = ({data, textAreaLabel}) => {
+const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel, page}) => {
+  const [message, setMessage] = useState('');
+  const handleMessageChange = (event: { target: { value: SetStateAction<string>; }; }) => {
+    setMessage(event.target.value);
+  };
 
-const adMessage = () =>{
-
-}
-
+  const addNewMessage = () => {
+    addMessage(message,page)}
   return (
     <div className={classes.AddPostContainer}>
-      <textarea></textarea>
-      <button  onClick={adMessage}>Add new {textAreaLabel}</button>
+      <textarea         
+        value={message}
+        onChange={handleMessageChange}>
+      </textarea>
+      <button  onClick={addNewMessage}>Add new {textAreaLabel}</button>
     </div>
   );
 };

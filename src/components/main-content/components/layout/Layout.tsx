@@ -7,12 +7,12 @@ import Settings from "./pages/settings/Settings";
 import { ActiveRoutes } from "../../../../utils/enums/active-routes.enum";
 import Dialogs from "./pages/dialogs/Dialogs";
 import Profile from "./pages/profile/Profile";
-import { IDialog } from "../../models/dialog.interface";
+import { IPost } from "../../models/post.interface";
 import { IUsers } from "../../models/users.interface";
-import { IMessage } from "../../models/messages.interface";
+import { IMessage } from "../../models/message.interface";
 
 interface ILayoutProps {
-  postsData:IDialog[],
+  postsData:IPost[],
   usersData: IUsers[],
   messagesData:IMessage[]
 }
@@ -27,7 +27,8 @@ const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData }) => {
         />
         <Route
           path={ActiveRoutes.PROFILE}
-          element={<Profile postsData={postsData} />}
+          element={<Profile postsData={postsData} 
+          />}
         />
         <Route
           path={ActiveRoutes.DIALOGS}

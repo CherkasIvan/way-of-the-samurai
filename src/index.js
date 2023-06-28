@@ -6,4 +6,4 @@ import { State } from "./utils/data/state";
 const root = ReactDOM.createRoot(
   document.getElementById("root")
 );
-root.render(<App state={State} />);
+root.render(<App state={State}/>);

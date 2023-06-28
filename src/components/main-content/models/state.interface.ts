@@ -1,10 +1,10 @@
-import { IDialog } from "./dialog.interface"
-import { IMessage } from "./messages.interface"
+import { IPost } from "./post.interface"
+import { IMessage } from "./message.interface"
 import { IUsers } from "./users.interface"
 
 export interface IState {
     profilePage: {
-		posts: IDialog[],
+		posts: IPost[],
 
 	},
 	dialogsPage: {

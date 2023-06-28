@@ -1,25 +1,25 @@
-import { IMessage } from "../../components/main-content/models/messages.interface";
+import { IMessage } from "../../components/main-content/models/message.interface";
 
 export const ActiveMessages
 	: IMessage[] = [
 		{
 			id: 1,
-			text: "hi!",
+			message: "hi!",
 		},
 		{
 			id: 2,
-			text: "helloe",
+			message: "helloe",
 		},
 		{
 			id: 3,
-			text: "Good job",
+			message: "Good job",
 		},
 		{
 			id: 4,
-			text: "Music is everething!",
+			message: "Music is everething!",
 		},
 		{
 			id: 5,
-			text: "Car wash",
+			message: "Car wash",
 		},
 	];

@@ -1,4 +1,4 @@
-export interface IDialog{
+export interface IPost{
     id: number,
     name: string,
     message: string,

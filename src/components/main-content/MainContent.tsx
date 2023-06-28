@@ -4,14 +4,15 @@ import clasess from "./MainContent.module.scss";
 import Layout from "./components/layout/Layout";
 
 import { BrowserRouter } from "react-router-dom";
-import { IDialog } from "./models/dialog.interface";
+import { IPost } from "./models/post.interface";
 import { IUsers } from "./models/users.interface";
-import { IMessage } from "./models/messages.interface";
+import { IMessage } from "./models/message.interface";
 
 interface MainContentProps{
-  postsData: IDialog[],
+  postsData: IPost[],
   usersData: IUsers[],
   messagesData: IMessage[]
+ 
 }
 
 const MainContent: FC<MainContentProps> = ({
@@ -27,6 +28,7 @@ const MainContent: FC<MainContentProps> = ({
           postsData={postsData}
           usersData={usersData}
           messagesData={messagesData}
+          
         />
       </BrowserRouter>
     </main>

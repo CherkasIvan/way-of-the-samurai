@@ -1,17 +1,18 @@
 import React, {FC} from "react";
 import classes from "./Profile.module.scss";
 import Posts from "./components/posts/Posts";
-import { IDialog } from "../../../../models/dialog.interface";
+import { IPost } from "../../../../models/post.interface";
 
 interface IProfileProps {
-  postsData: IDialog[]
+  postsData: IPost[]
 }
 
 const Profile: FC<IProfileProps> = ({ postsData }) => {
   return (
     <div className={classes.profileContainer}>
       img + des
-      <Posts postsData={postsData}></Posts>
+      <Posts postsData={postsData} 
+      ></Posts>
     </div>
   );
 };

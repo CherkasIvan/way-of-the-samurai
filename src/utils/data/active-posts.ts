@@ -1,7 +1,7 @@
-import { IDialog } from "../../components/main-content/models/dialog.interface";
+import { IPost } from "../../components/main-content/models/post.interface";
 
 export const ActivePosts
-	: IDialog[] = [
+	: IPost[] = [
 		{
 			id: 1,
 			name: 'Ivan',
