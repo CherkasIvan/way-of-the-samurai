@@ -19,7 +19,7 @@ const Dialogs: FC<IPostsProps> = ({ usersData, messagesData }) => {
       key={el.id}
     ></User>
   ));
-  const messages = messagesData.map((el, index) => (
+  const messages = messagesData.map((el) => (
     <Message message={el.message}></Message>
   ));
   return (

@@ -11,8 +11,7 @@ const Profile: FC<IProfileProps> = ({ postsData }) => {
   return (
     <div className={classes.profileContainer}>
       img + des
-      <Posts postsData={postsData} 
-      ></Posts>
+      <Posts postsData={postsData}/>
     </div>
   );
 };
