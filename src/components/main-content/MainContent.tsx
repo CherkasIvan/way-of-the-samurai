@@ -12,13 +12,14 @@ interface MainContentProps{
   postsData: IPost[],
   usersData: IUsers[],
   messagesData: IMessage[]
- 
+  updateMessageText: (text:string) => void
 }
 
 const MainContent: FC<MainContentProps> = ({
   postsData,
   usersData,
   messagesData,
+  updateMessageText
 }) => {
   return (
     <main className={clasess.mainContainer}>
@@ -28,7 +29,7 @@ const MainContent: FC<MainContentProps> = ({
           postsData={postsData}
           usersData={usersData}
           messagesData={messagesData}
-          
+          updateMessageText={updateMessageText}
         />
       </BrowserRouter>
     </main>

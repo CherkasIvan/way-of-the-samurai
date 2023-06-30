@@ -6,11 +6,13 @@ import AddTextAreaMessage from "../../../../../../../shared/add-post/AddTextArea
 
 interface IPostProps {
   postsData:IPost[]
+  updateMessageText: (text:string) => void
 }
 
-const Posts: FC<IPostProps> = ({ postsData }) => {
+const Posts: FC<IPostProps> = ({ postsData, updateMessageText}) => {
   const posts = postsData.map((el, index) => (
     <Post
+      updateMessageText={updateMessageText}
       message={el.message}
       name={el.name}
       id={el.id}
@@ -22,7 +24,7 @@ const Posts: FC<IPostProps> = ({ postsData }) => {
     <div className={classes.postsContainer}>
       <p className={classes.postsTitle}>Here is my posts</p>
       {posts}
-      <AddTextAreaMessage page='profilePage' textAreaLabel="post" />
+      <AddTextAreaMessage page='profilePage' textAreaLabel="post" updateMessageText={updateMessageText}/>
     </div>
   );
 };

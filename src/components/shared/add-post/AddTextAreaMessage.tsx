@@ -8,9 +8,10 @@ import { addMessage } from "../../../utils/functions/add-message";
 interface IAddPost {
  textAreaLabel: string
  page: string,
+ updateMessageText: (text:string) => void
 }
 
-const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel, page }) => {
+const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel, page, updateMessageText }) => {
   const [message, setMessage] = useState('');
   const handleMessageChange = (event: { target: { value: SetStateAction<string>; }; }) => {
     setMessage(event.target.value);
@@ -24,10 +25,11 @@ const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel, page }) => {
     newMessageRef.current?.remove()
   }
 
-  const updateMessage = (text:string) => {
-    const actualMessages = addMessage(message,page)
-    rendererEntireTree(State)
+  const onPostChange = () => {
+    let text = newMessageRef.current!.value
+    updateMessageText(text)
   }
+
 
   return (
     <div className={classes.AddPostContainer}>

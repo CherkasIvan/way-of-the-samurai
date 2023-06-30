@@ -15,9 +15,10 @@ interface ILayoutProps {
   postsData:IPost[],
   usersData: IUsers[],
   messagesData:IMessage[]
+  updateMessageText:(text:string) => void
 }
 
-const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData }) => {
+const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData, updateMessageText }) => {
   return (
     <div className={classes.profileContainer}>
       <Routes>
@@ -27,7 +28,7 @@ const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData }) => {
         />
         <Route
           path={ActiveRoutes.PROFILE}
-          element={<Profile postsData={postsData} 
+          element={<Profile postsData={postsData} updateMessageText={updateMessageText} 
           />}
         />
         <Route
@@ -36,6 +37,7 @@ const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData }) => {
             <Dialogs
               usersData={usersData}
               messagesData={messagesData}
+              updateMessageText={updateMessageText}
             />
           }
         />
@@ -45,6 +47,7 @@ const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData }) => {
             <Dialogs
               usersData={usersData}
               messagesData={messagesData}
+              updateMessageText={updateMessageText}
             />
           }
         />

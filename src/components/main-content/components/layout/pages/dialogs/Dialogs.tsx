@@ -8,10 +8,11 @@ import AddTextAreaMessage from "../../../../../shared/add-post/AddTextAreaMessag
 
 interface IPostsProps {
   usersData: IUsers[],
-  messagesData: IMessage[]
+  messagesData: IMessage[],
+  updateMessageText: (text:string) => void
 }
 
-const Dialogs: FC<IPostsProps> = ({ usersData, messagesData }) => {
+const Dialogs: FC<IPostsProps> = ({ usersData, messagesData, updateMessageText }) => {
   const users = usersData.map((el) => (
     <User
       name={el.name}
@@ -26,7 +27,7 @@ const Dialogs: FC<IPostsProps> = ({ usersData, messagesData }) => {
     <div className={classes.dialogsContainer}>
       <div className={classes.users}>{users}</div>
       <div className={classes.messages}>{messages}</div>
-      <AddTextAreaMessage page='dialogsPage'  textAreaLabel="message" />
+      <AddTextAreaMessage page='dialogsPage'  textAreaLabel="message" updateMessageText={updateMessageText}/>
     </div>
   );
 };
