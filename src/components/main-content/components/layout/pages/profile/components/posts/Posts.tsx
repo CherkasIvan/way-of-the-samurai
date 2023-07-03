@@ -3,16 +3,16 @@ import Post from "../../components/posts/post/Post";
 import classes from "./Posts.module.scss";
 import { IPost } from "../../../../../../models/post.interface";
 import AddTextAreaMessage from "../../../../../../../shared/add-post/AddTextAreaMessage";
+import { IActionType } from "../../../../../../../../redux/store";
 
 interface IPostProps {
-  postsData:IPost[]
-  updateMessageText: (text:string) => void
+  postsData:IPost[],
+  dispatch: IActionType
 }
 
-const Posts: FC<IPostProps> = ({ postsData, updateMessageText}) => {
+const Posts: FC<IPostProps> = ({ postsData, dispatch}) => {
   const posts = postsData.map((el, index) => (
     <Post
-      updateMessageText={updateMessageText}
       message={el.message}
       name={el.name}
       id={el.id}
@@ -24,7 +24,9 @@ const Posts: FC<IPostProps> = ({ postsData, updateMessageText}) => {
     <div className={classes.postsContainer}>
       <p className={classes.postsTitle}>Here is my posts</p>
       {posts}
-      <AddTextAreaMessage page='profilePage' textAreaLabel="post" updateMessageText={updateMessageText}/>
+      <AddTextAreaMessage  
+      textAreaLabel="post" 
+      dispatch={dispatch}/>
     </div>
   );
 };

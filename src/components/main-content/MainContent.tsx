@@ -7,19 +7,20 @@ import { BrowserRouter } from "react-router-dom";
 import { IPost } from "./models/post.interface";
 import { IUsers } from "./models/users.interface";
 import { IMessage } from "./models/message.interface";
+import { IActionType } from "../../redux/store";
 
 interface MainContentProps{
   postsData: IPost[],
   usersData: IUsers[],
-  messagesData: IMessage[]
-  updateMessageText: (text:string) => void
+  messagesData: IMessage[],
+  dispatch: IActionType
 }
 
 const MainContent: FC<MainContentProps> = ({
   postsData,
   usersData,
   messagesData,
-  updateMessageText
+  dispatch
 }) => {
   return (
     <main className={clasess.mainContainer}>
@@ -29,7 +30,7 @@ const MainContent: FC<MainContentProps> = ({
           postsData={postsData}
           usersData={usersData}
           messagesData={messagesData}
-          updateMessageText={updateMessageText}
+          dispatch={dispatch}
         />
       </BrowserRouter>
     </main>

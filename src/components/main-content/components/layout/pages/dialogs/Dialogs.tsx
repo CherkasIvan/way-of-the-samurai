@@ -5,14 +5,15 @@ import Message from "./components/message/Message";
 import { IMessage } from "../../../../models/message.interface";
 import { IUsers } from "../../../../models/users.interface";
 import AddTextAreaMessage from "../../../../../shared/add-post/AddTextAreaMessage";
+import { IActionType } from "../../../../../../redux/store";
 
 interface IPostsProps {
   usersData: IUsers[],
   messagesData: IMessage[],
-  updateMessageText: (text:string) => void
+  dispatch: IActionType
 }
 
-const Dialogs: FC<IPostsProps> = ({ usersData, messagesData, updateMessageText }) => {
+const Dialogs: FC<IPostsProps> = ({ usersData, messagesData, dispatch }) => {
   const users = usersData.map((el) => (
     <User
       name={el.name}
@@ -27,7 +28,8 @@ const Dialogs: FC<IPostsProps> = ({ usersData, messagesData, updateMessageText }
     <div className={classes.dialogsContainer}>
       <div className={classes.users}>{users}</div>
       <div className={classes.messages}>{messages}</div>
-      <AddTextAreaMessage page='dialogsPage'  textAreaLabel="message" updateMessageText={updateMessageText}/>
+      <AddTextAreaMessage  
+      textAreaLabel="message"/>
     </div>
   );
 };

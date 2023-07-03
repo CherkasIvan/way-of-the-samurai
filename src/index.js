@@ -1,4 +1,13 @@
-import { State } from "./redux/state";
-import { rendererEntireTree } from "./utils/rerender/rerender";
+import store from "./redux/store";
+import './index.css'
+import ReactDOM from 'react-dom/client';
+import App from "./App";
 
-rendererEntireTree(State)
+export const rendererEntireTree = (state) => {
+    const documentRender= document.getElementById("root");
+    const root = ReactDOM.createRoot(documentRender);
+    root.render(<App state={state} dispatch={store.dispatch.bind(store)}/>);
+  }
+
+  rendererEntireTree(store.getState())
+  store._callSubscriber(rendererEntireTree)

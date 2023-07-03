@@ -10,15 +10,16 @@ import Profile from "./pages/profile/Profile";
 import { IPost } from "../../models/post.interface";
 import { IUsers } from "../../models/users.interface";
 import { IMessage } from "../../models/message.interface";
+import { IActionType } from "../../../../redux/store";
 
 interface ILayoutProps {
   postsData:IPost[],
   usersData: IUsers[],
-  messagesData:IMessage[]
-  updateMessageText:(text:string) => void
+  messagesData:IMessage[],
+  dispatch: IActionType
 }
 
-const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData, updateMessageText }) => {
+const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData, dispatch}) => {
   return (
     <div className={classes.profileContainer}>
       <Routes>
@@ -28,7 +29,7 @@ const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData, updateMe
         />
         <Route
           path={ActiveRoutes.PROFILE}
-          element={<Profile postsData={postsData} updateMessageText={updateMessageText} 
+          element={<Profile postsData={postsData} dispatch={dispatch}
           />}
         />
         <Route
@@ -37,7 +38,7 @@ const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData, updateMe
             <Dialogs
               usersData={usersData}
               messagesData={messagesData}
-              updateMessageText={updateMessageText}
+              dispatch={dispatch}
             />
           }
         />
@@ -47,7 +48,7 @@ const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData, updateMe
             <Dialogs
               usersData={usersData}
               messagesData={messagesData}
-              updateMessageText={updateMessageText}
+              dispatch={dispatch}
             />
           }
         />

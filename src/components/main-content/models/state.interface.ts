@@ -9,7 +9,8 @@ export interface IState {
 	},
 	dialogsPage: {
 		users: IUsers[],
-		messages: IMessage[]
+		messages: IMessage[],
+		newMessageText: string
 	},
 	sidebar:{}
 }

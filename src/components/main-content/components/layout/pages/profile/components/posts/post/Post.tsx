@@ -7,7 +7,6 @@ interface IPostProps {
   name: string;
   id: number;
   counter: number;
-  updateMessageText: (text:string) => void
 }
 
 const Post: FC<IPostProps> = ({
@@ -15,7 +14,6 @@ const Post: FC<IPostProps> = ({
   name,
   id,
   counter,
-  updateMessageText
 }) => {
   const [conter, setCount] = useState(counter);
 

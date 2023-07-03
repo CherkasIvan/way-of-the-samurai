@@ -1,31 +1,21 @@
-import {FC, SetStateAction, useRef, useState} from "react";
+import {FC} from "react";
 import classes from "./AddPost.module.scss";
-import { State } from "../../../redux/state";
-import { rendererEntireTree } from "../../../utils/rerender/rerender";
 import React from "react";
-import { addMessage } from "../../../utils/functions/add-message";
+import { IActionType } from "../../../redux/store";
 
 interface IAddPost {
  textAreaLabel: string
- page: string,
- updateMessageText: (text:string) => void
+ dispatch: IActionType
 }
 
-const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel, page, updateMessageText }) => {
-  const [message, setMessage] = useState('');
-  const handleMessageChange = (event: { target: { value: SetStateAction<string>; }; }) => {
-    setMessage(event.target.value);
-  };
-
+const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel,  dispatch }) => {;
   let newMessageRef =  React.createRef<HTMLTextAreaElement>()
 
   const addNewMessage = () => {
-    const actualMessages = addMessage(message,page)
-    rendererEntireTree(State)
-    newMessageRef.current?.remove()
+    addMessageText(newMessageRef.current!.value)
   }
 
-  const onPostChange = () => {
+  const onMessageChange = () => {
     let text = newMessageRef.current!.value
     updateMessageText(text)
   }
@@ -35,8 +25,7 @@ const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel, page, updateMessageTe
     <div className={classes.AddPostContainer}>
       <textarea  
         ref={newMessageRef}       
-        value={message}
-        onChange={handleMessageChange}>
+        onChange={onMessageChange}>
       </textarea>
       <button  onClick={addNewMessage}>Add new {textAreaLabel}</button>
     </div>

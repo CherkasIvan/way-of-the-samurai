@@ -2,17 +2,18 @@ import React, {FC} from "react";
 import classes from "./Profile.module.scss";
 import Posts from "./components/posts/Posts";
 import { IPost } from "../../../../models/post.interface";
+import { IActionType } from "../../../../../../redux/store";
 
 interface IProfileProps {
   postsData: IPost[]
-  updateMessageText: (text:string) => void
+  dispatch: IActionType
 }
 
-const Profile: FC<IProfileProps> = ({ postsData, updateMessageText }) => {
+const Profile: FC<IProfileProps> = ({ postsData, dispatch }) => {
   return (
     <div className={classes.profileContainer}>
       img + des
-      <Posts postsData={postsData} updateMessageText={updateMessageText}/>
+      <Posts postsData={postsData}  dispatch={dispatch}/>
     </div>
   );
 };
