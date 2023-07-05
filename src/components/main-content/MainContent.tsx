@@ -13,13 +13,17 @@ interface MainContentProps{
   postsData: IPost[],
   usersData: IUsers[],
   messagesData: IMessage[],
-  dispatch: IActionType
+  newPostText: string,
+  newMessageText: string,
+  dispatch: (action: IActionType) => void
 }
 
 const MainContent: FC<MainContentProps> = ({
   postsData,
   usersData,
   messagesData,
+  newPostText,
+  newMessageText,
   dispatch
 }) => {
   return (
@@ -30,6 +34,8 @@ const MainContent: FC<MainContentProps> = ({
           postsData={postsData}
           usersData={usersData}
           messagesData={messagesData}
+          newPostText={newPostText}
+          newMessageText={newMessageText}
           dispatch={dispatch}
         />
       </BrowserRouter>

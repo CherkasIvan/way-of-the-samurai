@@ -5,15 +5,17 @@ import Message from "./components/message/Message";
 import { IMessage } from "../../../../models/message.interface";
 import { IUsers } from "../../../../models/users.interface";
 import AddTextAreaMessage from "../../../../../shared/add-post/AddTextAreaMessage";
-import { IActionType } from "../../../../../../redux/store";
+// import { IActionType } from "../../../../../../redux/store";
 
 interface IPostsProps {
   usersData: IUsers[],
   messagesData: IMessage[],
-  dispatch: IActionType
+  newMessageText: string,
+  newPostText: string
+  dispatch: any
 }
 
-const Dialogs: FC<IPostsProps> = ({ usersData, messagesData, dispatch }) => {
+const Dialogs: FC<IPostsProps> = ({ usersData, messagesData, dispatch, newMessageText, newPostText }) => {
   const users = usersData.map((el) => (
     <User
       name={el.name}
@@ -29,7 +31,7 @@ const Dialogs: FC<IPostsProps> = ({ usersData, messagesData, dispatch }) => {
       <div className={classes.users}>{users}</div>
       <div className={classes.messages}>{messages}</div>
       <AddTextAreaMessage  
-      textAreaLabel="message"/>
+        textAreaLabel="message" newMessageText={newMessageText} newPostText={newPostText} dispatch={dispatch}/>
     </div>
   );
 };

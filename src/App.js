@@ -11,6 +11,8 @@ const App  = ({ state, dispatch }) => {
         postsData={state.profilePage.posts}
         usersData={state.dialogsPage.users}
         messagesData={state.dialogsPage.messages}
+        newPostText={state.profilePage.newPostText}
+        newMessageText={state.dialogsPage.newMessageText}
         dispatch={dispatch}
       />
       <Footer />

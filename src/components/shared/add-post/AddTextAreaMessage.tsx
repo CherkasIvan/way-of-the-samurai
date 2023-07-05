@@ -1,30 +1,57 @@
-import {FC} from "react";
+import React, {FC, useState} from "react";
 import classes from "./AddPost.module.scss";
-import React from "react";
+import { StoreEnum } from "../../../utils/enums/store.enum";
 import { IActionType } from "../../../redux/store";
 
 interface IAddPost {
- textAreaLabel: string
- dispatch: IActionType
+ textAreaLabel: string,
+ newPostText: string,
+ newMessageText: string,
+ dispatch: (action: IActionType) => void
 }
 
-const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel,  dispatch }) => {;
-  let newMessageRef =  React.createRef<HTMLTextAreaElement>()
+let AddPostActionCreator = () => {
+  return {
+    type: StoreEnum.ADD_POST
+  }
+}
+
+let AddMessageActionCreator = () => {
+  return {
+    type: StoreEnum.ADD_MESSAGE
+  }
+}
+
+let UpdatePostActionCreator = (message:string) => {
+  return {
+    type: StoreEnum.UPDATE_NEW_POST_TEXT,
+    payload: message
+  }
+}
+
+let UpdateMessageActionCreator = (message:string) => {
+  return {
+    type: StoreEnum.UPDATE_MESSAGE,
+    payload: message
+  }
+}
+
+const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel,  dispatch, }) => {;
+  const [message, setMessage] = useState('');
 
   const addNewMessage = () => {
-    addMessageText(newMessageRef.current!.value)
+    textAreaLabel==='post' ? dispatch(AddPostActionCreator()) : dispatch(AddMessageActionCreator())
   }
 
-  const onMessageChange = () => {
-    let text = newMessageRef.current!.value
-    updateMessageText(text)
+  const onMessageChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(event.target.value);
+    textAreaLabel==='post' ? dispatch(UpdatePostActionCreator(message)) : dispatch(UpdateMessageActionCreator(message))
   }
-
 
   return (
     <div className={classes.AddPostContainer}>
       <textarea  
-        ref={newMessageRef}       
+        value={message}
         onChange={onMessageChange}>
       </textarea>
       <button  onClick={addNewMessage}>Add new {textAreaLabel}</button>
