@@ -7,12 +7,10 @@ import { IActionType } from "../../../../../../../../redux/store";
 
 interface IPostProps {
   postsData:IPost[],
-  newPostText: string,
-  newMessageText: string,
   dispatch: (action: IActionType) => void
 }
 
-const Posts: FC<IPostProps> = ({ postsData, dispatch, newPostText, newMessageText}) => {
+const Posts: FC<IPostProps> = ({ postsData, dispatch}) => {
   const posts = postsData.map((el, index) => (
     <Post
       message={el.message}
@@ -28,8 +26,6 @@ const Posts: FC<IPostProps> = ({ postsData, dispatch, newPostText, newMessageTex
       {posts}
       <AddTextAreaMessage  
       textAreaLabel="post"
-      newPostText={newPostText}
-      newMessageText={newMessageText}
       dispatch={dispatch}/>
     </div>
   );

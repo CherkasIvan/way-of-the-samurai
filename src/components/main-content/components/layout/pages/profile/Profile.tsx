@@ -6,16 +6,14 @@ import { IActionType } from "../../../../../../redux/store";
 
 interface IProfileProps {
   postsData: IPost[]
-  newPostText: string,
-  newMessageText:string,
   dispatch: (action: IActionType) => void
 }
 
-const Profile: FC<IProfileProps> = ({ postsData, dispatch, newPostText, newMessageText }) => {
+const Profile: FC<IProfileProps> = ({ postsData, dispatch}) => {
   return (
     <div className={classes.profileContainer}>
       img + des
-      <Posts postsData={postsData} newPostText={newPostText} newMessageText={newMessageText} dispatch={dispatch}/>
+      <Posts postsData={postsData} dispatch={dispatch}/>
     </div>
   );
 };

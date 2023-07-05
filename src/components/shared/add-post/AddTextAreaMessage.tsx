@@ -1,39 +1,11 @@
 import React, {FC, useState} from "react";
 import classes from "./AddPost.module.scss";
-import { StoreEnum } from "../../../utils/enums/store.enum";
 import { IActionType } from "../../../redux/store";
+import { AddPostActionCreator, AddMessageActionCreator, UpdatePostActionCreator, UpdateMessageActionCreator } from "../../../redux/actions";
 
 interface IAddPost {
  textAreaLabel: string,
- newPostText: string,
- newMessageText: string,
  dispatch: (action: IActionType) => void
-}
-
-let AddPostActionCreator = () => {
-  return {
-    type: StoreEnum.ADD_POST
-  }
-}
-
-let AddMessageActionCreator = () => {
-  return {
-    type: StoreEnum.ADD_MESSAGE
-  }
-}
-
-let UpdatePostActionCreator = (message:string) => {
-  return {
-    type: StoreEnum.UPDATE_NEW_POST_TEXT,
-    payload: message
-  }
-}
-
-let UpdateMessageActionCreator = (message:string) => {
-  return {
-    type: StoreEnum.UPDATE_MESSAGE,
-    payload: message
-  }
 }
 
 const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel,  dispatch, }) => {;
