@@ -1,7 +1,10 @@
 import { IState } from "../../components/main-content/models/state.interface";
 import { IAction } from "../../utils/models/action.interface";
 
-const sidebarReducer = (state:any, action: IAction): IState =>{
+
+let initialState = {}
+
+const sidebarReducer = (state:any = initialState, action: IAction): IState =>{
 
     return state
 }

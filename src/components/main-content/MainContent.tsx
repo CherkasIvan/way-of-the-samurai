@@ -21,6 +21,8 @@ const MainContent: FC<MainContentProps> = ({
   messagesData,
   dispatch
 }) => {
+  debugger
+
   return (
     <main className={clasess.mainContainer}>
       <BrowserRouter>

@@ -1,11 +1,18 @@
 import { rendererEntireTree } from "../..";
 import { IPost } from "../../components/main-content/models/post.interface";
+import { ActivePosts } from "../../utils/data/active-posts";
 import { StoreEnum } from "../../utils/enums/store.enum";
 import { IAction } from "../../utils/models/action.interface";
 import { IProfilePage } from "../../utils/models/profile-page.interface";
 import store from "../store";
 
-const profileReducer = (state:IProfilePage, action: IAction): IProfilePage =>{
+let initialState = {
+    posts: ActivePosts,
+    newPostText: ''
+}
+
+
+const profileReducer = (state:IProfilePage = initialState, action: IAction): IProfilePage =>{
 switch(action.type) {
     case StoreEnum.ADD_POST: {
         const post: IPost = {

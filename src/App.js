@@ -8,11 +8,11 @@ const App  = ({ state, dispatch }) => {
     <div className="App">
       <Header />
       <MainContent
-        postsData={state.profilePage.posts}
-        usersData={state.dialogsPage.users}
-        messagesData={state.dialogsPage.messages}
-        newPostText={state.profilePage.newPostText}
-        newMessageText={state.dialogsPage.newMessageText}
+        postsData={state.reducers.profilePage.posts}
+        usersData={state.reducers.dialogsPage.users}
+        messagesData={state.reducers.dialogsPage.messages}
+        newPostText={state.reducers.profilePage.newPostText}
+        newMessageText={state.reducers.dialogsPage.newMessageText}
         dispatch={dispatch}
       />
       <Footer />
