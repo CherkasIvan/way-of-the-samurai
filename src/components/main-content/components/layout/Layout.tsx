@@ -10,13 +10,13 @@ import Profile from "./pages/profile/Profile";
 import { IPost } from "../../models/post.interface";
 import { IUsers } from "../../models/users.interface";
 import { IMessage } from "../../models/message.interface";
-import { IActionType } from "../../../../redux/store";
+import { IAction } from "../../../../utils/models/action.interface";
 
 interface ILayoutProps {
   postsData:IPost[],
   usersData: IUsers[],
   messagesData:IMessage[],
-  dispatch: (action: IActionType) => void
+  dispatch: (action: IAction) => void
 }
 
 const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData,  dispatch}) => {

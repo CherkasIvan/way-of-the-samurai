@@ -5,12 +5,12 @@ import Message from "./components/message/Message";
 import { IMessage } from "../../../../models/message.interface";
 import { IUsers } from "../../../../models/users.interface";
 import AddTextAreaMessage from "../../../../../shared/add-post/AddTextAreaMessage";
-import { IActionType } from "../../../../../../redux/store";
+import { IAction } from "../../../../../../utils/models/action.interface";
 
 interface IPostsProps {
   usersData: IUsers[],
   messagesData: IMessage[],
-  dispatch: (action: IActionType) => void
+  dispatch: (action: IAction) => void
 }
 
 const Dialogs: FC<IPostsProps> = ({ usersData, messagesData, dispatch }) => {
@@ -22,7 +22,7 @@ const Dialogs: FC<IPostsProps> = ({ usersData, messagesData, dispatch }) => {
     ></User>
   ));
   const messages = messagesData.map((el) => (
-    <Message message={el.message}></Message>
+    <Message message={el.message} key={el.id}></Message>
   ));
   return (
     <div className={classes.dialogsContainer}>

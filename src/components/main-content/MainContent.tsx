@@ -2,18 +2,17 @@ import React, {FC} from "react";
 import Navigation from "./components/navigation/Navigation";
 import clasess from "./MainContent.module.scss";
 import Layout from "./components/layout/Layout";
-
 import { BrowserRouter } from "react-router-dom";
 import { IPost } from "./models/post.interface";
 import { IUsers } from "./models/users.interface";
 import { IMessage } from "./models/message.interface";
-import { IActionType } from "../../redux/store";
+import { IAction } from "../../utils/models/action.interface";
 
 interface MainContentProps{
   postsData: IPost[],
   usersData: IUsers[],
   messagesData: IMessage[],
-  dispatch: (action: IActionType) => void
+  dispatch: (action: IAction) => void
 }
 
 const MainContent: FC<MainContentProps> = ({

@@ -1,29 +1,32 @@
-import React, {FC, useState} from "react";
+import React, {FC, useRef} from "react";
 import classes from "./AddPost.module.scss";
-import { IActionType } from "../../../redux/store";
-import { AddPostActionCreator, AddMessageActionCreator, UpdatePostActionCreator, UpdateMessageActionCreator } from "../../../redux/actions";
+import { AddPostActionCreator, AddMessageActionCreator, 
+UpdatePostActionCreator, UpdateMessageActionCreator } from "../../../redux/actions";
+import { IAction } from "../../../utils/models/action.interface";
 
 interface IAddPost {
  textAreaLabel: string,
- dispatch: (action: IActionType) => void
+ dispatch: (action: IAction) => void
 }
 
 const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel,  dispatch, }) => {;
-  const [message, setMessage] = useState('');
+
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const addNewMessage = () => {
     textAreaLabel==='post' ? dispatch(AddPostActionCreator()) : dispatch(AddMessageActionCreator())
   }
 
-  const onMessageChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMessage(event.target.value);
-    textAreaLabel==='post' ? dispatch(UpdatePostActionCreator(message)) : dispatch(UpdateMessageActionCreator(message))
+  const onMessageChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    let newMessage = textareaRef.current?.value
+    textAreaLabel==='post' ? dispatch(UpdatePostActionCreator(newMessage!)) : dispatch(UpdateMessageActionCreator(newMessage!))
   }
 
   return (
     <div className={classes.AddPostContainer}>
       <textarea  
-        value={message}
+        value={textareaRef.current?.value}
+        ref={textareaRef}
         onChange={onMessageChange}>
       </textarea>
       <button  onClick={addNewMessage}>Add new {textAreaLabel}</button>

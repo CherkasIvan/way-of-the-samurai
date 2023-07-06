@@ -3,11 +3,11 @@ import Post from "../../components/posts/post/Post";
 import classes from "./Posts.module.scss";
 import { IPost } from "../../../../../../models/post.interface";
 import AddTextAreaMessage from "../../../../../../../shared/add-post/AddTextAreaMessage";
-import { IActionType } from "../../../../../../../../redux/store";
+import { IAction } from "../../../../../../../../utils/models/action.interface";
 
 interface IPostProps {
   postsData:IPost[],
-  dispatch: (action: IActionType) => void
+  dispatch: (action: IAction) => void
 }
 
 const Posts: FC<IPostProps> = ({ postsData, dispatch}) => {

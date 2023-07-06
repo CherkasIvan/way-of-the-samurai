@@ -2,15 +2,11 @@ import { ActiveUsers } from '../utils/data/active-users';
 import { ActiveMessages } from '../utils/data/active-messages';
 import { ActivePosts } from '../utils/data/active-posts';
 import { IState } from '../components/main-content/models/state.interface';
-import { IMessage } from '../components/main-content/models/message.interface';
-import { IPost } from '../components/main-content/models/post.interface';
-import { StoreEnum } from '../utils/enums/store.enum';
-import { rendererEntireTree } from '..';
+import { IAction } from '../utils/models/action.interface';
+import dialogsReducer from './reducers/dialogs-reducer';
+import profileReducer from './reducers/profile-reducer';
+import sidebarReducer from './reducers/sidebar-reducer';
 
-export interface IActionType {
-	type:string
-	payload?: any
-}
 
 let store = {
 	_state: {
@@ -30,47 +26,17 @@ let store = {
 		return this._state
 	},
 	_callSubscriber (observer:IState) {
+		console.log(observer)
 	return observer
 	},
 	
-	dispatch (action: IActionType): void {
-		if(action.type===StoreEnum.ADD_POST) {
-			const post: IPost = {
-				id: this._state.profilePage.posts.length + 1,
-				name: 'Ivan',
-				message: this._state.profilePage.newPostText,
-				counter: 0
-			}
-			this._state.profilePage.posts.push(post)
-			rendererEntireTree(store.getState())
-			this._state.profilePage.newPostText=''
-		} 
-
-
-		else if (action.type===StoreEnum.UPDATE_NEW_POST_TEXT) {
-			this._state.profilePage.newPostText= action.payload
-			this._callSubscriber(this._state)
-		}
-
-
-		else if (action.type===StoreEnum.ADD_MESSAGE) {
-			const actualMessage: IMessage = {
-				id: this._state.dialogsPage.messages.length + 1,
-				message: this._state.dialogsPage.newMessageText,
-			}
-			this._state.dialogsPage.messages.push(actualMessage)
-			rendererEntireTree(store.getState())
-			this._state.dialogsPage.newMessageText=''
-		}
-
-
-		else if (action.type===StoreEnum.UPDATE_MESSAGE) {
-			this._state.dialogsPage.newMessageText= action.payload
-			this._callSubscriber(this._state)
-		}
+	dispatch (action: IAction): void {
+		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+		this._state.profilePage = profileReducer(this._state.profilePage, action)
+		this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+		this._callSubscriber(store.getState())
 	}
 }
-
 
 export default store
 window.store = store
