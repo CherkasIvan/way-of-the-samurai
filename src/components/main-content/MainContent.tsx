@@ -1,8 +1,7 @@
-import React, {FC} from "react";
+import {FC} from "react";
 import Navigation from "./components/navigation/Navigation";
 import clasess from "./MainContent.module.scss";
 import Layout from "./components/layout/Layout";
-import { BrowserRouter } from "react-router-dom";
 import { IPost } from "./models/post.interface";
 import { IUsers } from "./models/users.interface";
 import { IMessage } from "./models/message.interface";
@@ -21,11 +20,8 @@ const MainContent: FC<MainContentProps> = ({
   messagesData,
   dispatch
 }) => {
-  debugger
-
   return (
     <main className={clasess.mainContainer}>
-      <BrowserRouter>
         <Navigation />
         <Layout
           postsData={postsData}
@@ -33,7 +29,6 @@ const MainContent: FC<MainContentProps> = ({
           messagesData={messagesData}
           dispatch={dispatch}
         />
-      </BrowserRouter>
     </main>
   );
 };

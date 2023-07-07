@@ -3,16 +3,16 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import MainContent from "./components/main-content/MainContent";
 
-const App  = ({ state, dispatch }) => {
+const App  = ({ state, dispatch, store }) => {
   return (
     <div className="App">
       <Header />
       <MainContent
-        postsData={state.reducers.profilePage.posts}
-        usersData={state.reducers.dialogsPage.users}
-        messagesData={state.reducers.dialogsPage.messages}
-        newPostText={state.reducers.profilePage.newPostText}
-        newMessageText={state.reducers.dialogsPage.newMessageText}
+        postsData={state.profilePage.posts}
+        usersData={state.dialogsPage.users}
+        messagesData={state.dialogsPage.messages}
+        newPostText={state.profilePage.newPostText}
+        newMessageText={state.dialogsPage.newMessageText}
         dispatch={dispatch}
       />
       <Footer />
