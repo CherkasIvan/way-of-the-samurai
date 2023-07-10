@@ -7,21 +7,17 @@ import Settings from "./pages/settings/Settings";
 import { ActiveRoutes } from "../../../../utils/enums/active-routes.enum";
 import Dialogs from "./pages/dialogs/Dialogs";
 import Profile from "./pages/profile/Profile";
-import { IPost } from "../../models/post.interface";
-import { IUsers } from "../../models/users.interface";
-import { IMessage } from "../../models/message.interface";
+import { StoreContext } from "../../../../App";
+import { IProfilePage } from "../../../../utils/models/profile-page.interface";
+import { IDialogsPage } from "../../../../utils/models/dialogs-page.interface";
 import { IAction } from "../../../../utils/models/action.interface";
-import { IState } from "../../models/state.interface";
 
-interface ILayoutProps {
-  postsData:IPost[],
-  usersData: IUsers[],
-  messagesData:IMessage[],
-  dispatch: (action: IAction) => void
-  store: IState
-}
-
-const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData,  dispatch, }) => {
+const Layout = () => {
+  const state = React.useContext(StoreContext);
+  const profilePage: IProfilePage = state[0].profilePage
+  const dialogsPage: IDialogsPage = state[0].dialogsPage
+  const sidebar: any = state[0].sidebar
+  const dispatch: (action: IAction) => void = state[1]
   return (
     <div className={classes.profileContainer}>
       <Routes>
@@ -31,15 +27,15 @@ const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData,  dispatc
         />
         <Route
           path={ActiveRoutes.PROFILE}
-          element={<Profile postsData={postsData}  dispatch={dispatch}
+          element={<Profile postsData={profilePage.posts}  dispatch={dispatch}
           />}
         />
         <Route
           path={ActiveRoutes.DIALOGS}
           element={
             <Dialogs
-              usersData={usersData}
-              messagesData={messagesData}
+              usersData={dialogsPage.users}
+              messagesData={dialogsPage.messages}
               dispatch={dispatch}
             />
           }
@@ -48,8 +44,8 @@ const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData,  dispatc
           path={ActiveRoutes.DIALOGS + "/*"}
           element={
             <Dialogs
-              usersData={usersData}
-              messagesData={messagesData}
+              usersData={dialogsPage.users}
+              messagesData={dialogsPage.messages}
               dispatch={dispatch}
             />
           }

@@ -2,22 +2,20 @@ import "./App.scss";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import MainContent from "./components/main-content/MainContent";
+import React from "react";
 
-const App  = ({ state, dispatch, store }) => {
+export const StoreContext = React.createContext()
+
+const App  = ({ dispatch, store }) => {
   return (
+  <StoreContext.Provider value={[store,dispatch]}>
     <div className="App">
       <Header />
       <MainContent
-        postsData={state.profilePage.posts}
-        usersData={state.dialogsPage.users}
-        messagesData={state.dialogsPage.messages}
-        newPostText={state.profilePage.newPostText}
-        newMessageText={state.dialogsPage.newMessageText}
-        store={store}
-        dispatch={dispatch}
       />
       <Footer />
     </div>
+  </StoreContext.Provider>
   );
 };
 
