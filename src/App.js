@@ -2,9 +2,7 @@ import "./App.scss";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import MainContent from "./components/main-content/MainContent";
-import React from "react";
-
-export const StoreContext = React.createContext()
+import StoreContext from "@context/store-context";
 
 const App  = ({ dispatch, store }) => {
   return (

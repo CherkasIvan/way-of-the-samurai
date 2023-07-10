@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React from "react";
 import classes from "./Layout.module.scss";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Music from "./pages/music/Music";
@@ -7,7 +7,7 @@ import Settings from "./pages/settings/Settings";
 import { ActiveRoutes } from "../../../../utils/enums/active-routes.enum";
 import Dialogs from "./pages/dialogs/Dialogs";
 import Profile from "./pages/profile/Profile";
-import { StoreContext } from "../../../../App";
+import StoreContext from "../../../../context/store-context";
 import { IProfilePage } from "../../../../utils/models/profile-page.interface";
 import { IDialogsPage } from "../../../../utils/models/dialogs-page.interface";
 import { IAction } from "../../../../utils/models/action.interface";
@@ -16,7 +16,7 @@ const Layout = () => {
   const state = React.useContext(StoreContext);
   const profilePage: IProfilePage = state[0].profilePage
   const dialogsPage: IDialogsPage = state[0].dialogsPage
-  const sidebar: any = state[0].sidebar
+  const  sidebar: any = state[0].sidebar
   const dispatch: (action: IAction) => void = state[1]
   return (
     <div className={classes.profileContainer}>
