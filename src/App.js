@@ -13,6 +13,7 @@ const App  = ({ state, dispatch, store }) => {
         messagesData={state.dialogsPage.messages}
         newPostText={state.profilePage.newPostText}
         newMessageText={state.dialogsPage.newMessageText}
+        store={store}
         dispatch={dispatch}
       />
       <Footer />

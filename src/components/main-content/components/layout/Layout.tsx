@@ -11,15 +11,17 @@ import { IPost } from "../../models/post.interface";
 import { IUsers } from "../../models/users.interface";
 import { IMessage } from "../../models/message.interface";
 import { IAction } from "../../../../utils/models/action.interface";
+import { IState } from "../../models/state.interface";
 
 interface ILayoutProps {
   postsData:IPost[],
   usersData: IUsers[],
   messagesData:IMessage[],
   dispatch: (action: IAction) => void
+  store: IState
 }
 
-const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData,  dispatch}) => {
+const Layout: FC<ILayoutProps> = ({ postsData, usersData, messagesData,  dispatch, }) => {
   return (
     <div className={classes.profileContainer}>
       <Routes>

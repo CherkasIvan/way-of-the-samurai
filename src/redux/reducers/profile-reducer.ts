@@ -20,6 +20,7 @@ switch(action.type) {
             counter: 0
         }
         state.posts.push(post)
+        state.newPostText = ''
         return state
     }
     case StoreEnum.UPDATE_NEW_POST_TEXT :{

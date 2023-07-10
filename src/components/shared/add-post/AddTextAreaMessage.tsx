@@ -1,25 +1,25 @@
 import React, {FC, useRef} from "react";
 import classes from "./AddPost.module.scss";
-import { AddPostActionCreator, AddMessageActionCreator, 
-UpdatePostActionCreator, UpdateMessageActionCreator } from "../../../redux/actions";
-import { IAction } from "../../../utils/models/action.interface";
 
 interface IAddPost {
  textAreaLabel: string,
- dispatch: (action: IAction) => void
+ addPostText?: () => void,
+ addMesageText?: () => void,
+ updateNewPostText?: (text: string) => void,
+ updateNewMesageText?: (text: string) => void,
 }
 
-const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel,  dispatch, }) => {;
+const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel,  addPostText, addMesageText, updateNewPostText, updateNewMesageText}) => {;
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const addNewMessage = () => {
-    textAreaLabel==='post' ? dispatch(AddPostActionCreator()) : dispatch(AddMessageActionCreator())
+    textAreaLabel==='post' ? addPostText!() : addMesageText!()
   }
 
-  const onMessageChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+  const onMessageChange = (): void => {
     let newMessage = textareaRef.current?.value
-    textAreaLabel==='post' ? dispatch(UpdatePostActionCreator(newMessage!)) : dispatch(UpdateMessageActionCreator(newMessage!))
+    textAreaLabel==='post' ? updateNewPostText!(newMessage!) : updateNewMesageText!(newMessage!)
   }
 
   return (

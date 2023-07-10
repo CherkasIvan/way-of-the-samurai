@@ -6,14 +6,25 @@ import { IMessage } from "../../../../models/message.interface";
 import { IUsers } from "../../../../models/users.interface";
 import AddTextAreaMessage from "../../../../../shared/add-post/AddTextAreaMessage";
 import { IAction } from "../../../../../../utils/models/action.interface";
+import { AddMessageActionCreator, UpdateMessageActionCreator } from "../../../../../../redux/actions";
 
 interface IPostsProps {
-  usersData: IUsers[],
-  messagesData: IMessage[],
-  dispatch: (action: IAction) => void
+    usersData: IUsers[],
+    messagesData: IMessage[],
+    dispatch: (action: IAction) => void
 }
 
-const Dialogs: FC<IPostsProps> = ({ usersData, messagesData, dispatch }) => {
+const Dialogs: FC<IPostsProps> = ({ usersData, messagesData, dispatch}) => {
+  const updateaddMesageTexttHeandler = (text: string) => {
+    let action = UpdateMessageActionCreator(text)
+    dispatch(action)
+  }
+  
+  const addaddMesageTextHeandler = () => {
+    let action = AddMessageActionCreator()
+    dispatch(action)
+  }
+
   const users = usersData.map((el) => (
     <User
       name={el.name}
@@ -29,7 +40,9 @@ const Dialogs: FC<IPostsProps> = ({ usersData, messagesData, dispatch }) => {
       <div className={classes.users}>{users}</div>
       <div className={classes.messages}>{messages}</div>
       <AddTextAreaMessage  
-        textAreaLabel="message" dispatch={dispatch}/>
+        textAreaLabel="message"
+        addMesageText={addaddMesageTextHeandler}
+        updateNewMesageText={updateaddMesageTexttHeandler}/>
     </div>
   );
 };
