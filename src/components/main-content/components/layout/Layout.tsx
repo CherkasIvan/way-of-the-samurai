@@ -27,7 +27,7 @@ const Layout = () => {
         />
         <Route
           path={ActiveRoutes.PROFILE}
-          element={<Profile postsData={profilePage.posts}  dispatch={dispatch}
+          element={<Profile postsData={profilePage.posts}
           />}
         />
         <Route
@@ -36,7 +36,6 @@ const Layout = () => {
             <Dialogs
               usersData={dialogsPage.users}
               messagesData={dialogsPage.messages}
-              dispatch={dispatch}
             />
           }
         />
@@ -46,7 +45,6 @@ const Layout = () => {
             <Dialogs
               usersData={dialogsPage.users}
               messagesData={dialogsPage.messages}
-              dispatch={dispatch}
             />
           }
         />

@@ -3,15 +3,17 @@ import Post from "../../components/posts/post/Post";
 import classes from "./Posts.module.scss";
 import { IPost } from "../../../../../../models/post.interface";
 import AddTextAreaMessage from "../../../../../../../shared/add-post/AddTextAreaMessage";
-import { IAction } from "../../../../../../../../utils/models/action.interface";
 import { AddPostActionCreator, UpdatePostActionCreator } from "../../../../../../../../redux/actions";
+import store from "../../../../../../../../redux-store/redux-store";
+import { connect } from "react-redux";
+import { IState } from "../../../../../../models/state.interface";
+import { IAction } from "../../../../../../../../utils/models/action.interface";
 
 interface IPostProps {
   postsData:IPost[],
-  dispatch: (action: IAction) => void
 }
 
-const Posts: FC<IPostProps> = ({ postsData, dispatch}) => {
+const Posts: FC<IPostProps> = ({ postsData }) => {
   const posts = postsData.map((el:IPost) => (
     <Post
       message={el.message}
@@ -24,12 +26,12 @@ const Posts: FC<IPostProps> = ({ postsData, dispatch}) => {
   
 const updatePostHeandler = (text: string) => {
   let action = UpdatePostActionCreator(text)
-  dispatch(action)
+  store.dispatch(action)
 }
 
 const addPostHeandler = () => {
   let action = AddPostActionCreator()
-  dispatch(action)
+  store.dispatch(action)
 }
 
   return (
@@ -44,4 +46,19 @@ const addPostHeandler = () => {
   );
 };
 
+let mapStateToProps = (state: IState) => {}
+let mapDispatchToProps = (dispatch: (arg0: IAction) => void) => {
+  return {
+    addPostText: () => {
+      let action = AddPostActionCreator()
+      dispatch(action)
+    },
+    updateNewPostText: (text: string) => {
+      let action = UpdatePostActionCreator(text)
+      dispatch(action)
+    }
+  }
+}
+
+const PostTextAreaMessage = connect(mapStateToProps,mapDispatchToProps)(AddTextAreaMessage)
 export default Posts;

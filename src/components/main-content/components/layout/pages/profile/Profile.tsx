@@ -6,14 +6,13 @@ import { IAction } from "../../../../../../utils/models/action.interface";
 
 interface IProfileProps {
   postsData: IPost[]
-  dispatch: (action: IAction) => void
 }
 
-const Profile: FC<IProfileProps> = ({ postsData, dispatch }) => {
+const Profile: FC<IProfileProps> = ({ postsData }) => {
   return (
     <div className={classes.profileContainer}>
       img + des
-      <Posts postsData={postsData} dispatch={dispatch}/>
+      <Posts postsData={postsData}/>
     </div>
   );
 };

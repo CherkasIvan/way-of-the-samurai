@@ -5,24 +5,26 @@ import Message from "./components/message/Message";
 import { IMessage } from "../../../../models/message.interface";
 import { IUsers } from "../../../../models/users.interface";
 import AddTextAreaMessage from "../../../../../shared/add-post/AddTextAreaMessage";
-import { IAction } from "../../../../../../utils/models/action.interface";
 import { AddMessageActionCreator, UpdateMessageActionCreator } from "../../../../../../redux/actions";
+import store from "../../../../../../redux-store/redux-store";
+import { connect } from "react-redux";
+import { IAction } from "../../../../../../utils/models/action.interface";
+import { IState } from "../../../../models/state.interface";
 
 interface IDialogsProps {
     usersData: IUsers[],
     messagesData: IMessage[],
-    dispatch: (action: IAction) => void
 }
 
-const Dialogs: FC<IDialogsProps> = ({ usersData, messagesData, dispatch}) => {
-  const updateaddMesageTexttHeandler = (text: string) => {
+const Dialogs: FC<IDialogsProps> = ({ usersData, messagesData}) => {
+  const updateddMesageTextHeandler = (text: string) => {
     let action = UpdateMessageActionCreator(text)
-    dispatch(action)
+    store.dispatch(action)
   }
   
-  const addaddMesageTextHeandler = () => {
+  const addMesageTextHeandler = () => {
     let action = AddMessageActionCreator()
-    dispatch(action)
+    store.dispatch(action)
   }
 
   const users = usersData.map((el) => (
@@ -41,10 +43,26 @@ const Dialogs: FC<IDialogsProps> = ({ usersData, messagesData, dispatch}) => {
       <div className={classes.messages}>{messages}</div>
       <AddTextAreaMessage  
         textAreaLabel="message"
-        addMesageText={addaddMesageTextHeandler}
-        updateNewMesageText={updateaddMesageTexttHeandler}/>
+        addMesageText={addMesageTextHeandler}
+        updateNewMesageText={updateddMesageTextHeandler}/>
     </div>
   );
 };
+
+let mapStateToProps = (state: IState) => {}
+let mapDispatchToProps = (dispatch: (arg0: IAction) => void) => {
+  return {
+    addPostText: () => {
+      let action = AddMessageActionCreator()
+      dispatch(action)
+    },
+    updateNewPostText: (text: string) => {
+      let action = UpdateMessageActionCreator(text)
+      dispatch(action)
+    }
+  }
+}
+
+const PostTextAreaMessage = connect(mapStateToProps,mapDispatchToProps)(AddTextAreaMessage)
 
 export default Dialogs;
