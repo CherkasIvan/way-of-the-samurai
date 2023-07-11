@@ -7,7 +7,6 @@ import dialogsReducer from './reducers/dialogs-reducer';
 import profileReducer from './reducers/profile-reducer';
 import sidebarReducer from './reducers/sidebar-reducer';
 
-
 let store = {
 	_state: {
 		profilePage: {

@@ -16,7 +16,7 @@ const Layout = () => {
   const state = React.useContext(StoreContext);
   const profilePage: IProfilePage = state[0].profilePage
   const dialogsPage: IDialogsPage = state[0].dialogsPage
-  const  sidebar: any = state[0].sidebar
+  const sidebar: any = state[0].sidebar
   const dispatch: (action: IAction) => void = state[1]
   return (
     <div className={classes.profileContainer}>

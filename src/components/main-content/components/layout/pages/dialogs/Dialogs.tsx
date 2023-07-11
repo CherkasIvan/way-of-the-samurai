@@ -8,13 +8,13 @@ import AddTextAreaMessage from "../../../../../shared/add-post/AddTextAreaMessag
 import { IAction } from "../../../../../../utils/models/action.interface";
 import { AddMessageActionCreator, UpdateMessageActionCreator } from "../../../../../../redux/actions";
 
-interface IPostsProps {
+interface IDialogsProps {
     usersData: IUsers[],
     messagesData: IMessage[],
     dispatch: (action: IAction) => void
 }
 
-const Dialogs: FC<IPostsProps> = ({ usersData, messagesData, dispatch}) => {
+const Dialogs: FC<IDialogsProps> = ({ usersData, messagesData, dispatch}) => {
   const updateaddMesageTexttHeandler = (text: string) => {
     let action = UpdateMessageActionCreator(text)
     dispatch(action)
