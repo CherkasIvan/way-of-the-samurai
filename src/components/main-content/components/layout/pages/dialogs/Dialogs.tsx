@@ -20,8 +20,6 @@ interface IDialogsProps {
 }
 
 const Dialogs: FC<IDialogsProps> = ({ usersData, messagesData, updateddMesageTextHeandler, addMesageTextHeandler}) => {
-
-
   const users = usersData.map((el) => (
     <UserContainer
       name={el.name}
