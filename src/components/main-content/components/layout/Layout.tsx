@@ -1,23 +1,19 @@
-import React from "react";
+import React, {FC} from "react";
 import classes from "./Layout.module.scss";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Music from "./pages/music/Music";
 import News from "./pages/news/News";
 import Settings from "./pages/settings/Settings";
 import { ActiveRoutes } from "../../../../utils/enums/active-routes.enum";
-import Dialogs from "./pages/dialogs/Dialogs";
-import Profile from "./pages/profile/Profile";
-import StoreContext from "../../../../context/store-context";
-import { IProfilePage } from "../../../../utils/models/profile-page.interface";
-import { IDialogsPage } from "../../../../utils/models/dialogs-page.interface";
-import { IAction } from "../../../../utils/models/action.interface";
+import ProfileContainer from "./pages/profile/ProfileContainer";
+import DialogsContainer from "./pages/dialogs/DialogsContainer";
+import { IState } from "../../models/state.interface";
 
-const Layout = () => {
-  const state = React.useContext(StoreContext);
-  const profilePage: IProfilePage = state[0].profilePage
-  const dialogsPage: IDialogsPage = state[0].dialogsPage
-  const sidebar: any = state[0].sidebar
-  const dispatch: (action: IAction) => void = state[1]
+interface ILayoutProps {
+  store: IState
+}
+
+const Layout: FC<ILayoutProps> = ({store}) => {
   return (
     <div className={classes.profileContainer}>
       <Routes>
@@ -27,24 +23,24 @@ const Layout = () => {
         />
         <Route
           path={ActiveRoutes.PROFILE}
-          element={<Profile postsData={profilePage.posts}
+          element={<ProfileContainer postsData={store.profilePage.posts}
           />}
         />
         <Route
           path={ActiveRoutes.DIALOGS}
           element={
-            <Dialogs
-              usersData={dialogsPage.users}
-              messagesData={dialogsPage.messages}
+            <DialogsContainer
+              usersData={store.dialogsPage.users}
+              messagesData={store.dialogsPage.messages}
             />
           }
         />
         <Route
           path={ActiveRoutes.DIALOGS + "/*"}
           element={
-            <Dialogs
-              usersData={dialogsPage.users}
-              messagesData={dialogsPage.messages}
+            <DialogsContainer
+              usersData={store.dialogsPage.users}
+              messagesData={store.dialogsPage.messages}
             />
           }
         />

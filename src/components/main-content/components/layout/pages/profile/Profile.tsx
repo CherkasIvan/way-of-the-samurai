@@ -1,8 +1,7 @@
 import {FC} from "react";
 import classes from "./Profile.module.scss";
-import Posts from "./components/posts/Posts";
 import { IPost } from "../../../../models/post.interface";
-import { IAction } from "../../../../../../utils/models/action.interface";
+import PostsContainer from "./components/posts/PostsContainer";
 
 interface IProfileProps {
   postsData: IPost[]
@@ -12,7 +11,7 @@ const Profile: FC<IProfileProps> = ({ postsData }) => {
   return (
     <div className={classes.profileContainer}>
       img + des
-      <Posts postsData={postsData}/>
+      <PostsContainer postsData={postsData}/>
     </div>
   );
 };

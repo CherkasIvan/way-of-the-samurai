@@ -60,5 +60,5 @@ let mapDispatchToProps = (dispatch: (arg0: IAction) => void) => {
   }
 }
 
-const PostTextAreaMessage = connect(mapStateToProps,mapDispatchToProps)(AddTextAreaMessage)
+const PostTextAreaMessage = connect(mapStateToProps, mapDispatchToProps)(AddTextAreaMessage)
 export default Posts;
