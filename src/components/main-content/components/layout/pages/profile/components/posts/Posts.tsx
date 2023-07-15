@@ -11,9 +11,11 @@ import { IAction } from "../../../../../../../../utils/models/action.interface";
 
 interface IPostProps {
   postsData:IPost[],
+  updatePostHeandler: (text:string) => void
+  addPostHeandler: () => void
 }
 
-const Posts: FC<IPostProps> = ({ postsData }) => {
+const Posts: FC<IPostProps> = ({ postsData, updatePostHeandler, addPostHeandler }) => {
   const posts = postsData.map((el:IPost) => (
     <Post
       message={el.message}
@@ -23,16 +25,6 @@ const Posts: FC<IPostProps> = ({ postsData }) => {
       key={el.id}
     ></Post>
   ));
-  
-const updatePostHeandler = (text: string) => {
-  let action = UpdatePostActionCreator(text)
-  store.dispatch(action)
-}
-
-const addPostHeandler = () => {
-  let action = AddPostActionCreator()
-  store.dispatch(action)
-}
 
   return (
     <div className={classes.postsContainer}>
