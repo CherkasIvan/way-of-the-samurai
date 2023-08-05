@@ -23,15 +23,12 @@ const Layout: FC<ILayoutProps> = ({store}) => {
         />
         <Route
           path={ActiveRoutes.PROFILE}
-          element={<ProfileContainer postsData={store.profilePage.posts}
-          />}
+          element={<ProfileContainer/>}
         />
         <Route
           path={ActiveRoutes.DIALOGS}
           element={
             <DialogsContainer
-              usersData={store.dialogsPage.users}
-              messagesData={store.dialogsPage.messages}
             />
           }
         />
@@ -39,8 +36,6 @@ const Layout: FC<ILayoutProps> = ({store}) => {
           path={ActiveRoutes.DIALOGS + "/*"}
           element={
             <DialogsContainer
-              usersData={store.dialogsPage.users}
-              messagesData={store.dialogsPage.messages}
             />
           }
         />

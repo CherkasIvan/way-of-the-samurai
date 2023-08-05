@@ -13,21 +13,20 @@ import UserContainer from "./components/user/UserContainer";
 import MessageContainer from "./components/message/MessageContainer";
 
 interface IDialogsProps {
-    usersData: IUsers[],
-    messagesData: IMessage[],
+    dialogsPage: any
     updateddMesageTextHeandler: (text:string) => void,
-    addMesageTextHeandler: () => void
+    addMessageTextHeandler: () => void
 }
 
-const Dialogs: FC<IDialogsProps> = ({ usersData, messagesData, updateddMesageTextHeandler, addMesageTextHeandler}) => {
-  const users = usersData.map((el) => (
+const Dialogs: FC<IDialogsProps> = ({ dialogsPage, updateddMesageTextHeandler, addMessageTextHeandler}) => {
+  const users = dialogsPage.users.map((el: { name: string; id: number; key: number }) => (
     <UserContainer
       name={el.name}
       id={el.id}
       key={el.id}
     ></UserContainer>
   ));
-  const messages = messagesData.map((el) => (
+  const messages = dialogsPage.messages.map((el: { message: string; id: number; key: number }) => (
     <MessageContainer message={el.message} key={el.id}></MessageContainer>
   ));
   return (
@@ -36,8 +35,8 @@ const Dialogs: FC<IDialogsProps> = ({ usersData, messagesData, updateddMesageTex
       <div className={classes.messages}>{messages}</div>
       <AddTextAreaMessage  
         textAreaLabel="message"
-        addMesageText={addMesageTextHeandler}
-        updateNewMesageText={updateddMesageTextHeandler}/>
+        addMessageText={addMessageTextHeandler}
+        updateNewMessageText={updateddMesageTextHeandler}/>
     </div>
   );
 };

@@ -4,16 +4,16 @@ import { IPost } from "../../../../models/post.interface";
 import PostsContainer from "./components/posts/PostsContainer";
 
 interface IProfileContainerProps {
-  postsData: IPost[],
+  profilePage: any,
   updatePostHeandler: (text:string) => void
   addPostHeandler: () => void
 }
 
-const Profile: FC<IProfileContainerProps> = ({ postsData, updatePostHeandler, addPostHeandler }) => {
+const Profile: FC<IProfileContainerProps> = ({ profilePage, updatePostHeandler, addPostHeandler }) => {
   return (
     <div className={classes.profileContainer}>
       img + des
-      <PostsContainer postsData={postsData} updatePostHeandler={updatePostHeandler} addPostHeandler={addPostHeandler}/>
+      <PostsContainer postsData={profilePage.posts} updatePostHeandler={updatePostHeandler} addPostHeandler={addPostHeandler}/>
     </div>
   );
 };
