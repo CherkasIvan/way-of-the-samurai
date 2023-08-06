@@ -3,8 +3,8 @@ import classes from "./AddPost.module.scss";
 
 interface IAddPost {
  textAreaLabel: string,
- addPostText?: () => void,
- addMessageText?: () => void,
+ addPostText?: (text: string) => void,
+ addMessageText?: (text: string) => void,
  updateNewPostText?: (text: string) => void,
  updateNewMessageText?: (text: string) => void,
 }
@@ -14,8 +14,8 @@ const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel,  addPostText, addMess
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const addNewMessage = () => {
-    debugger
-    textAreaLabel==='post' ? addPostText!() : addMessageText!()
+    let newMessage = textareaRef.current?.value
+    textAreaLabel==='post' ? addPostText!(newMessage!) : addMessageText!(newMessage!)
   }
 
   const onMessageChange = (): void => {

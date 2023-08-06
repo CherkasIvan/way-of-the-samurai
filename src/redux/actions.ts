@@ -1,9 +1,14 @@
 import { StoreEnum } from "../utils/enums/store.enum"
 import { IAction } from "../utils/models/action.interface"
 
-export const AddPostActionCreator = (): IAction  => ({type: StoreEnum.ADD_POST})
+export const AddPostActionCreator = (message: string): IAction  => ({
+  type: StoreEnum.ADD_POST,
+  payload: message
+})
   
-export const AddMessageActionCreator = (): IAction => ({type: StoreEnum.ADD_MESSAGE})
+export const AddMessageActionCreator = (message: string): IAction => ({
+  type: StoreEnum.ADD_MESSAGE,
+  payload: message})
   
 export const UpdatePostActionCreator = (message: string): IAction  => ({
       type: StoreEnum.UPDATE_NEW_POST_TEXT,

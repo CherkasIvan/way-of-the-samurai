@@ -45,6 +45,7 @@
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
     "@types/react-router-dom": "^5.3.3",
+    "eslint": "^8.46.0",
     "typescript": "^5.1.3"
   }
 }

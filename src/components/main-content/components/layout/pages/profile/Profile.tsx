@@ -1,19 +1,19 @@
 import {FC} from "react";
 import classes from "./Profile.module.scss";
-import { IPost } from "../../../../models/post.interface";
-import PostsContainer from "./components/posts/PostsContainer";
+import { IProfilePage } from "../../../../../../utils/models/profile-page.interface";
+import Posts from "./components/posts/Posts";
 
 interface IProfileContainerProps {
-  profilePage: any,
-  updatePostHeandler: (text:string) => void
-  addPostHeandler: () => void
+  profilePage: IProfilePage,
+  updatePostHandler: (text:string) => void
+  addPostHandler: (text:string) => void
 }
 
-const Profile: FC<IProfileContainerProps> = ({ profilePage, updatePostHeandler, addPostHeandler }) => {
+const Profile: FC<IProfileContainerProps> = ({ profilePage, updatePostHandler, addPostHandler }) => {
   return (
     <div className={classes.profileContainer}>
       img + des
-      <PostsContainer postsData={profilePage.posts} updatePostHeandler={updatePostHeandler} addPostHeandler={addPostHeandler}/>
+      <Posts postsData={profilePage.posts} updatePostHandler={updatePostHandler} addPostHandler={addPostHandler}/>
     </div>
   );
 };

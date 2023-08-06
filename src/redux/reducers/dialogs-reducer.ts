@@ -18,13 +18,18 @@ const dialogsReducer = (state:IDialogsPage = initialState, action: IAction): IDi
                 id: state.messages.length + 1,
                 message: state.newMessageText,
             }
-            state.messages.push(actualMessage)
-            state.newMessageText=''
-            return state
+            let stateCopy = {
+                ...state,
+                messages: [...state.messages]
+            }
+            stateCopy.messages.push(actualMessage)
+            stateCopy.newMessageText = ''
+            return stateCopy
         }
         case StoreEnum.UPDATE_MESSAGE: {
-            state.newMessageText= action.payload
-            return state
+            let stateCopy = {...state}
+            stateCopy.newMessageText = action.payload
+            return stateCopy
         }
         default: return state
     }

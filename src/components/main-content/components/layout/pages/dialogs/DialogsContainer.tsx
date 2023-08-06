@@ -15,8 +15,8 @@ let mapDispatchToProps = (dispatch: (arg0: IAction) => void) => {
       let action = UpdateMessageActionCreator(text)
       dispatch(action)
     },
-    addMessageTextHeandler: () => {    
-      let action = AddMessageActionCreator()
+    addMessageTextHandler: (text: string) => {    
+      let action = AddMessageActionCreator(text)
       dispatch(action)},
   }
 }

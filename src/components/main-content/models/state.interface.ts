@@ -1,16 +1,8 @@
-import { IPost } from "./post.interface"
-import { IMessage } from "./message.interface"
-import { IUsers } from "./users.interface"
+import { IProfilePage } from "../../../utils/models/profile-page.interface"
+import { IDialogsPage } from "../../../utils/models/dialogs-page.interface"
 
 export interface IState {
-    profilePage: {
-		posts: IPost[],
-		newPostText:string
-	},
-	dialogsPage: {
-		users: IUsers[],
-		messages: IMessage[],
-		newMessageText: string
-	},
+    profilePage: IProfilePage
+	dialogsPage: IDialogsPage
 	sidebar:{}
 }

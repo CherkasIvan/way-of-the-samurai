@@ -1,32 +1,29 @@
 import React, { FC } from "react";
 import classes from "./Dialogs.module.scss";
-
-import { IMessage } from "../../../../models/message.interface";
-import { IUsers } from "../../../../models/users.interface";
 import AddTextAreaMessage from "../../../../../shared/add-post/AddTextAreaMessage";
 import { AddMessageActionCreator, UpdateMessageActionCreator } from "../../../../../../redux/actions";
-import store from "../../../../../../redux-store/redux-store";
 import { connect } from "react-redux";
 import { IAction } from "../../../../../../utils/models/action.interface";
 import { IState } from "../../../../models/state.interface";
 import UserContainer from "./components/user/UserContainer";
 import MessageContainer from "./components/message/MessageContainer";
+import { IDialogsPage } from "../../../../../../utils/models/dialogs-page.interface";
 
 interface IDialogsProps {
-    dialogsPage: any
+    dialogsPage: IDialogsPage
     updateddMesageTextHeandler: (text:string) => void,
-    addMessageTextHeandler: () => void
+    addMessageTextHandler: (text:string) => void
 }
 
-const Dialogs: FC<IDialogsProps> = ({ dialogsPage, updateddMesageTextHeandler, addMessageTextHeandler}) => {
-  const users = dialogsPage.users.map((el: { name: string; id: number; key: number }) => (
+const Dialogs: FC<IDialogsProps> = ({ dialogsPage, updateddMesageTextHeandler, addMessageTextHandler}) => {
+  const users = dialogsPage.users.map((el) => (
     <UserContainer
       name={el.name}
       id={el.id}
       key={el.id}
     ></UserContainer>
   ));
-  const messages = dialogsPage.messages.map((el: { message: string; id: number; key: number }) => (
+  const messages = dialogsPage.messages.map((el) => (
     <MessageContainer message={el.message} key={el.id}></MessageContainer>
   ));
   return (
@@ -35,7 +32,7 @@ const Dialogs: FC<IDialogsProps> = ({ dialogsPage, updateddMesageTextHeandler, a
       <div className={classes.messages}>{messages}</div>
       <AddTextAreaMessage  
         textAreaLabel="message"
-        addMessageText={addMessageTextHeandler}
+        addMessageText={addMessageTextHandler}
         updateNewMessageText={updateddMesageTextHeandler}/>
     </div>
   );
@@ -44,8 +41,8 @@ const Dialogs: FC<IDialogsProps> = ({ dialogsPage, updateddMesageTextHeandler, a
 let mapStateToProps = (state: IState) => {}
 let mapDispatchToProps = (dispatch: (arg0: IAction) => void) => {
   return {
-    addPostText: () => {
-      let action = AddMessageActionCreator()
+    addPostText: (text:string) => {
+      let action = AddMessageActionCreator(text)
       dispatch(action)
     },
     updateNewPostText: (text: string) => {

@@ -4,18 +4,17 @@ import classes from "./Posts.module.scss";
 import { IPost } from "../../../../../../models/post.interface";
 import AddTextAreaMessage from "../../../../../../../shared/add-post/AddTextAreaMessage";
 import { AddPostActionCreator, UpdatePostActionCreator } from "../../../../../../../../redux/actions";
-import store from "../../../../../../../../redux-store/redux-store";
 import { connect } from "react-redux";
 import { IState } from "../../../../../../models/state.interface";
 import { IAction } from "../../../../../../../../utils/models/action.interface";
 
 interface IPostProps {
   postsData:IPost[],
-  updatePostHeandler: (text:string) => void
-  addPostHeandler: () => void
+  updatePostHandler: (text:string) => void
+  addPostHandler: (text: string) => void
 }
 
-const Posts: FC<IPostProps> = ({ postsData, updatePostHeandler, addPostHeandler }) => {
+const Posts: FC<IPostProps> = ({ postsData, updatePostHandler, addPostHandler }) => {
   const posts = postsData.map((el:IPost) => (
     <Post
       message={el.message}
@@ -32,8 +31,8 @@ const Posts: FC<IPostProps> = ({ postsData, updatePostHeandler, addPostHeandler 
       {posts}
       <AddTextAreaMessage 
       textAreaLabel="post"
-      addPostText={addPostHeandler}
-      updateNewPostText={updatePostHeandler}/>  
+      addPostText={addPostHandler}
+      updateNewPostText={updatePostHandler}/>  
     </div>
   );
 };
@@ -41,8 +40,8 @@ const Posts: FC<IPostProps> = ({ postsData, updatePostHeandler, addPostHeandler 
 let mapStateToProps = (state: IState) => {}
 let mapDispatchToProps = (dispatch: (arg0: IAction) => void) => {
   return {
-    addPostText: () => {
-      let action = AddPostActionCreator()
+    addPostText: (text:string) => {
+      let action = AddPostActionCreator(text)
       dispatch(action)
     },
     updateNewPostText: (text: string) => {

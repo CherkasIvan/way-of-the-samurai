@@ -9,23 +9,25 @@ let initialState = {
     newPostText: ''
 }
 
-
 const profileReducer = (state:IProfilePage = initialState, action: IAction): IProfilePage =>{
 switch(action.type) {
     case StoreEnum.ADD_POST: {
         const post: IPost = {
             id: state.posts.length + 1,
             name: 'Ivan',
-            message: state.newPostText,
+            message: action.payload,
             counter: 0
         }
-        state.posts.push(post)
-        state.newPostText = ''
-        return state
+        return {
+            ...state,
+            posts: [...state.posts, post],
+            newPostText: ''
+        }
     }
-    case StoreEnum.UPDATE_NEW_POST_TEXT :{
-        state.newPostText= action.payload
-        return state
+    case StoreEnum.UPDATE_NEW_POST_TEXT: {
+        return {
+            ...state, 
+            newPostText: action.payload}
     }
     default: return state
   }
