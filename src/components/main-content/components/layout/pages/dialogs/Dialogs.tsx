@@ -18,7 +18,7 @@ interface IDialogsProps {
 const Dialogs: FC<IDialogsProps> = ({ dialogsPage, updateddMesageTextHeandler, addMessageTextHandler}) => {
   const users = dialogsPage.users.map((el) => (
     <UserContainer
-      name={el.name}
+      name={el.fullName}
       id={el.id}
       key={el.id}
     ></UserContainer>

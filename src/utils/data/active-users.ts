@@ -4,27 +4,42 @@ export const ActiveUsers
 	: IUsers[] = [
 		{
 			id: 1,
-			name: 'Ivan',
+			followed: false,
+			fullName: 'Ivan',
+			status: 'active',
+			location: {city: 'Minsk', country: 'Belarus'},
 			counter: 1
 		},
 		{
 			id: 2,
-			name: "Alisa",
+			followed: false,
+			fullName: "Alisa",
+			status: 'active',
+			location: {city: 'Kiev', country: 'Ukraine'},
 			counter: 3
 		},
 		{
 			id: 3,
-			name: "Veronica",
+			followed: true,
+			fullName: "Veronica",
+			status: 'active',
+			location: {city: 'Moscow', country: 'Russia'},
 			counter: 0
 		},
 		{
 			id: 4,
-			name: "Andrey",
+			followed: true,
+			fullName: "Andrey",
+			status: 'active',
+			location: {city: 'Minsk', country: 'Belarus'},
 			counter: 12
 		},
 		{
 			id: 5,
-			name: 'Sergeiy',
+			followed: true,
+			fullName: 'Sergeiy',
+			status: 'active',
+			location: {city: 'London', country: 'Great Breton'},
 			counter: 16
 		},
 	];
