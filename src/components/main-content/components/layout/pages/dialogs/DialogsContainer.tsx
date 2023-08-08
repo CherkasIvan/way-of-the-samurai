@@ -11,7 +11,7 @@ let mapStateToProps = (state: IState) => {return {
 }}
 let mapDispatchToProps = (dispatch: (arg0: IAction) => void) => {
   return {
-    updateddMesageTextHeandler: (text: string) => {
+    updateddMesageTextHandler: (text: string) => {
       let action = UpdateMessageActionCreator(text)
       dispatch(action)
     },

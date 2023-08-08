@@ -5,5 +5,6 @@ export enum ActiveRoutes {
 	NEWS = "/news",
 	MUSIC = "/music",
 	SETTINGS = "/settings",
-	POSTS = "/posts"
+	POSTS = "/posts",
+	USERS = "/users"
 }

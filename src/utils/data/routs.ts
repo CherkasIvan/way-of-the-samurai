@@ -7,6 +7,10 @@ export const Routes: IRoutes[] = [
 		label: "Profile",
 	},
 	{
+		href: ActiveRoutes.USERS,
+		label: "Users",
+	},
+	{
 		href: ActiveRoutes.DIALOGS,
 		label: "Dialogs",
 	},

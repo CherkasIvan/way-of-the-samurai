@@ -8,6 +8,7 @@ import { ActiveRoutes } from "../../../../utils/enums/active-routes.enum";
 import ProfileContainer from "./pages/profile/ProfileContainer";
 import DialogsContainer from "./pages/dialogs/DialogsContainer";
 import { IState } from "../../models/state.interface";
+import UsersContainer from "./pages/users/UsersContainer";
 
 interface ILayoutProps {
   store: IState
@@ -24,6 +25,10 @@ const Layout: FC<ILayoutProps> = ({store}) => {
         <Route
           path={ActiveRoutes.PROFILE}
           element={<ProfileContainer/>}
+        />
+        <Route
+          path={ActiveRoutes.USERS}
+          element={<UsersContainer/>}
         />
         <Route
           path={ActiveRoutes.DIALOGS}
