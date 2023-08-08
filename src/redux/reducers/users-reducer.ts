@@ -12,7 +12,7 @@ const usersReducer = (state:IUsersPage = initialState, action: IAction): IUsersP
         case StoreEnum.USER_SUBSCRIBE: {
             return {
                 ...state,
-                 users: state.users.map(user => {
+                 users: state.users.map((user:any) => {
                     if(user.id === action.payload) {
                        return { ...user, followed: true }
                     }
@@ -22,7 +22,7 @@ const usersReducer = (state:IUsersPage = initialState, action: IAction): IUsersP
         case StoreEnum.USER_UNSUBSCRIBE: {
             return {
                 ...state,
-                 users: state.users.map(user => {
+                 users: state.users.map((user:any) => {
                     if(user.id === action.payload) {
                        return { ...user, followed: false }
                     }
