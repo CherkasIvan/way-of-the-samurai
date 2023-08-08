@@ -1,4 +1,3 @@
-import { ActiveUsers } from "../../utils/data/active-users";
 import { StoreEnum } from "../../utils/enums/store.enum";
 import { IAction } from "../../utils/models/action.interface";
 import { IUsersPage } from "../../utils/models/users-page.interface";

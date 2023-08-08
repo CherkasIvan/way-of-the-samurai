@@ -11,11 +11,11 @@ import { IDialogsPage } from "../../../../../../utils/models/dialogs-page.interf
 
 interface IDialogsProps {
     dialogsPage: IDialogsPage
-    updateddMesageTextHeandler: (text:string) => void,
+    updateddMesageTextHandler: (text:string) => void,
     addMessageTextHandler: (text:string) => void
 }
 
-const Dialogs: FC<IDialogsProps> = ({ dialogsPage, updateddMesageTextHeandler, addMessageTextHandler}) => {
+const Dialogs: FC<IDialogsProps> = ({ dialogsPage, updateddMesageTextHandler, addMessageTextHandler}) => {
   const users = dialogsPage.users.map((el) => (
     <UserContainer
       name={el.fullName}
@@ -33,7 +33,7 @@ const Dialogs: FC<IDialogsProps> = ({ dialogsPage, updateddMesageTextHeandler, a
       <AddTextAreaMessage  
         textAreaLabel="message"
         addMessageText={addMessageTextHandler}
-        updateNewMessageText={updateddMesageTextHeandler}/>
+        updateNewMessageText={updateddMesageTextHandler}/>
     </div>
   );
 };

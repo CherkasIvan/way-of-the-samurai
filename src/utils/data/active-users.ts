@@ -4,6 +4,7 @@ export const ActiveUsers: IUser[] = [
 		{
 			id: 1,
 			followed: false,
+			photoUrl: 'https://proprikol.ru/wp-content/uploads/2021/01/krasivye-kartinki-sobak-5.jpg',
 			fullName: 'Ivan',
 			status: 'active',
 			location: {city: 'Minsk', country: 'Belarus'},
@@ -12,6 +13,7 @@ export const ActiveUsers: IUser[] = [
 		{
 			id: 2,
 			followed: false,
+			photoUrl: 'https://i.pinimg.com/originals/31/35/60/313560be5fc96228cca23d7b2c661ff9.jpgs',
 			fullName: "Alisa",
 			status: 'active',
 			location: {city: 'Kiev', country: 'Ukraine'},
@@ -20,6 +22,7 @@ export const ActiveUsers: IUser[] = [
 		{
 			id: 3,
 			followed: true,
+			photoUrl: 'https://zooclub.ru/attach/10000/10237.jpg',
 			fullName: "Veronica",
 			status: 'active',
 			location: {city: 'Moscow', country: 'Russia'},
@@ -28,6 +31,7 @@ export const ActiveUsers: IUser[] = [
 		{
 			id: 4,
 			followed: true,
+			photoUrl: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666249910_47-mykaleidoscope-ru-p-otkritki-s-zhivotnimi-krasivie-i-smeshnie-47.jpg',
 			fullName: "Andrey",
 			status: 'active',
 			location: {city: 'Minsk', country: 'Belarus'},
@@ -36,6 +40,7 @@ export const ActiveUsers: IUser[] = [
 		{
 			id: 5,
 			followed: true,
+			photoUrl: 'https://klike.net/uploads/posts/2023-02/1675404188_3-27.jpg',
 			fullName: 'Sergeiy',
 			status: 'active',
 			location: {city: 'London', country: 'Great Breton'},

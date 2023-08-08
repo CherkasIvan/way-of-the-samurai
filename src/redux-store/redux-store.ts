@@ -7,7 +7,7 @@ import usersReducer from '../redux/reducers/users-reducer';
 let reducers = combineReducers({
     profilePage: profileReducer, 
     dialogsPage: dialogsReducer, 
-    usersReducer: usersReducer,
+    usersPage: usersReducer,
     sidebar: sidebarReducer})
 
 let store = createStore(reducers)
