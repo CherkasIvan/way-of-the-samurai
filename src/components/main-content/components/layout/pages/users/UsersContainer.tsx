@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { IAction } from '../../../../../../utils/models/action.interface'
 import { IState } from '../../../../models/state.interface'
 import { SetUserActionCreator, UserSubscribeActionCreator, UserUnsubscribeActionCreator } from '../../../../../../redux/actions'
-import { IUser } from '../../../../models/user.interface'
 
 let mapStateToProps = (state: IState) => {
   return {
@@ -12,7 +11,7 @@ let mapStateToProps = (state: IState) => {
   }}
   let mapDispatchToProps = (dispatch: (arg0: IAction) => void) => {
     return {
-      setUsers: (users: IUser[]) => {
+      setUsers: (users: any) => {
         let action = SetUserActionCreator(users)
         dispatch(action)
       },
