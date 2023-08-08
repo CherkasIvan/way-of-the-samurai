@@ -1,7 +1,6 @@
-import { IUsers } from "../../components/main-content/models/users.interface";
+import { IUser } from "../../components/main-content/models/user.interface";
 
-export const ActiveUsers
-	: IUsers[] = [
+export const ActiveUsers: IUser[] = [
 		{
 			id: 1,
 			followed: false,

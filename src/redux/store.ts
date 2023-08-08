@@ -18,7 +18,7 @@ let store = {
 			messages: ActiveMessages,
 			newMessageText: 'it-camasutra message'
 		},
-		usersPage: {},
+		usersPage: {users: ActiveUsers},
 		sidebar:{
 		}
 	},

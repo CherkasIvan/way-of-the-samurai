@@ -1,36 +1,42 @@
-import { IPost } from "../../components/main-content/models/post.interface";
 import { ActiveUsers } from "../../utils/data/active-users";
 import { StoreEnum } from "../../utils/enums/store.enum";
 import { IAction } from "../../utils/models/action.interface";
 import { IUsersPage } from "../../utils/models/users-page.interface";
 
 let initialState = {
-    users: ActiveUsers,
+    users: [],
     newPostText: ''
 }
 
-const usersReducer = (state:IUsersPage = initialState, action: IAction): IUsersPage =>{
-switch(action.type) {
-    case StoreEnum.ADD_POST: {
-        const post: IPost = {
-            id: state.posts.length + 1,
-            name: 'Ivan',
-            message: action.payload,
-            counter: 0
+const usersReducer = (state:IUsersPage = initialState, action: IAction): IUsersPage => {
+    switch(action.type) {
+        case StoreEnum.USER_SUBSCRIBE: {
+            return {
+                ...state,
+                 users: state.users.map(user => {
+                    if(user.id === action.payload) {
+                       return { ...user, followed: true }
+                    }
+                    return user})
+                }
         }
-        return {
-            ...state,
-            posts: [...state.posts, post],
-            newPostText: ''
+        case StoreEnum.USER_UNSUBSCRIBE: {
+            return {
+                ...state,
+                 users: state.users.map(user => {
+                    if(user.id === action.payload) {
+                       return { ...user, followed: false }
+                    }
+                    return user})
+                }
         }
+        case StoreEnum.SET_USERS: {
+            return {
+                ...state,
+                 users:  [...state.users, ...action.payload]
+            }
+        }   
+        default: return state
     }
-    case StoreEnum.UPDATE_NEW_POST_TEXT: {
-        return {
-            ...state, 
-            newPostText: action.payload}
-    }
-    default: return state
   }
-}
-
 export default usersReducer
