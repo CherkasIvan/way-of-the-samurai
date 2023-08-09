@@ -1,11 +1,39 @@
-.UserPhotoContainer{
+.UsersList{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    width: 100%;
+    list-style-type: none;
 
+    .UserItem {
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-items: center;
+        row-gap: 5px;
+        width: fit-content;
+
+        .UserPhotoContainer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .UserPhoto{
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+            }
+        }
+
+        .UserGeneralInformation{
+            .UserName{
+                color: #ffffff;
+                font-weight: 700;
+            }
+        }
+    }
 }
-.UserPhoto{
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-}
+
 
 .ButtonContainer{
     width: fit-content;
@@ -14,4 +42,9 @@
     border-radius: 12px;
     color: black;
     font-weight: 500;
+
+    > *:hover{
+        color: red;
+        font-weight: 600;  
+    }
 }

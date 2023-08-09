@@ -1,3 +1,4 @@
+import { IUser } from "../../components/main-content/models/user.interface";
 import { StoreEnum } from "../../utils/enums/store.enum";
 import { IAction } from "../../utils/models/action.interface";
 import { IUsersPage } from "../../utils/models/users-page.interface";
@@ -12,7 +13,7 @@ const usersReducer = (state:IUsersPage = initialState, action: IAction): IUsersP
         case StoreEnum.USER_SUBSCRIBE: {
             return {
                 ...state,
-                 users: state.users.map((user:any) => {
+                 users: state.users.map((user:IUser) => {
                     if(user.id === action.payload) {
                        return { ...user, followed: true }
                     }
@@ -22,7 +23,7 @@ const usersReducer = (state:IUsersPage = initialState, action: IAction): IUsersP
         case StoreEnum.USER_UNSUBSCRIBE: {
             return {
                 ...state,
-                 users: state.users.map((user:any) => {
+                 users: state.users.map((user:IUser) => {
                     if(user.id === action.payload) {
                        return { ...user, followed: false }
                     }
