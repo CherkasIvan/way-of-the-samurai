@@ -12,14 +12,18 @@ interface IUsersProps {
 }
 
 const Users: FC<IUsersProps> = ({usersPage, setUsers, unsubscribeUser, subscribeUser}) => {
-  if(usersPage.users.length === 0){
+  let getUsers = () => {
+    if(usersPage.users.length === 0){
     const users = '/users'
     axios.get('https://social-network.samuraijs.com/api/1.0' + users).then(response => {
       return setUsers(response.data.items)
     })
   }
+  }
 
   return (
+    <>
+    <button onClick={getUsers}>Get users</button>
     <ul className={styles.UsersList}>{usersPage.users.map((user:IUser)=> <li className={styles.UserItem} key={user.id}>
 
         <div className={styles.UserPhotoContainer}>
@@ -42,6 +46,7 @@ const Users: FC<IUsersProps> = ({usersPage, setUsers, unsubscribeUser, subscribe
       </div>
     </li>)}
   </ul>
+  </>
   )
 }
 
