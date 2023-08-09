@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import classes from "./ProfileInfo.module.scss";
+import profileLogo from '../../../../../../../../assets/img/avatar.jpg'
 
 interface IProfileInfoProps {
   message: string;
@@ -14,8 +15,8 @@ const ProfileInfo: FC<IProfileInfoProps> = ({
     <div className={classes.ProfileContainer}>
       <div className={classes.userContainer}>
         <img
-          src={require("../../../../../../../../assets/img/avatar.jpg")}
-          alt="logo.jpg"
+          src={profileLogo}
+          alt={profileLogo}
           className={classes.ProfileImg}
         ></img>
         <span className={classes.ProfileName}>{name}</span>

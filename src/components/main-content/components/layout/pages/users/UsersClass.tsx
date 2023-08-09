@@ -3,6 +3,7 @@ import styles from "./Users.module.scss"
 import { IUser } from '../../../../models/user.interface'
 import { IUsersPage } from '../../../../../../utils/models/users-page.interface'
 import axios from 'axios'
+import defaultUser from '../../../../../../assets/img/default-user.png' 
 
 interface IUsersProps {
   usersPage: IUsersPage,
@@ -15,18 +16,23 @@ class UsersClass extends React.Component<IUsersProps> {
 
     constructor(props: IUsersProps){
       super(props)
+
+    }
+
+      componentDidMount(): void {
+        if(this.props.usersPage.users.length === 0) {
         const users = '/users'
         axios.get('https://social-network.samuraijs.com/api/1.0' + users).then(response => {
           return this.props.setUsers(response.data.items)
         })
+      }
     }
 
   render(): React.ReactNode {
     return (
       <ul className={styles.UsersList}>{this.props.usersPage.users.map((user:IUser)=> <li className={styles.UserItem} key={user.id}>
-  
           <div className={styles.UserPhotoContainer}>
-            <img src={user.photos.small != null ? user.photos.small : require("../../../../../../assets/img/default-user.png")} alt={user.photos.small != null ? user.photos.small : 'assets/img/default-user.png'}  className={styles.UserPhoto}/>
+            <img src={user.photos.small != null ? user.photos.small : defaultUser} alt={user.photos.small != null ? user.photos.small : defaultUser}  className={styles.UserPhoto}/>
           </div>
           <div className={styles.UserGeneralInformation}>      
             <span className={styles.UserName}>{user.name}</span>
