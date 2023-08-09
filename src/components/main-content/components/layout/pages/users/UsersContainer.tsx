@@ -1,10 +1,10 @@
 import React from 'react'
-import Users from './Users'
 import { connect } from 'react-redux'
 import { IAction } from '../../../../../../utils/models/action.interface'
 import { IState } from '../../../../models/state.interface'
 import { SetUserActionCreator, UserSubscribeActionCreator, UserUnsubscribeActionCreator } from '../../../../../../redux/actions'
 import { IUser } from '../../../../models/user.interface'
+import UsersClass from './UsersClass'
 
 let mapStateToProps = (state: IState) => {
   return {
@@ -25,6 +25,6 @@ let mapStateToProps = (state: IState) => {
     }
   }
   
-  const UsersContainer = connect(mapStateToProps,mapDispatchToProps)(Users)
+  const UsersContainer = connect(mapStateToProps,mapDispatchToProps)(UsersClass)
   
   export default UsersContainer;
