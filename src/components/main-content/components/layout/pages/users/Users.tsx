@@ -6,7 +6,7 @@ import axios from 'axios'
 
 interface IUsersProps {
   usersPage: IUsersPage,
-  setUsers: (users: any) => void,
+  setUsers: (users: IUser[]) => void,
   unsubscribeUser: (userId:number) => void
   subscribeUser: (userId:number) => void
 }
@@ -20,26 +20,28 @@ const Users: FC<IUsersProps> = ({usersPage, setUsers, unsubscribeUser, subscribe
   }
 
   return (
-    <ul>{usersPage.users.map((user:any)=> <li key={user.id}>
-      <span>
+    <ul className={styles.UsersList}>{usersPage.users.map((user:IUser)=> <li className={styles.UserItem} key={user.id}>
+
         <div className={styles.UserPhotoContainer}>
           <img src={user.photos.small != null ? user.photos.small : require("../../../../../../assets/img/default-user.png")} alt={user.photos.small != null ? user.photos.small : 'assets/img/default-user.png'}  className={styles.UserPhoto}/>
         </div>
+        <div className={styles.UserGeneralInformation}>      
+          <span className={styles.UserName}>{user.name}</span>
+          <span className={styles.UserStatus}>{user.status}</span>
+        </div>
+        <span>
+          <div>{user.location?.city}</div>
+          <div>{user.location?.country}</div>  
+        </span>
+      <div>
+
         <div className={styles.ButtonContainer}>
           {user.followed ? <button onClick={()=>unsubscribeUser(user.id)}>Unsubscribe</button> : 
           <button onClick={()=>subscribeUser(user.id)}>Subscribe</button>}
         </div>
-      </span>
-
-      <span>      
-        <div>{user.name}</div>
-        {/* <div>{user.status}</div> */}
-      </span>
-      {/* <span>
-        <div>{user.location.city}</div>
-        <div>{user.location.country}</div>  
-      </span> */}
-      </li>)}</ul>
+      </div>
+    </li>)}
+  </ul>
   )
 }
 
