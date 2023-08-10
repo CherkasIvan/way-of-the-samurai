@@ -3,6 +3,7 @@ import styles from "./Users.module.scss"
 import { IUser } from '../../../../models/user.interface'
 import axios from 'axios'
 import defaultUser from '../../../../../../assets/img/default-user.png' 
+import Pagination from '../../../../../shared/pagination/Pagination'
 
 interface IUsersProps {
   users: IUser[],
@@ -17,17 +18,6 @@ interface IUsersProps {
 }
 
 class UsersClass extends React.Component<IUsersProps> {
-
-      onPageChanged = (pageNumber: number) => {
-        this.props.changePage(pageNumber)
-        const users = '/users'
-        const page = `?page=${pageNumber}`
-        const pageSize = `&count=${this.props.pageSize}`
-        axios.get('https://social-network.samuraijs.com/api/1.0' + users + page + pageSize).then(response => {
-          this.props.setUsers(response.data.items)
-        })
-    }
-
     componentDidMount(): void {
         const users = '/users'
         const page = `?page=${this.props.currentPage}`
@@ -39,13 +29,6 @@ class UsersClass extends React.Component<IUsersProps> {
     }
 
   render(): React.ReactNode {
-    let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
-    let pages: number[] = []
-  
-    for(let i = 1; i <= pagesCount; i++) {
-      pages.push(i)
-    }
-
     return (
       <div className={styles.UsersContainer}>
         <ul className={styles.UsersList}>{this.props.users.map((user:IUser)=> <li className={styles.UserItem} key={user.id}>
@@ -69,10 +52,9 @@ class UsersClass extends React.Component<IUsersProps> {
           </div>
         </li>)}
       </ul>
-        <div className={styles.pageContainer}>
-          {pages.map(pageNumber => {
-            return <button onClick={(e) => this.onPageChanged(pageNumber) } className={this.props.currentPage === pageNumber ? styles.ActivePage : styles.page}>{pageNumber}</button>
-          })}
+        <div className={styles.PaginationContainer}>
+            <Pagination pageSize={this.props.pageSize} totalUsersCount={this.props.totalUsersCount}
+             currentPage={this.props.currentPage} setUsers={this.props.setUsers} changePage={this.props.changePage}/>
        </div>
     </div>
     )
