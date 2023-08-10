@@ -1,38 +1,56 @@
-.UsersList{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
+.UsersContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
     width: 100%;
-    list-style-type: none;
+    .UsersList{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        width: 100%;
+        list-style-type: none;
 
-    .UserItem {
-        display: flex;
-        flex-direction: column;
-        justify-self: center;
-        align-items: center;
-        row-gap: 5px;
-        width: fit-content;
-
-        .UserPhotoContainer {
+        .UserItem {
             display: flex;
+            flex-direction: column;
+            justify-self: center;
             align-items: center;
-            justify-content: center;
+            row-gap: 5px;
+            width: fit-content;
 
-            .UserPhoto{
-                width: 70px;
-                height: 70px;
-                border-radius: 50%;
+            .UserPhotoContainer {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .UserPhoto{
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 50%;
+                }
             }
-        }
 
-        .UserGeneralInformation{
-            .UserName{
-                color: #ffffff;
-                font-weight: 700;
+            .UserGeneralInformation{
+                .UserName{
+                    color: #ffffff;
+                    font-weight: 700;
+                }
             }
         }
     }
+
+    .ActivePage {
+        font-weight: 700;
+        color: #e91515;
+    }
+    
+    .Page {
+        font-weight: 500;
+        color: #ffffff;
+    }
 }
+
 
 
 .ButtonContainer{
