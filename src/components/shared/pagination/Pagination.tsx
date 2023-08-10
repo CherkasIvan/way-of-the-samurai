@@ -12,7 +12,7 @@ interface IPaginationProps {
     changePage: (pageNumber: number) => void
   }
 
-const Pagination: FC<IPaginationProps> = ({pageSize, totalUsersCount, currentPage, setUsers,  changePage}) => {
+const Pagination: FC<IPaginationProps> = ({pageSize, totalUsersCount, currentPage, setUsers, changePage}) => {
     const onPageChanged = (pageNumber: number) => {
         changePage(pageNumber)
         const users = '/users'
