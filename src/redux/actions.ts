@@ -35,3 +35,13 @@ export const SetUserActionCreator = (users: IUser[]): IAction  => ({
   type: StoreEnum.SET_USERS,
   payload: users
 })
+
+export const SetCurrentPageActionCreator = (currentPage: number): IAction  => ({
+  type: StoreEnum.SET_CURRENT_PAGE,
+  payload: currentPage
+})
+
+export const SetTotalUsersCountActionCreator = (totalUsersCount: number): IAction  => ({
+  type: StoreEnum.SET_TOTAL_USERS_COUNT,
+  payload: totalUsersCount
+})

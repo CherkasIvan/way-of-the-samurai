@@ -5,7 +5,9 @@ import { IUsersPage } from "../../utils/models/users-page.interface";
 
 let initialState = {
     users: [],
-    newPostText: ''
+    pageSize: 20,
+    totalUsersCount: 0,
+    currentPage: 1
 }
 
 const usersReducer = (state:IUsersPage = initialState, action: IAction): IUsersPage => {
@@ -33,9 +35,17 @@ const usersReducer = (state:IUsersPage = initialState, action: IAction): IUsersP
         case StoreEnum.SET_USERS: {
             return {
                 ...state,
-                 users:  [...state.users, ...action.payload]
+                 users:  [...action.payload]
             }
-        }   
+        }  
+        case StoreEnum.SET_CURRENT_PAGE: {
+            return { ...state, currentPage: action.payload
+            }
+        }  
+        case StoreEnum.SET_TOTAL_USERS_COUNT: {
+            return { ...state, totalUsersCount: action.payload
+            }
+        }  
         default: return state
     }
   }
