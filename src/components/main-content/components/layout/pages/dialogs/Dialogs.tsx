@@ -1,9 +1,8 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import classes from "./Dialogs.module.scss";
 import AddTextAreaMessage from "../../../../../shared/add-post/AddTextAreaMessage";
 import { AddMessageActionCreator, UpdateMessageActionCreator } from "../../../../../../redux/actions";
 import { connect } from "react-redux";
-import { IAction } from "../../../../../../utils/models/action.interface";
 import { IState } from "../../../../models/state.interface";
 import UserContainer from "./components/user/UserContainer";
 import MessageContainer from "./components/message/MessageContainer";
@@ -11,11 +10,11 @@ import { IDialogsPage } from "../../../../../../utils/models/dialogs-page.interf
 
 interface IDialogsProps {
     dialogsPage: IDialogsPage
-    updateddMesageTextHandler: (text:string) => void,
+    updatedMessageTextHandler: (text:string) => void,
     addMessageTextHandler: (text:string) => void
 }
 
-const Dialogs: FC<IDialogsProps> = ({ dialogsPage, updateddMesageTextHandler, addMessageTextHandler}) => {
+const Dialogs: FC<IDialogsProps> = ({ dialogsPage, updatedMessageTextHandler, addMessageTextHandler}) => {
   const users = dialogsPage.users.map((el) => (
     <UserContainer
       name={el.name}
@@ -33,25 +32,16 @@ const Dialogs: FC<IDialogsProps> = ({ dialogsPage, updateddMesageTextHandler, ad
       <AddTextAreaMessage  
         textAreaLabel="message"
         addMessageText={addMessageTextHandler}
-        updateNewMessageText={updateddMesageTextHandler}/>
+        updateNewMessageText={updatedMessageTextHandler}/>
     </div>
   );
 };
 
 let mapStateToProps = (state: IState) => {}
-let mapDispatchToProps = (dispatch: (arg0: IAction) => void) => {
-  return {
-    addPostText: (text:string) => {
-      let action = AddMessageActionCreator(text)
-      dispatch(action)
-    },
-    updateNewPostText: (text: string) => {
-      let action = UpdateMessageActionCreator(text)
-      dispatch(action)
-    }
-  }
-}
 
-const PostTextAreaMessage = connect(mapStateToProps,mapDispatchToProps)(AddTextAreaMessage)
+const PostTextAreaMessage = connect(mapStateToProps,{
+  addPostText: AddMessageActionCreator,
+  updateNewPostText: UpdateMessageActionCreator
+})(AddTextAreaMessage)
 
 export default Dialogs;

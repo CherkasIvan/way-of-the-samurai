@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { IAction } from '../../../../../../utils/models/action.interface'
 import { IState } from '../../../../models/state.interface'
 import { SetCurrentPageActionCreator, SetPreloaderActionCreator, SetTotalUsersCountActionCreator, SetUserActionCreator, UserSubscribeActionCreator, UserUnsubscribeActionCreator } from '../../../../../../redux/actions'
 import { IUser } from '../../../../models/user.interface'
@@ -59,31 +58,14 @@ let mapStateToProps = (state: IState) => {
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching
   }}
-  let mapDispatchToProps = (dispatch: (arg0: IAction) => void) => {
-    return {
-      setUsers: (users: IUser[]) => {
-        let action = SetUserActionCreator(users)
-        dispatch(action)
-      },
-      setTotalUsersCount: (totalUsersCount: number) => {
-        let action = SetTotalUsersCountActionCreator(totalUsersCount)
-        dispatch(action)
-      },
-      unsubscribeUser: (userId: number) => {    
-        let action = UserUnsubscribeActionCreator(userId)
-        dispatch(action)},
-      subscribeUser: (userId: number) => {    
-        let action = UserSubscribeActionCreator(userId)
-        dispatch(action)},
-      changePage: (pageNumber: number) => {    
-        let action = SetCurrentPageActionCreator(pageNumber)
-        dispatch(action)},
-      toggleIsFetching: (isFetching: boolean) => {    
-        let action = SetPreloaderActionCreator(isFetching)
-        dispatch(action)},
-    }
-  }
   
-  export default connect(mapStateToProps,mapDispatchToProps)(UsersContainer)
+  export default connect(mapStateToProps,{
+    setUsers: SetUserActionCreator,
+    setTotalUsersCount: SetTotalUsersCountActionCreator,
+    unsubscribeUser: UserUnsubscribeActionCreator,
+    subscribeUser: UserSubscribeActionCreator,
+    changePage: SetCurrentPageActionCreator,
+    toggleIsFetching: SetPreloaderActionCreator
+  })(UsersContainer)
   
  
