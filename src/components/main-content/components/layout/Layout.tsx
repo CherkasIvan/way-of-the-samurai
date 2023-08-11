@@ -1,4 +1,3 @@
-import React, {FC} from "react";
 import classes from "./Layout.module.scss";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Music from "./pages/music/Music";
@@ -7,14 +6,10 @@ import Settings from "./pages/settings/Settings";
 import { ActiveRoutes } from "../../../../utils/enums/active-routes.enum";
 import ProfileContainer from "./pages/profile/ProfileContainer";
 import DialogsContainer from "./pages/dialogs/DialogsContainer";
-import { IState } from "../../models/state.interface";
 import UsersContainer from "./pages/users/UsersContainer";
 
-interface ILayoutProps {
-  store: IState
-}
 
-const Layout: FC<ILayoutProps> = ({store}) => {
+const Layout = () => {
   return (
     <div className={classes.profileContainer}>
       <Routes>

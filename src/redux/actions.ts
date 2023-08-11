@@ -12,23 +12,23 @@ export const AddMessageActionCreator = (message: string): IAction => ({
   payload: message})
   
 export const UpdatePostActionCreator = (message: string): IAction  => ({
-      type: StoreEnum.UPDATE_NEW_POST_TEXT,
-      payload: message
-  })
+  type: StoreEnum.UPDATE_NEW_POST_TEXT,
+  payload: message
+})
   
 export const UpdateMessageActionCreator = (message: string): IAction  => ({
-      type: StoreEnum.UPDATE_MESSAGE,
-      payload: message
-  })
+  type: StoreEnum.UPDATE_MESSAGE,
+  payload: message
+})
 
-  export const UserSubscribeActionCreator = (userId: number): IAction  => ({
-    type: StoreEnum.USER_SUBSCRIBE,
-    payload: userId
+export const UserSubscribeActionCreator = (userId: number): IAction  => ({
+  type: StoreEnum.USER_SUBSCRIBE,
+  payload: userId
 })
 
 export const UserUnsubscribeActionCreator = (userId: number): IAction  => ({
-    type: StoreEnum.USER_UNSUBSCRIBE,
-    payload: userId
+  type: StoreEnum.USER_UNSUBSCRIBE,
+  payload: userId
 })
 
 export const SetUserActionCreator = (users: IUser[]): IAction  => ({
@@ -44,4 +44,9 @@ export const SetCurrentPageActionCreator = (currentPage: number): IAction  => ({
 export const SetTotalUsersCountActionCreator = (totalUsersCount: number): IAction  => ({
   type: StoreEnum.SET_TOTAL_USERS_COUNT,
   payload: totalUsersCount
+})
+
+export const SetPreloaderActionCreator = (isFetching: boolean): IAction  => ({
+  type: StoreEnum.TOGGLE_IS_FETCHING,
+  payload: isFetching
 })

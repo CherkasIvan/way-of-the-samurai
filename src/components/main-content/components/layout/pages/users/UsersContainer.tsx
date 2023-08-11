@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { IAction } from '../../../../../../utils/models/action.interface'
 import { IState } from '../../../../models/state.interface'
-import { SetCurrentPageActionCreator, SetTotalUsersCountActionCreator, SetUserActionCreator, UserSubscribeActionCreator, UserUnsubscribeActionCreator } from '../../../../../../redux/actions'
+import { SetCurrentPageActionCreator, SetPreloaderActionCreator, SetTotalUsersCountActionCreator, SetUserActionCreator, UserSubscribeActionCreator, UserUnsubscribeActionCreator } from '../../../../../../redux/actions'
 import { IUser } from '../../../../models/user.interface'
 import React from 'react'
 import axios from 'axios'
@@ -13,34 +13,41 @@ interface IUsersContainerProps {
   pageSize: number,
   totalUsersCount: number,
   currentPage: number,
+  isFetching: boolean,
   setUsers: (users: IUser[]) => void,
   unsubscribeUser: (userId: number) => void
   subscribeUser: (userId: number) => void
   changePage: (pageNumber: number) => void
   setTotalUsersCount: (totalCount: number) => void
+  toggleIsFetching: (isFetching: boolean) => void
 }
 
 class UsersContainer extends React.Component<IUsersContainerProps> {
     componentDidMount(): void {
+        this.props.toggleIsFetching(true)
         const users = '/users'
         const page = `?page=${this.props.currentPage}`
         const pageSize = `&count=${this.props.pageSize}`
         axios.get('https://social-network.samuraijs.com/api/1.0' + users + page + pageSize).then(response => {
           this.props.setUsers(response.data.items)
           this.props.setTotalUsersCount(response.data.totalCount)
+          this.props.toggleIsFetching(false)
         })
     }
 
   render(): React.ReactNode {
-    return <Users users={this.props.users} 
-    pageSize={this.props.pageSize} 
-    totalUsersCount={this.props.totalUsersCount} 
-    currentPage={this.props.currentPage} 
-    setUsers={this.props.setUsers} 
-    unsubscribeUser={this.props.unsubscribeUser} 
-    subscribeUser={this.props.subscribeUser} 
-    changePage={this.props.changePage} 
-    setTotalUsersCount={this.props.setTotalUsersCount}/>
+    return (<>
+      <Users users={this.props.users} 
+      isFetching={this.props.isFetching}
+      pageSize={this.props.pageSize} 
+      totalUsersCount={this.props.totalUsersCount} 
+      currentPage={this.props.currentPage} 
+      setUsers={this.props.setUsers} 
+      unsubscribeUser={this.props.unsubscribeUser} 
+      subscribeUser={this.props.subscribeUser} 
+      changePage={this.props.changePage} 
+      toggleIsFetching={this.props.toggleIsFetching}/>
+    </> )
   }
 }
 
@@ -49,7 +56,8 @@ let mapStateToProps = (state: IState) => {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
-    currentPage: state.usersPage.currentPage
+    currentPage: state.usersPage.currentPage,
+    isFetching: state.usersPage.isFetching
   }}
   let mapDispatchToProps = (dispatch: (arg0: IAction) => void) => {
     return {
@@ -69,6 +77,9 @@ let mapStateToProps = (state: IState) => {
         dispatch(action)},
       changePage: (pageNumber: number) => {    
         let action = SetCurrentPageActionCreator(pageNumber)
+        dispatch(action)},
+      toggleIsFetching: (isFetching: boolean) => {    
+        let action = SetPreloaderActionCreator(isFetching)
         dispatch(action)},
     }
   }
