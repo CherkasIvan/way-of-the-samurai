@@ -3,22 +3,27 @@ import styles from './Users.module.scss'
 import Pagination from '../../../../../shared/pagination/Pagination'
 import defaultUser from '../../../../../../assets/img/default-user.png' 
 import { IUser } from '../../../../models/user.interface'
+import Preloader from '../../../../../shared/preloader/Preloader'
+
+
 
 interface IUsersProps {
     users: IUser[],
     pageSize: number,
     totalUsersCount: number,
     currentPage: number,
+    isFetching: boolean,
     setUsers: (users: IUser[]) => void,
     unsubscribeUser: (userId: number) => void
     subscribeUser: (userId: number) => void
     changePage: (pageNumber: number) => void
-    setTotalUsersCount: (totalCount: number) => void
+    toggleIsFetching: (isFetching: boolean) => void
   }
 
-const Users: FC<IUsersProps> = ({users, pageSize, totalUsersCount, currentPage, setUsers, unsubscribeUser, subscribeUser, changePage, setTotalUsersCount}) => {
+const Users: FC<IUsersProps> = ({users, pageSize, totalUsersCount, currentPage, isFetching, setUsers, unsubscribeUser, subscribeUser, changePage, toggleIsFetching}) => {
   return (
         <div className={styles.UsersContainer}>
+            <Preloader isFetching={isFetching}></Preloader>
             <ul className={styles.UsersList}>{users.map((user:IUser)=> <li className={styles.UserItem} key={user.id}>
                 <div className={styles.UserPhotoContainer}>
                 <img src={user.photos.small != null ? user.photos.small : defaultUser} alt={user.photos.small != null ? user.photos.small : defaultUser}  className={styles.UserPhoto}/>
@@ -41,8 +46,12 @@ const Users: FC<IUsersProps> = ({users, pageSize, totalUsersCount, currentPage, 
             </li>)}
         </ul>
             <div className={styles.PaginationContainer}>
-                <Pagination pageSize={pageSize} totalUsersCount={totalUsersCount}
-                currentPage={currentPage} setUsers={setUsers} changePage={changePage}/>
+                <Pagination pageSize={pageSize} 
+                totalUsersCount={totalUsersCount}
+                currentPage={currentPage} 
+                setUsers={setUsers} 
+                changePage={changePage} 
+                toggleIsFetching={toggleIsFetching}/>
         </div>
     </div>
     )

@@ -5,7 +5,7 @@ import { StoreEnum } from "../../utils/enums/store.enum";
 import { IAction } from "../../utils/models/action.interface";
 import { IDialogsPage } from "../../utils/models/dialogs-page.interface";
 
-let initialState = {
+let initialState: IDialogsPage = {
         users: ActiveUsers,
         messages: ActiveMessages,
         newMessageText: ''

@@ -3,11 +3,12 @@ import { StoreEnum } from "../../utils/enums/store.enum";
 import { IAction } from "../../utils/models/action.interface";
 import { IUsersPage } from "../../utils/models/users-page.interface";
 
-let initialState = {
+let initialState: IUsersPage = {
     users: [],
     pageSize: 20,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
 }
 
 const usersReducer = (state:IUsersPage = initialState, action: IAction): IUsersPage => {
@@ -45,7 +46,11 @@ const usersReducer = (state:IUsersPage = initialState, action: IAction): IUsersP
         case StoreEnum.SET_TOTAL_USERS_COUNT: {
             return { ...state, totalUsersCount: action.payload
             }
-        }  
+        }
+        case StoreEnum.TOGGLE_IS_FETCHING: {
+            return { ...state, isFetching: action.payload
+            }
+        } 
         default: return state
     }
   }

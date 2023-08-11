@@ -1,9 +1,11 @@
 .UsersContainer {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 10px;
     width: 100%;
+
     .UsersList{
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -32,9 +34,19 @@
             }
 
             .UserGeneralInformation{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                row-gap: 5px;
+
                 .UserName{
                     color: #ffffff;
                     font-weight: 700;
+                }
+
+                .UserStatus {
+                    color: #eeeb54;
+                    font-weight: 600;
                 }
             }
         }

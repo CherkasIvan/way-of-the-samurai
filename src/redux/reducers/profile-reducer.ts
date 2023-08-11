@@ -4,7 +4,7 @@ import { StoreEnum } from "../../utils/enums/store.enum";
 import { IAction } from "../../utils/models/action.interface";
 import { IProfilePage } from "../../utils/models/profile-page.interface";
 
-let initialState = {
+let initialState: IProfilePage = {
     posts: ActivePosts,
     newPostText: ''
 }

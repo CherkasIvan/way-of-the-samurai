@@ -5,4 +5,5 @@ export interface IUsersPage {
     pageSize: number;
     totalUsersCount: number;
     currentPage: number;
+    isFetching: boolean;
 }
