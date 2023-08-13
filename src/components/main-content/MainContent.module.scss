@@ -1,9 +1,9 @@
-@import '../../styles/varibales.scss';
+@import '../../styles/variables.scss';
 
 .mainContainer {
-	height: 100%;
-	background-color: $primary-color;
-	display: flex;
-	justify-content: space-between;
-	flex: 1;
+  height: 100%;
+  background-color: $primary-color;
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
 }

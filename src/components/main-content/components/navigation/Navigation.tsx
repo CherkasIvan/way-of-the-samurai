@@ -1,6 +1,6 @@
-import classes from "./Navigation.module.scss";
-import { Routes } from "../../../../utils/data/routs";
-import { NavLink } from "react-router-dom";
+import classes from './Navigation.module.scss';
+import { Routes } from '../../../../utils/data/routs';
+import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   const listItems = Routes.map((el, index) => (
@@ -9,7 +9,7 @@ const Navigation = () => {
         className={({ isActive }) => {
           const linkClasses = [classes.navigationItemLink];
           if (isActive) linkClasses.push(classes.active);
-          return linkClasses.join(" ");
+          return linkClasses.join(' ');
         }}
         to={el.href}
       >
@@ -21,9 +21,7 @@ const Navigation = () => {
   return (
     <>
       <nav>
-        <ul className={classes.navigationList}>
-          {listItems}
-        </ul>
+        <ul className={classes.navigationList}>{listItems}</ul>
       </nav>
     </>
   );

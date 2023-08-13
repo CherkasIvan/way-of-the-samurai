@@ -1,10 +1,10 @@
-@import '../../../../../../../../styles/varibales.scss';
+@import '../../../../../../../../styles/variables.scss';
 
 .postsContainer {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-	.postsTitle {
-		color: red;
-	}
+  .postsTitle {
+    color: red;
+  }
 }

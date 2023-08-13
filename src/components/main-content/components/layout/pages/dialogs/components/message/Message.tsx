@@ -1,5 +1,5 @@
-import React, {FC} from "react";
-import classes from "./Message.module.scss";
+import React, { FC } from 'react';
+import classes from './Message.module.scss';
 
 interface IMessageProps {
   message: string;
