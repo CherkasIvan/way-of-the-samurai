@@ -1,47 +1,51 @@
-import { FC } from "react";
-import classes from "./Dialogs.module.scss";
-import AddTextAreaMessage from "../../../../../shared/add-post/AddTextAreaMessage";
-import { AddMessageActionCreator, UpdateMessageActionCreator } from "../../../../../../redux/actions";
-import { connect } from "react-redux";
-import { IState } from "../../../../models/state.interface";
-import UserContainer from "./components/user/UserContainer";
-import MessageContainer from "./components/message/MessageContainer";
-import { IDialogsPage } from "../../../../../../utils/models/dialogs-page.interface";
+import { FC } from 'react'
+import classes from './Dialogs.module.scss'
+import AddTextAreaMessage from '../../../../../shared/add-post/AddTextAreaMessage'
+import {
+  AddMessageActionCreator,
+  UpdateMessageActionCreator,
+} from '../../../../../../redux/actions'
+import { connect } from 'react-redux'
+import { IState } from '../../../../models/state.interface'
+import UserContainer from './components/user/UserContainer'
+import MessageContainer from './components/message/MessageContainer'
+import { IDialogsPage } from '../../../../../../utils/models/dialogs-page.interface'
 
 interface IDialogsProps {
-    dialogsPage: IDialogsPage
-    updatedMessageTextHandler: (text:string) => void,
-    addMessageTextHandler: (text:string) => void
+  dialogsPage: IDialogsPage
+  updatedMessageTextHandler: (text: string) => void
+  addMessageTextHandler: (text: string) => void
 }
 
-const Dialogs: FC<IDialogsProps> = ({ dialogsPage, updatedMessageTextHandler, addMessageTextHandler}) => {
+const Dialogs: FC<IDialogsProps> = ({
+  dialogsPage,
+  updatedMessageTextHandler,
+  addMessageTextHandler,
+}) => {
   const users = dialogsPage.users.map((el) => (
-    <UserContainer
-      name={el.name}
-      id={el.id}
-      key={el.id}
-    ></UserContainer>
-  ));
+    <UserContainer name={el.name} id={el.id} key={el.id}></UserContainer>
+  ))
   const messages = dialogsPage.messages.map((el) => (
     <MessageContainer message={el.message} key={el.id}></MessageContainer>
-  ));
+  ))
   return (
     <div className={classes.dialogsContainer}>
       <div className={classes.users}>{users}</div>
       <div className={classes.messages}>{messages}</div>
-      <AddTextAreaMessage  
-        textAreaLabel="message"
+      <AddTextAreaMessage
+        textAreaLabel='message'
         addMessageText={addMessageTextHandler}
-        updateNewMessageText={updatedMessageTextHandler}/>
+        updateNewMessageText={updatedMessageTextHandler}
+      />
     </div>
-  );
-};
+  )
+}
 
-let mapStateToProps = (state: IState) => {}
+const mapStateToProps = (state: IState) => {}
 
-const PostTextAreaMessage = connect(mapStateToProps,{
+const PostTextAreaMessage = connect(mapStateToProps, {
   addPostText: AddMessageActionCreator,
-  updateNewPostText: UpdateMessageActionCreator
+  updateNewPostText: UpdateMessageActionCreator,
 })(AddTextAreaMessage)
 
-export default Dialogs;
+export default Dialogs

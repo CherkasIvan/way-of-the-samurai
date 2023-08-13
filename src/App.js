@@ -1,16 +1,16 @@
-import "./App.scss";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-import MainContent from "./components/main-content/MainContent";
+import './App.scss'
+import Header from './components/header/Header'
+import Footer from './components/footer/Footer'
+import MainContent from './components/main-content/MainContent'
 
-const App  = ({store}) => {
+const App = () => {
   return (
-    <div className="App">
+    <div className='App'>
       <Header />
-      <MainContent store={store}/>
+      <MainContent />
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

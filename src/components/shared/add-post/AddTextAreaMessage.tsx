@@ -1,37 +1,42 @@
-import React, {FC, useRef} from "react";
-import classes from "./AddPost.module.scss";
+import React, { FC, useRef } from 'react'
+import classes from './AddPost.module.scss'
 
 interface IAddPost {
- textAreaLabel: string,
- addPostText?: (text: string) => void,
- addMessageText?: (text: string) => void,
- updateNewPostText?: (text: string) => void,
- updateNewMessageText?: (text: string) => void,
+  textAreaLabel: string
+  addPostText?: (text: string) => void
+  addMessageText?: (text: string) => void
+  updateNewPostText?: (text: string) => void
+  updateNewMessageText?: (text: string) => void
 }
 
-const AddTextAreaMessage: FC<IAddPost> = ({ textAreaLabel,  addPostText, addMessageText, updateNewPostText, updateNewMessageText}) => {;
-
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+const AddTextAreaMessage: FC<IAddPost> = ({
+  textAreaLabel,
+  addPostText,
+  addMessageText,
+  updateNewPostText,
+  updateNewMessageText,
+}) => {
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const addNewMessage = () => {
-    let newMessage = textareaRef.current?.value
-    textAreaLabel==='post' ? addPostText!(newMessage!) : addMessageText!(newMessage!)
+    const newMessage = textareaRef.current?.value
+    textAreaLabel === 'post' ? addPostText!(newMessage!) : addMessageText!(newMessage!)
   }
 
   const onMessageChange = (): void => {
-    let newMessage = textareaRef.current?.value
-    textAreaLabel==='post' ? updateNewPostText!(newMessage!) : updateNewMessageText!(newMessage!)
+    const newMessage = textareaRef.current?.value
+    textAreaLabel === 'post' ? updateNewPostText!(newMessage!) : updateNewMessageText!(newMessage!)
   }
 
   return (
     <div className={classes.AddPostContainer}>
-      <textarea  
+      <textarea
         value={textareaRef.current?.value}
         ref={textareaRef}
-        onChange={onMessageChange}>
-      </textarea>
-      <button  onClick={addNewMessage}>Add new {textAreaLabel}</button>
+        onChange={onMessageChange}
+      ></textarea>
+      <button onClick={addNewMessage}>Add new {textAreaLabel}</button>
     </div>
-  );
-};
-export default AddTextAreaMessage;
+  )
+}
+export default AddTextAreaMessage

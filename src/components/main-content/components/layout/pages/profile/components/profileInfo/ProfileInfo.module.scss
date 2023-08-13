@@ -1,22 +1,22 @@
 .ProfileContainer {
-	display: flex;
-	align-items: center;
-	column-gap: 20px;
-	margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  margin-bottom: 20px;
 
-	.userContainer {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
+  .userContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-	.ProfileImg {
-		width: 50px;
-		border-radius: 50%;
-		cursor: pointer;
-	}
+  .ProfileImg {
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 
-	.ProfileText {
-		color: green
-	}
+  .ProfileText {
+    color: green;
+  }
 }

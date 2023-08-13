@@ -1,52 +1,55 @@
-import { IUser } from "../components/main-content/models/user.interface"
-import { StoreEnum } from "../utils/enums/store.enum"
-import { IAction } from "../utils/models/action.interface"
+import { IUser } from '../components/main-content/models/user.interface';
+import { StoreEnum } from '../utils/enums/store.enum';
+import { IAction } from '../utils/models/action.interface';
 
-export const AddPostActionCreator = (message: string): IAction  => ({
+export const AddPostActionCreator = (message: string): IAction => ({
   type: StoreEnum.ADD_POST,
-  payload: message
-})
-  
+  payload: message,
+});
+
 export const AddMessageActionCreator = (message: string): IAction => ({
   type: StoreEnum.ADD_MESSAGE,
-  payload: message})
-  
-export const UpdatePostActionCreator = (message: string): IAction  => ({
+  payload: message,
+});
+
+export const UpdatePostActionCreator = (message: string): IAction => ({
   type: StoreEnum.UPDATE_NEW_POST_TEXT,
-  payload: message
-})
-  
-export const UpdateMessageActionCreator = (message: string): IAction  => ({
+  payload: message,
+});
+
+export const UpdateMessageActionCreator = (message: string): IAction => ({
   type: StoreEnum.UPDATE_MESSAGE,
-  payload: message
-})
+  payload: message,
+});
 
-export const UserSubscribeActionCreator = (userId: number): IAction  => ({
+export const UserSubscribeActionCreator = (userId: number): IAction => ({
   type: StoreEnum.USER_SUBSCRIBE,
-  payload: userId
-})
+  payload: userId,
+});
 
-export const UserUnsubscribeActionCreator = (userId: number): IAction  => ({
+export const UserUnsubscribeActionCreator = (userId: number): IAction => ({
   type: StoreEnum.USER_UNSUBSCRIBE,
-  payload: userId
-})
+  payload: userId,
+});
 
-export const SetUserActionCreator = (users: IUser[]): IAction  => ({
+export const SetUserActionCreator = (users: IUser[]): IAction => ({
   type: StoreEnum.SET_USERS,
-  payload: users
-})
+  payload: users,
+});
 
-export const SetCurrentPageActionCreator = (currentPage: number): IAction  => ({
+export const SetCurrentPageActionCreator = (currentPage: number): IAction => ({
   type: StoreEnum.SET_CURRENT_PAGE,
-  payload: currentPage
-})
+  payload: currentPage,
+});
 
-export const SetTotalUsersCountActionCreator = (totalUsersCount: number): IAction  => ({
+export const SetTotalUsersCountActionCreator = (
+  totalUsersCount: number
+): IAction => ({
   type: StoreEnum.SET_TOTAL_USERS_COUNT,
-  payload: totalUsersCount
-})
+  payload: totalUsersCount,
+});
 
-export const SetPreloaderActionCreator = (isFetching: boolean): IAction  => ({
+export const SetPreloaderActionCreator = (isFetching: boolean): IAction => ({
   type: StoreEnum.TOGGLE_IS_FETCHING,
-  payload: isFetching
-})
+  payload: isFetching,
+});

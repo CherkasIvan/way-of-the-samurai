@@ -1,16 +1,13 @@
-import React, { FC } from "react";
-import classes from "./ProfileInfo.module.scss";
-import profileLogo from '../../../../../../../../assets/img/avatar.jpg'
+import React, { FC } from 'react';
+import classes from './ProfileInfo.module.scss';
+import profileLogo from '../../../../../../../../assets/img/avatar.jpg';
 
 interface IProfileInfoProps {
   message: string;
   name: string;
 }
 
-const ProfileInfo: FC<IProfileInfoProps> = ({
-  message,
-  name,
-}) => {
+const ProfileInfo: FC<IProfileInfoProps> = ({ message, name }) => {
   return (
     <div className={classes.ProfileContainer}>
       <div className={classes.userContainer}>

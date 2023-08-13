@@ -1,80 +1,78 @@
 .UsersContainer {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+  width: 100%;
+
+  .UsersList {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
     width: 100%;
+    list-style-type: none;
 
-    .UsersList{
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 10px;
-        width: 100%;
-        list-style-type: none;
+    .UserItem {
+      display: flex;
+      flex-direction: column;
+      justify-self: center;
+      align-items: center;
+      row-gap: 5px;
+      width: fit-content;
 
-        .UserItem {
-            display: flex;
-            flex-direction: column;
-            justify-self: center;
-            align-items: center;
-            row-gap: 5px;
-            width: fit-content;
+      .UserPhotoContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-            .UserPhotoContainer {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                .UserPhoto{
-                    width: 70px;
-                    height: 70px;
-                    border-radius: 50%;
-                }
-            }
-
-            .UserGeneralInformation{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                row-gap: 5px;
-
-                .UserName{
-                    color: #ffffff;
-                    font-weight: 700;
-                }
-
-                .UserStatus {
-                    color: #eeeb54;
-                    font-weight: 600;
-                }
-            }
+        .UserPhoto {
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
         }
-    }
+      }
 
-    .ActivePage {
-        font-weight: 700;
-        color: #e91515;
+      .UserGeneralInformation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 5px;
+
+        .UserName {
+          color: #ffffff;
+          font-weight: 700;
+        }
+
+        .UserStatus {
+          color: #eeeb54;
+          font-weight: 600;
+        }
+      }
     }
-    
-    .Page {
-        font-weight: 500;
-        color: #ffffff;
-    }
+  }
+
+  .ActivePage {
+    font-weight: 700;
+    color: #e91515;
+  }
+
+  .Page {
+    font-weight: 500;
+    color: #ffffff;
+  }
 }
 
+.ButtonContainer {
+  width: fit-content;
+  padding: 5px 10px;
+  background: white;
+  border-radius: 12px;
+  color: black;
+  font-weight: 500;
 
-
-.ButtonContainer{
-    width: fit-content;
-    padding: 5px 10px;
-    background: white;
-    border-radius: 12px;
-    color: black;
-    font-weight: 500;
-
-    > *:hover{
-        color: red;
-        font-weight: 600;  
-    }
+  > *:hover {
+    color: red;
+    font-weight: 600;
+  }
 }

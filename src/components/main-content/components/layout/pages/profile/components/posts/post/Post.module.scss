@@ -1,25 +1,21 @@
 .PostContainer {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	column-gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 20px;
 
+  .ButtonContainer {
+    display: flex;
+    column-gap: 20px;
 
+    .PostUserLike {
+      .PostUserLikeLogo {
+        max-width: 25px;
+      }
+    }
 
-
-	.ButtonContainer {
-		display: flex;
-		column-gap: 20px;
-
-		.PostUserLike {
-			.PostUserLikeLogo {
-				max-width: 25px;
-			}
-		}
-
-		.PostUserLikeCounter {
-			color: yellow;
-		}
-	}
-
+    .PostUserLikeCounter {
+      color: yellow;
+    }
+  }
 }
