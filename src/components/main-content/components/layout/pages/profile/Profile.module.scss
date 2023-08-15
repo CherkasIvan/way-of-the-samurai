@@ -1,4 +1,10 @@
 .profileContainer {
   width: 100%;
   text-align: center;
+
+  .CurrentProfile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
