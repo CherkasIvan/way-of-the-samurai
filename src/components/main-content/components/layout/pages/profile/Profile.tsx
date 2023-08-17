@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import classes from './Profile.module.scss'
 import { IProfilePage } from '../../../../../../utils/models/profile-page.interface'
-import Posts from './components/posts/Posts'
-import CurrentProfileClassContainer from './components/currentProfile/CurrentProfileClassContainer'
+import PostsContainer from './components/posts/PostsContainer'
+import CurrentProfile from './components/currentProfile/CurrentProfile'
+import { IUsersPage } from '../../../../../../utils/models/users-page.interface'
 
 interface IProfileProps {
   profilePage: IProfilePage
@@ -11,23 +12,14 @@ interface IProfileProps {
   toggleIsFetching: (isFetching: boolean) => void
 }
 
-const Profile: FC<IProfileProps> = ({
-  profilePage,
-  updatePostHandler,
-  addPostHandler,
-  toggleIsFetching,
-}) => {
+const Profile: FC<IProfileProps> = ({ profilePage, updatePostHandler, addPostHandler }) => {
   return (
     <div className={classes.profileContainer}>
       <div className={classes.CurrentProfile}>
-        <CurrentProfileClassContainer
-          profilePage={profilePage}
-          userId={2}
-          toggleIsFetching={toggleIsFetching}
-        />
+        <CurrentProfile currentProfile={profilePage.currentProfile} />
       </div>
 
-      <Posts
+      <PostsContainer
         postsData={profilePage.posts}
         updatePostHandler={updatePostHandler}
         addPostHandler={addPostHandler}

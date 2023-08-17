@@ -4,7 +4,7 @@ import {
   SetCurrentPageActionCreator,
   SetPreloaderActionCreator,
   SetTotalUsersCountActionCreator,
-  SetUserActionCreator,
+  SetUsersActionCreator,
   UserSubscribeActionCreator,
   UserUnsubscribeActionCreator,
 } from '../../../../../../redux/actions'
@@ -71,7 +71,7 @@ const mapStateToProps = (state: IState) => {
 }
 
 export default connect(mapStateToProps, {
-  setUsers: SetUserActionCreator,
+  setUsers: SetUsersActionCreator,
   setTotalUsersCount: SetTotalUsersCountActionCreator,
   unsubscribeUser: UserUnsubscribeActionCreator,
   subscribeUser: UserSubscribeActionCreator,

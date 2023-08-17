@@ -1,18 +1,16 @@
-import { IPost } from '../../components/main-content/models/post.interface';
-import { ActivePosts } from '../../utils/data/active-posts';
-import { StoreEnum } from '../../utils/enums/store.enum';
-import { IAction } from '../../utils/models/action.interface';
-import { IProfilePage } from '../../utils/models/profile-page.interface';
+import { IPost } from '../../components/main-content/models/post.interface'
+import { ActivePosts } from '../../utils/data/active-posts'
+import { StoreEnum } from '../../utils/enums/store.enum'
+import { IAction } from '../../utils/models/action.interface'
+import { IProfilePage } from '../../utils/models/profile-page.interface'
 
 const initialState: IProfilePage = {
   posts: ActivePosts,
+  currentProfile: null,
   newPostText: '',
-};
+}
 
-const profileReducer = (
-  state: IProfilePage = initialState,
-  action: IAction
-): IProfilePage => {
+const profileReducer = (state: IProfilePage = initialState, action: IAction): IProfilePage => {
   switch (action.type) {
     case StoreEnum.ADD_POST: {
       const post: IPost = {
@@ -20,22 +18,28 @@ const profileReducer = (
         name: 'Ivan',
         message: action.payload,
         counter: 0,
-      };
+      }
       return {
         ...state,
         posts: [...state.posts, post],
         newPostText: '',
-      };
+      }
+    }
+    case StoreEnum.SET_PROFILE: {
+      return {
+        ...state,
+        currentProfile: { ...action.payload },
+      }
     }
     case StoreEnum.UPDATE_NEW_POST_TEXT: {
       return {
         ...state,
         newPostText: action.payload,
-      };
+      }
     }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default profileReducer;
+export default profileReducer
