@@ -41,11 +41,4 @@ const Dialogs: FC<IDialogsProps> = ({
   )
 }
 
-const mapStateToProps = (state: IState) => {}
-
-const PostTextAreaMessage = connect(mapStateToProps, {
-  addPostText: AddMessageActionCreator,
-  updateNewPostText: UpdateMessageActionCreator,
-})(AddTextAreaMessage)
-
 export default Dialogs

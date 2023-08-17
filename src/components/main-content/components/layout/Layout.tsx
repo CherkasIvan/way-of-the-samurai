@@ -13,7 +13,7 @@ const Layout = () => {
     <div className={classes.profileContainer}>
       <Routes>
         <Route path={ActiveRoutes.DEFAULT} element={<Navigate to={ActiveRoutes.PROFILE} />} />
-        <Route path={ActiveRoutes.PROFILE + '/*'} element={<ProfileClassContainer />} />
+        <Route path={ActiveRoutes.PROFILE + '/:userId?'} element={<ProfileClassContainer />} />
         <Route path={ActiveRoutes.USERS} element={<UsersContainer />} />
         <Route path={ActiveRoutes.DIALOGS} element={<DialogsContainer />} />
         <Route path={ActiveRoutes.DIALOGS + '/*'} element={<DialogsContainer />} />

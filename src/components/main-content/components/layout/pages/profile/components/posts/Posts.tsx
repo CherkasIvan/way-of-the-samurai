@@ -35,19 +35,4 @@ const Posts: FC<IPostProps> = ({ postsData, updatePostHandler, addPostHandler })
   )
 }
 
-const mapStateToProps = (state: IState) => {}
-const mapDispatchToProps = (dispatch: (arg0: IAction) => void) => {
-  return {
-    addPostText: (text: string) => {
-      const action = AddPostActionCreator(text)
-      dispatch(action)
-    },
-    updateNewPostText: (text: string) => {
-      const action = UpdatePostActionCreator(text)
-      dispatch(action)
-    },
-  }
-}
-
-const PostTextAreaMessage = connect(mapStateToProps, mapDispatchToProps)(AddTextAreaMessage)
 export default Posts

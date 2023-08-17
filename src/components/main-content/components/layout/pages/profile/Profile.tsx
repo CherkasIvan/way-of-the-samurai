@@ -3,7 +3,6 @@ import classes from './Profile.module.scss'
 import { IProfilePage } from '../../../../../../utils/models/profile-page.interface'
 import PostsContainer from './components/posts/PostsContainer'
 import CurrentProfile from './components/currentProfile/CurrentProfile'
-import { IUsersPage } from '../../../../../../utils/models/users-page.interface'
 
 interface IProfileProps {
   profilePage: IProfilePage
