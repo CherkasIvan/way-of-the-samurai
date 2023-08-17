@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
-import Posts from './Posts';
-import { IPost } from '../../../../../../models/post.interface';
+import React, { FC } from 'react'
+import Posts from './Posts'
+import { IPost } from '../../../../../../models/post.interface'
 
 interface IPostContainerProps {
-  postsData: IPost[];
-  updatePostHandler: (text: string) => void;
-  addPostHandler: () => void;
+  postsData: IPost[]
+  updatePostHandler: (text: string) => void
+  addPostHandler: (text: string) => void
 }
 
 const PostsContainer: FC<IPostContainerProps> = ({
@@ -21,7 +21,7 @@ const PostsContainer: FC<IPostContainerProps> = ({
         addPostHandler={addPostHandler}
       />
     </div>
-  );
-};
+  )
+}
 
-export default PostsContainer;
+export default PostsContainer

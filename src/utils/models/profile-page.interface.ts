@@ -1,6 +1,8 @@
-import { IPost } from '../../components/main-content/models/post.interface';
+import { IPost } from '../../components/main-content/models/post.interface'
+import { IProfileInformation } from '../../components/main-content/models/profile-information.interface'
 
 export interface IProfilePage {
-  posts: IPost[];
-  newPostText: string;
+  posts: IPost[]
+  currentProfile: any
+  newPostText: string
 }

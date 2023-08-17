@@ -11,17 +11,17 @@ interface IPostProps {
 }
 
 const Post: FC<IPostProps> = ({ message, name, counter }) => {
-  const [conter, setCount] = useState(counter)
+  const [count, setCount] = useState(counter)
 
   return (
     <div className={classes.PostContainer}>
       <ProfileInfo message={message} name={name}></ProfileInfo>
 
       <div className={classes.ButtonContainer}>
-        <button className={classes.PostUserLike} onClick={() => setCount(Number(conter + 1))}>
+        <button className={classes.PostUserLike} onClick={() => setCount(Number(count + 1))}>
           <img src={LikeImg} alt='like-logo.jpg' className={classes.PostUserLikeLogo}></img>
         </button>
-        <span className={classes.PostUserLikeCounter}>{conter}</span>
+        <span className={classes.PostUserLikeCounter}>{count}</span>
       </div>
     </div>
   )

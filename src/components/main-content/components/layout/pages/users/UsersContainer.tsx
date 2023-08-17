@@ -4,7 +4,7 @@ import {
   SetCurrentPageActionCreator,
   SetPreloaderActionCreator,
   SetTotalUsersCountActionCreator,
-  SetUserActionCreator,
+  SetUsersActionCreator,
   UserSubscribeActionCreator,
   UserUnsubscribeActionCreator,
 } from '../../../../../../redux/actions'
@@ -44,20 +44,18 @@ class UsersContainer extends React.Component<IUsersContainerProps> {
 
   render(): React.ReactNode {
     return (
-      <>
-        <Users
-          users={this.props.users}
-          isFetching={this.props.isFetching}
-          pageSize={this.props.pageSize}
-          totalUsersCount={this.props.totalUsersCount}
-          currentPage={this.props.currentPage}
-          setUsers={this.props.setUsers}
-          unsubscribeUser={this.props.unsubscribeUser}
-          subscribeUser={this.props.subscribeUser}
-          changePage={this.props.changePage}
-          toggleIsFetching={this.props.toggleIsFetching}
-        />
-      </>
+      <Users
+        users={this.props.users}
+        isFetching={this.props.isFetching}
+        pageSize={this.props.pageSize}
+        totalUsersCount={this.props.totalUsersCount}
+        currentPage={this.props.currentPage}
+        setUsers={this.props.setUsers}
+        unsubscribeUser={this.props.unsubscribeUser}
+        subscribeUser={this.props.subscribeUser}
+        changePage={this.props.changePage}
+        toggleIsFetching={this.props.toggleIsFetching}
+      />
     )
   }
 }
@@ -73,7 +71,7 @@ const mapStateToProps = (state: IState) => {
 }
 
 export default connect(mapStateToProps, {
-  setUsers: SetUserActionCreator,
+  setUsers: SetUsersActionCreator,
   setTotalUsersCount: SetTotalUsersCountActionCreator,
   unsubscribeUser: UserUnsubscribeActionCreator,
   subscribeUser: UserSubscribeActionCreator,
