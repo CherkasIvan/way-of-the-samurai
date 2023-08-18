@@ -1,12 +1,12 @@
 import './App.scss'
-import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import MainContent from './components/main-content/MainContent'
+import HeaderContainer from './components/header/HeaderContainer'
 
 const App = () => {
   return (
     <div className='App'>
-      <Header />
+      <HeaderContainer />
       <MainContent />
       <Footer />
     </div>
