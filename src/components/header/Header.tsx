@@ -6,14 +6,11 @@ import { NavLink } from 'react-router-dom'
 export interface IHeaderProps {
   isAuth: boolean
   login: string | null
-  authUser: (userId: number, email: string, login: string) => void
 }
 
 const Header: FC<IHeaderProps> = ({ isAuth, login }) => {
   console.log(isAuth)
-  if (login) {
-    console.log(login)
-  }
+  console.log(login)
   return (
     <header className={classes.Container}>
       <img src={require('../../assets/img/logo.jpg')} alt='logo.jpg' />

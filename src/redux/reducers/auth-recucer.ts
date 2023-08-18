@@ -9,10 +9,14 @@ const initialState: IAuth = {
 	isAuth: false
 }
 
-const authReducer = (state: any = initialState, action: IAction): IAuth => {
+const authReducer = (state: IAuth = initialState, action: IAction): IAuth => {
 	switch (action.type) {
 		case StoreEnum.SET_USER_DATA: {
-			return { ...state, ...state.payload, isAuth: true }
+			return {
+				...state,
+				...action.payload,
+				isAuth: true
+			}
 		}
 		default:
 			return state

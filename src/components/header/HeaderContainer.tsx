@@ -8,7 +8,7 @@ import { IState } from '../main-content/models/state.interface'
 export interface IHeaderContainerProps {
   isAuth: boolean
   login: string | null
-  authUser: (userId: number, email: string, login: string) => void
+  authUser: (id: number, email: string, login: string) => void
 }
 
 class HeaderContainer extends React.Component<IHeaderContainerProps> {
