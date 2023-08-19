@@ -27,7 +27,10 @@ const Pagination: FC<IPaginationProps> = ({
     const page = `?page=${pageNumber}`
     const pageSizeUsers = `&count=${pageSize}`
     axios
-      .get('https://social-network.samuraijs.com/api/1.0' + users + page + pageSizeUsers)
+      .get('https://social-network.samuraijs.com/api/1.0' + users + page + pageSizeUsers, {
+        withCredentials: true,
+        headers: { 'API-KEY': '74eec926-80fb-473b-9e58-ad114bf47bb4' },
+      })
       .then((response) => {
         setUsers(response.data.items)
         toggleIsFetching(false)

@@ -34,7 +34,10 @@ class UsersContainer extends React.Component<IUsersContainerProps> {
     const page = `?page=${this.props.currentPage}`
     const pageSize = `&count=${this.props.pageSize}`
     axios
-      .get('https://social-network.samuraijs.com/api/1.0' + users + page + pageSize)
+      .get('https://social-network.samuraijs.com/api/1.0' + users + page + pageSize, {
+        withCredentials: true,
+        headers: { 'API-KEY': '74eec926-80fb-473b-9e58-ad114bf47bb4' },
+      })
       .then((response) => {
         this.props.setUsers(response.data.items)
         this.props.setTotalUsersCount(response.data.totalCount)
@@ -43,20 +46,7 @@ class UsersContainer extends React.Component<IUsersContainerProps> {
   }
 
   render(): React.ReactNode {
-    return (
-      <Users
-        users={this.props.users}
-        isFetching={this.props.isFetching}
-        pageSize={this.props.pageSize}
-        totalUsersCount={this.props.totalUsersCount}
-        currentPage={this.props.currentPage}
-        setUsers={this.props.setUsers}
-        unsubscribeUser={this.props.unsubscribeUser}
-        subscribeUser={this.props.subscribeUser}
-        changePage={this.props.changePage}
-        toggleIsFetching={this.props.toggleIsFetching}
-      />
-    )
+    return <Users {...this.props} />
   }
 }
 
