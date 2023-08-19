@@ -5,6 +5,7 @@ import DefaultUser from '../../../../../../assets/img/default-user.png'
 import { IUser } from '../../../../models/user.interface'
 import Preloader from '../../../../../shared/preloader/Preloader'
 import { NavLink } from 'react-router-dom'
+import axios from 'axios'
 
 interface IUsersProps {
   users: IUser[]
@@ -57,9 +58,45 @@ const Users: FC<IUsersProps> = ({
             <div>
               <div className={styles.ButtonContainer}>
                 {user.followed ? (
-                  <button onClick={() => unsubscribeUser(user.id)}>Unsubscribe</button>
+                  <button
+                    onClick={() =>
+                      axios
+                        .delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
+                          withCredentials: true,
+                          headers: {
+                            'API-KEY': '74eec926-80fb-473b-9e58-ad114bf47bb4',
+                          },
+                        })
+                        .then((response) => {
+                          if (response.data.resultCode === 0) {
+                            unsubscribeUser(user.id)
+                          }
+                        })
+                    }
+                  >
+                    Unsubscribe
+                  </button>
                 ) : (
-                  <button onClick={() => subscribeUser(user.id)}>Subscribe</button>
+                  <button
+                    onClick={() =>
+                      axios
+                        .post(
+                          `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
+                          {},
+                          {
+                            withCredentials: true,
+                            headers: { 'API-KEY': '74eec926-80fb-473b-9e58-ad114bf47bb4' },
+                          },
+                        )
+                        .then((response) => {
+                          if (response.data.resultCode === 0) {
+                            subscribeUser(user.id)
+                          }
+                        })
+                    }
+                  >
+                    Subscribe
+                  </button>
                 )}
               </div>
             </div>
