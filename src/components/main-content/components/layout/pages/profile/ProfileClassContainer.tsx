@@ -4,15 +4,15 @@ import {
   SetPreloaderActionCreator,
   SetProfileActionCreator,
   UpdatePostActionCreator,
-} from '../../../../../../redux/actions'
+} from '../../../../../../redux/actions/actions'
 import classes from './Profile.module.scss'
 import { IState } from '../../../../models/state.interface'
 import { connect } from 'react-redux'
 import React from 'react'
 import { IProfilePage } from '../../../../../../utils/models/profile-page.interface'
-import axios from 'axios'
 import { IProfileInformation } from '../../../../models/profile-information.interface'
 import { withRouter } from '../../../../../../utils/functions/withRouter'
+import { getProfile } from '../../../../../../api/api'
 
 interface IProfileClassContainerProps {
   profilePage: IProfilePage
@@ -31,12 +31,10 @@ class ProfileClassContainer extends React.Component<IProfileClassContainerProps>
     let userId = this.props.router.params.userId
     !userId
       ? (userId = 2)
-      : axios
-          .get('https://social-network.samuraijs.com/api/1.0' + profile + '/' + userId)
-          .then((response) => {
-            this.props.setProfile(response.data)
-            this.props.toggleIsFetching(false)
-          })
+      : getProfile(profile, userId).then((response) => {
+          this.props.setProfile(response.data)
+          this.props.toggleIsFetching(false)
+        })
   }
 
   render(): React.ReactNode {

@@ -1,12 +1,6 @@
 import { FC } from 'react'
 import classes from './Dialogs.module.scss'
 import AddTextAreaMessage from '../../../../../shared/add-post/AddTextAreaMessage'
-import {
-  AddMessageActionCreator,
-  UpdateMessageActionCreator,
-} from '../../../../../../redux/actions'
-import { connect } from 'react-redux'
-import { IState } from '../../../../models/state.interface'
 import UserContainer from './components/user/UserContainer'
 import MessageContainer from './components/message/MessageContainer'
 import { IDialogsPage } from '../../../../../../utils/models/dialogs-page.interface'

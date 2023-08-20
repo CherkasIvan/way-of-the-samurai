@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styles from './Pagination.module.scss'
 import { IUser } from '../../main-content/models/user.interface'
-import axios from 'axios'
+import { getUsers } from '../../../api/api'
 
 interface IPaginationProps {
   pageSize: number
@@ -26,15 +26,10 @@ const Pagination: FC<IPaginationProps> = ({
     const users = '/users'
     const page = `?page=${pageNumber}`
     const pageSizeUsers = `&count=${pageSize}`
-    axios
-      .get('https://social-network.samuraijs.com/api/1.0' + users + page + pageSizeUsers, {
-        withCredentials: true,
-        headers: { 'API-KEY': '74eec926-80fb-473b-9e58-ad114bf47bb4' },
-      })
-      .then((response) => {
-        setUsers(response.data.items)
-        toggleIsFetching(false)
-      })
+    getUsers(users, page, pageSizeUsers).then((response) => {
+      setUsers(response.data.items)
+      toggleIsFetching(false)
+    })
   }
 
   const pagesCount = Math.ceil(totalUsersCount / pageSize)

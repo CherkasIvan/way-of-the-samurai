@@ -5,7 +5,7 @@ import DefaultUser from '../../../../../../assets/img/default-user.png'
 import { IUser } from '../../../../models/user.interface'
 import Preloader from '../../../../../shared/preloader/Preloader'
 import { NavLink } from 'react-router-dom'
-import axios from 'axios'
+import { subscribeUserApi, unsubscribeUserApi } from '../../../../../../api/api'
 
 interface IUsersProps {
   users: IUser[]
@@ -60,18 +60,11 @@ const Users: FC<IUsersProps> = ({
                 {user.followed ? (
                   <button
                     onClick={() =>
-                      axios
-                        .delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
-                          withCredentials: true,
-                          headers: {
-                            'API-KEY': '74eec926-80fb-473b-9e58-ad114bf47bb4',
-                          },
-                        })
-                        .then((response) => {
-                          if (response.data.resultCode === 0) {
-                            unsubscribeUser(user.id)
-                          }
-                        })
+                      unsubscribeUserApi(user.id).then((response) => {
+                        if (response.data.resultCode === 0) {
+                          unsubscribeUser(user.id)
+                        }
+                      })
                     }
                   >
                     Unsubscribe
@@ -79,20 +72,11 @@ const Users: FC<IUsersProps> = ({
                 ) : (
                   <button
                     onClick={() =>
-                      axios
-                        .post(
-                          `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                          {},
-                          {
-                            withCredentials: true,
-                            headers: { 'API-KEY': '74eec926-80fb-473b-9e58-ad114bf47bb4' },
-                          },
-                        )
-                        .then((response) => {
-                          if (response.data.resultCode === 0) {
-                            subscribeUser(user.id)
-                          }
-                        })
+                      subscribeUserApi(user.id).then((response) => {
+                        if (response.data.resultCode === 0) {
+                          subscribeUser(user.id)
+                        }
+                      })
                     }
                   >
                     Subscribe
