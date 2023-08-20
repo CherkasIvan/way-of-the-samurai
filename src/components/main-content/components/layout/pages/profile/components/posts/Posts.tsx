@@ -3,13 +3,6 @@ import Post from '../../components/posts/post/Post'
 import classes from './Posts.module.scss'
 import { IPost } from '../../../../../../models/post.interface'
 import AddTextAreaMessage from '../../../../../../../shared/add-post/AddTextAreaMessage'
-import {
-  AddPostActionCreator,
-  UpdatePostActionCreator,
-} from '../../../../../../../../redux/actions'
-import { connect } from 'react-redux'
-import { IState } from '../../../../../../models/state.interface'
-import { IAction } from '../../../../../../../../utils/models/action.interface'
 
 interface IPostProps {
   postsData: IPost[]

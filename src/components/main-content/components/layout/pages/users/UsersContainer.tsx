@@ -1,17 +1,18 @@
 import { connect } from 'react-redux'
 import { IState } from '../../../../models/state.interface'
-import {
-  SetCurrentPageActionCreator,
-  SetPreloaderActionCreator,
-  SetTotalUsersCountActionCreator,
-  SetUsersActionCreator,
-  UserSubscribeActionCreator,
-  UserUnsubscribeActionCreator,
-} from '../../../../../../redux/actions'
+
 import { IUser } from '../../../../models/user.interface'
 import React from 'react'
-import axios from 'axios'
 import Users from './Users'
+import {
+  SetUsersActionCreator,
+  SetTotalUsersCountActionCreator,
+  UserUnsubscribeActionCreator,
+  UserSubscribeActionCreator,
+  SetCurrentPageActionCreator,
+  SetPreloaderActionCreator,
+} from '../../../../../../redux/actions/actions'
+import { getUsers } from '../../../../../../api/api'
 
 interface IUsersContainerProps {
   users: IUser[]
@@ -33,16 +34,11 @@ class UsersContainer extends React.Component<IUsersContainerProps> {
     const users = '/users'
     const page = `?page=${this.props.currentPage}`
     const pageSize = `&count=${this.props.pageSize}`
-    axios
-      .get('https://social-network.samuraijs.com/api/1.0' + users + page + pageSize, {
-        withCredentials: true,
-        headers: { 'API-KEY': '74eec926-80fb-473b-9e58-ad114bf47bb4' },
-      })
-      .then((response) => {
-        this.props.setUsers(response.data.items)
-        this.props.setTotalUsersCount(response.data.totalCount)
-        this.props.toggleIsFetching(false)
-      })
+    getUsers(users, page, pageSize).then((response) => {
+      this.props.setUsers(response.data.items)
+      this.props.setTotalUsersCount(response.data.totalCount)
+      this.props.toggleIsFetching(false)
+    })
   }
 
   render(): React.ReactNode {

@@ -1,7 +1,7 @@
-import { IProfileInformation } from '../components/main-content/models/profile-information.interface'
-import { IUser } from '../components/main-content/models/user.interface'
-import { StoreEnum } from '../utils/enums/store.enum'
-import { IAction } from '../utils/models/action.interface'
+import { IAction } from './../../utils/models/action.interface';
+import { StoreEnum } from '../../utils/enums/store.enum';
+import { IUser } from '../../components/main-content/models/user.interface';
+import { IProfileInformation } from '../../components/main-content/models/profile-information.interface';
 
 export const AddPostActionCreator = (message: string): IAction => ({
 	type: StoreEnum.ADD_POST,
