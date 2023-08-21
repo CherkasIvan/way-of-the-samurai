@@ -1,10 +1,7 @@
 import { connect } from 'react-redux'
 import { IState } from '../../../../models/state.interface'
 import Dialogs from './Dialogs'
-import {
-  UpdateMessageActionCreator,
-  AddMessageActionCreator,
-} from '../../../../../../redux/actions/actions'
+import { UpdateMessageAC, AddMessageAC } from '../../../../../../redux/actions/actions'
 
 const mapStateToProps = (state: IState) => {
   return {
@@ -13,6 +10,6 @@ const mapStateToProps = (state: IState) => {
 }
 
 export default connect(mapStateToProps, {
-  updatedMessageTextHandler: UpdateMessageActionCreator,
-  addMessageTextHandler: AddMessageActionCreator,
+  updatedMessageTextHandler: UpdateMessageAC,
+  addMessageTextHandler: AddMessageAC,
 })(Dialogs)

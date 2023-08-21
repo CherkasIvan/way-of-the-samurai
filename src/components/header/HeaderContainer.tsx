@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Header'
 import { connect } from 'react-redux'
 import { IState } from '../main-content/models/state.interface'
-import { SetUserDataActionCreator } from '../../redux/actions/actions'
+import { SetUserDataAC } from '../../redux/actions/actions'
 import { getMe } from '../../api/api'
 
 export interface IHeaderContainerProps {
@@ -32,5 +32,5 @@ const mapStateToProps = (state: IState) => ({
 })
 
 export default connect(mapStateToProps, {
-  authUser: SetUserDataActionCreator,
+  authUser: SetUserDataAC,
 })(HeaderContainer)
