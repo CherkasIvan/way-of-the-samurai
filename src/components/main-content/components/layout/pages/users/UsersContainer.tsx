@@ -5,12 +5,13 @@ import { IUser } from '../../../../models/user.interface'
 import React from 'react'
 import Users from './Users'
 import {
-  SetUsersActionCreator,
-  SetTotalUsersCountActionCreator,
-  UserUnsubscribeActionCreator,
-  UserSubscribeActionCreator,
-  SetCurrentPageActionCreator,
-  SetPreloaderActionCreator,
+  SetUsersAC,
+  SetTotalUsersCountAC,
+  UserUnsubscribeAC,
+  UserSubscribeAC,
+  SetCurrentPageAC,
+  SetPreloaderAC,
+  SetPreloaderInProgressAC,
 } from '../../../../../../redux/actions/actions'
 import { getUsers } from '../../../../../../api/api'
 
@@ -20,12 +21,14 @@ interface IUsersContainerProps {
   totalUsersCount: number
   currentPage: number
   isFetching: boolean
+  followingInProgress: number[]
   setUsers: (users: IUser[]) => void
   unsubscribeUser: (userId: number) => void
   subscribeUser: (userId: number) => void
   changePage: (pageNumber: number) => void
   setTotalUsersCount: (totalCount: number) => void
   toggleIsFetching: (isFetching: boolean) => void
+  toggleInProgress: (isFetching: boolean, userId: number) => void
 }
 
 class UsersContainer extends React.Component<IUsersContainerProps> {
@@ -53,14 +56,16 @@ const mapStateToProps = (state: IState) => {
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress,
   }
 }
 
 export default connect(mapStateToProps, {
-  setUsers: SetUsersActionCreator,
-  setTotalUsersCount: SetTotalUsersCountActionCreator,
-  unsubscribeUser: UserUnsubscribeActionCreator,
-  subscribeUser: UserSubscribeActionCreator,
-  changePage: SetCurrentPageActionCreator,
-  toggleIsFetching: SetPreloaderActionCreator,
+  setUsers: SetUsersAC,
+  setTotalUsersCount: SetTotalUsersCountAC,
+  unsubscribeUser: UserUnsubscribeAC,
+  subscribeUser: UserSubscribeAC,
+  changePage: SetCurrentPageAC,
+  toggleIsFetching: SetPreloaderAC,
+  toggleInProgress: SetPreloaderInProgressAC,
 })(UsersContainer)

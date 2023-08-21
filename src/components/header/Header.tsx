@@ -9,8 +9,6 @@ export interface IHeaderProps {
 }
 
 const Header: FC<IHeaderProps> = ({ isAuth, login }) => {
-  console.log(isAuth)
-  console.log(login)
   return (
     <header className={classes.Container}>
       <img src={require('../../assets/img/logo.jpg')} alt='logo.jpg' />

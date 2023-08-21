@@ -13,11 +13,13 @@ interface IUsersProps {
   totalUsersCount: number
   currentPage: number
   isFetching: boolean
+  followingInProgress: number[]
   setUsers: (users: IUser[]) => void
   unsubscribeUser: (userId: number) => void
   subscribeUser: (userId: number) => void
   changePage: (pageNumber: number) => void
   toggleIsFetching: (isFetching: boolean) => void
+  toggleInProgress: (isFetching: boolean, userId: number) => void
 }
 
 const Users: FC<IUsersProps> = ({
@@ -26,11 +28,13 @@ const Users: FC<IUsersProps> = ({
   totalUsersCount,
   currentPage,
   isFetching,
+  followingInProgress,
   setUsers,
   unsubscribeUser,
   subscribeUser,
   changePage,
   toggleIsFetching,
+  toggleInProgress,
 }) => {
   return (
     <div className={styles.UsersContainer}>
@@ -59,25 +63,31 @@ const Users: FC<IUsersProps> = ({
               <div className={styles.ButtonContainer}>
                 {user.followed ? (
                   <button
-                    onClick={() =>
+                    disabled={followingInProgress.some((id: number) => id === user.id)}
+                    onClick={() => {
+                      toggleInProgress(true, user.id)
                       unsubscribeUserApi(user.id).then((response) => {
                         if (response.data.resultCode === 0) {
                           unsubscribeUser(user.id)
                         }
+                        toggleInProgress(false, user.id)
                       })
-                    }
+                    }}
                   >
                     Unsubscribe
                   </button>
                 ) : (
                   <button
-                    onClick={() =>
+                    disabled={followingInProgress.some((id: number) => id === user.id)}
+                    onClick={() => {
+                      toggleInProgress(true, user.id)
                       subscribeUserApi(user.id).then((response) => {
                         if (response.data.resultCode === 0) {
                           subscribeUser(user.id)
                         }
+                        toggleInProgress(false, user.id)
                       })
-                    }
+                    }}
                   >
                     Subscribe
                   </button>

@@ -1,9 +1,9 @@
 import Profile from './Profile'
 import {
-  AddPostActionCreator,
-  SetPreloaderActionCreator,
-  SetProfileActionCreator,
-  UpdatePostActionCreator,
+  AddPostAC,
+  SetPreloaderAC,
+  SetProfileAC,
+  UpdatePostAC,
 } from '../../../../../../redux/actions/actions'
 import classes from './Profile.module.scss'
 import { IState } from '../../../../models/state.interface'
@@ -57,8 +57,8 @@ const mapStateToProps = (state: IState) => {
 const withUrlDataContainerComponent = withRouter(ProfileClassContainer)
 
 export default connect(mapStateToProps, {
-  updatePostHandler: UpdatePostActionCreator,
-  addPostHandler: AddPostActionCreator,
-  toggleIsFetching: SetPreloaderActionCreator,
-  setProfile: SetProfileActionCreator,
+  updatePostHandler: UpdatePostAC,
+  addPostHandler: AddPostAC,
+  toggleIsFetching: SetPreloaderAC,
+  setProfile: SetProfileAC,
 })(withUrlDataContainerComponent)

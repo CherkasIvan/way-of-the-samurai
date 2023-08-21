@@ -17,6 +17,7 @@
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
   "rules": {
+    "no-debugger": "off",
     "react/react-in-jsx-scope": "off",
     "camelcase": "error",
     "spaced-comment": "error",

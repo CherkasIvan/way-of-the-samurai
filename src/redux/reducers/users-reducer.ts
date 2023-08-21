@@ -9,6 +9,7 @@ const initialState: IUsersPage = {
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
+  followingInProgress: [],
 }
 
 const usersReducer = (state: IUsersPage = initialState, action: IAction): IUsersPage => {
@@ -49,6 +50,16 @@ const usersReducer = (state: IUsersPage = initialState, action: IAction): IUsers
     }
     case StoreEnum.TOGGLE_IS_FETCHING: {
       return { ...state, isFetching: action.payload }
+    }
+    case StoreEnum.TOGGLE_IS_SUBSCRIBING_PROGRESS: {
+      return {
+        ...state,
+        followingInProgress: action.payload.isFetching
+          ? [...state.followingInProgress, action.payload.id]
+          : state.followingInProgress.filter((userId: number) => {
+              userId !== action.payload.id
+            }),
+      }
     }
     default:
       return state
