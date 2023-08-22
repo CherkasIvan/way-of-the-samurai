@@ -2,23 +2,17 @@ import React from 'react'
 import Header from './Header'
 import { connect } from 'react-redux'
 import { IState } from '../main-content/models/state.interface'
-import { SetUserDataAC } from '../../redux/actions/actions'
-import { getMe } from '../../api/api'
+import { getMeTC } from '../../redux/thunk/auth-thunk'
 
 export interface IHeaderContainerProps {
   isAuth: boolean
   login: string | null
-  authUser: (id: number, email: string, login: string) => void
+  getMeTC: () => any
 }
 
 class HeaderContainer extends React.Component<IHeaderContainerProps> {
   componentDidMount(): void {
-    getMe().then((response) => {
-      if (response.data.resultCode === 0) {
-        const { id, login, email } = response.data.data
-        this.props.authUser(id, email, login)
-      }
-    })
+    this.props.getMeTC()
   }
 
   render(): React.ReactNode {
@@ -31,6 +25,4 @@ const mapStateToProps = (state: IState) => ({
   login: state.auth.login,
 })
 
-export default connect(mapStateToProps, {
-  authUser: SetUserDataAC,
-})(HeaderContainer)
+export default connect(mapStateToProps, { getMeTC: getMeTC })(HeaderContainer)
