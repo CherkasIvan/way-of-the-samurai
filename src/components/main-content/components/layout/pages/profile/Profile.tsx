@@ -8,7 +8,6 @@ interface IProfileProps {
   profilePage: IProfilePage
   updatePostHandler: (text: string) => void
   addPostHandler: (text: string) => void
-  toggleIsFetching: (isFetching: boolean) => void
 }
 
 const Profile: FC<IProfileProps> = ({ profilePage, updatePostHandler, addPostHandler }) => {
