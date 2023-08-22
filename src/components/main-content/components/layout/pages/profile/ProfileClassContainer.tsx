@@ -11,6 +11,7 @@ import { getProfileTC } from '../../../../../../redux/thunk/profile-thunk'
 interface IProfileClassContainerProps {
   profilePage: IProfilePage
   isFetching: boolean
+  isAuth: boolean
   addPostHandler: (text: string) => void
   updatePostHandler: (text: string) => void
   router: any
@@ -36,6 +37,7 @@ const mapStateToProps = (state: IState) => {
     profilePage: state.profilePage,
     newPostText: state.profilePage.newPostText,
     isFetching: state.usersPage.isFetching,
+    isAuth: state.auth.isAuth,
   }
 }
 

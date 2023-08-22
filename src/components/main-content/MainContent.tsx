@@ -1,14 +1,14 @@
-import Navigation from './components/navigation/Navigation';
-import classes from './MainContent.module.scss';
-import Layout from './components/layout/Layout';
+import classes from './MainContent.module.scss'
+import Layout from './components/layout/Layout'
+import NavigationContainer from './components/navigation/NavigationContainer'
 
 const MainContent = () => {
   return (
     <main className={classes.mainContainer}>
-      <Navigation />
+      <NavigationContainer />
       <Layout />
     </main>
-  );
-};
+  )
+}
 
-export default MainContent;
+export default MainContent

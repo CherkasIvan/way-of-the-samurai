@@ -7,6 +7,7 @@ import { ActiveRoutes } from '../../../../utils/enums/active-routes.enum'
 import DialogsContainer from './pages/dialogs/DialogsContainer'
 import UsersContainer from './pages/users/UsersContainer'
 import ProfileClassContainer from './pages/profile/ProfileClassContainer'
+import LoginContainer from './pages/login/LoginContainer'
 
 const Layout = () => {
   return (
@@ -17,6 +18,7 @@ const Layout = () => {
         <Route path={ActiveRoutes.USERS} element={<UsersContainer />} />
         <Route path={ActiveRoutes.DIALOGS} element={<DialogsContainer />} />
         <Route path={ActiveRoutes.DIALOGS + '/*'} element={<DialogsContainer />} />
+        <Route path={ActiveRoutes.LOGIN} element={<LoginContainer />} />
         <Route path={ActiveRoutes.MUSIC} element={<Music />} />
         <Route path={ActiveRoutes.NEWS} element={<News />} />
         <Route path={ActiveRoutes.SETTINGS} element={<Settings />} />
