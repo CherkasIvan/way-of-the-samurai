@@ -1,19 +1,14 @@
 import { connect } from 'react-redux'
 import { IState } from '../../../../models/state.interface'
-
 import { IUser } from '../../../../models/user.interface'
 import React from 'react'
 import Users from './Users'
+import { SetUsersAC, SetCurrentPageAC } from '../../../../../../redux/actions/actions'
 import {
-  SetUsersAC,
-  SetTotalUsersCountAC,
-  UserUnsubscribeAC,
-  UserSubscribeAC,
-  SetCurrentPageAC,
-  SetPreloaderAC,
-  SetPreloaderInProgressAC,
-} from '../../../../../../redux/actions/actions'
-import { getUsers } from '../../../../../../api/api'
+  getUsersTC,
+  subscribeUsersTC,
+  unsubscribeUsersTC,
+} from '../../../../../../redux/thunk/users-thunk'
 
 interface IUsersContainerProps {
   users: IUser[]
@@ -23,25 +18,18 @@ interface IUsersContainerProps {
   isFetching: boolean
   followingInProgress: number[]
   setUsers: (users: IUser[]) => void
-  unsubscribeUser: (userId: number) => void
-  subscribeUser: (userId: number) => void
   changePage: (pageNumber: number) => void
-  setTotalUsersCount: (totalCount: number) => void
-  toggleIsFetching: (isFetching: boolean) => void
-  toggleInProgress: (isFetching: boolean, userId: number) => void
+  getUsersTC: (users: string, page: string, pageSize: string) => any
+  subscribeUsersTC: (userId: number) => any
+  unsubscribeUsersTC: (userId: number) => any
 }
 
 class UsersContainer extends React.Component<IUsersContainerProps> {
   componentDidMount(): void {
-    this.props.toggleIsFetching(true)
     const users = '/users'
     const page = `?page=${this.props.currentPage}`
     const pageSize = `&count=${this.props.pageSize}`
-    getUsers(users, page, pageSize).then((response) => {
-      this.props.setUsers(response.data.items)
-      this.props.setTotalUsersCount(response.data.totalCount)
-      this.props.toggleIsFetching(false)
-    })
+    this.props.getUsersTC(users, page, pageSize)
   }
 
   render(): React.ReactNode {
@@ -62,10 +50,8 @@ const mapStateToProps = (state: IState) => {
 
 export default connect(mapStateToProps, {
   setUsers: SetUsersAC,
-  setTotalUsersCount: SetTotalUsersCountAC,
-  unsubscribeUser: UserUnsubscribeAC,
-  subscribeUser: UserSubscribeAC,
   changePage: SetCurrentPageAC,
-  toggleIsFetching: SetPreloaderAC,
-  toggleInProgress: SetPreloaderInProgressAC,
+  getUsersTC: getUsersTC,
+  subscribeUsersTC: subscribeUsersTC,
+  unsubscribeUsersTC: unsubscribeUsersTC,
 })(UsersContainer)

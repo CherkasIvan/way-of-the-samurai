@@ -5,7 +5,6 @@ import DefaultUser from '../../../../../../assets/img/default-user.png'
 import { IUser } from '../../../../models/user.interface'
 import Preloader from '../../../../../shared/preloader/Preloader'
 import { NavLink } from 'react-router-dom'
-import { subscribeUserApi, unsubscribeUserApi } from '../../../../../../api/api'
 
 interface IUsersProps {
   users: IUser[]
@@ -14,12 +13,10 @@ interface IUsersProps {
   currentPage: number
   isFetching: boolean
   followingInProgress: number[]
-  setUsers: (users: IUser[]) => void
-  unsubscribeUser: (userId: number) => void
-  subscribeUser: (userId: number) => void
   changePage: (pageNumber: number) => void
-  toggleIsFetching: (isFetching: boolean) => void
-  toggleInProgress: (isFetching: boolean, userId: number) => void
+  getUsersTC: (users: string, page: string, pageSize: string) => any
+  subscribeUsersTC: (userId: number) => any
+  unsubscribeUsersTC: (userId: number) => any
 }
 
 const Users: FC<IUsersProps> = ({
@@ -29,12 +26,10 @@ const Users: FC<IUsersProps> = ({
   currentPage,
   isFetching,
   followingInProgress,
-  setUsers,
-  unsubscribeUser,
-  subscribeUser,
   changePage,
-  toggleIsFetching,
-  toggleInProgress,
+  getUsersTC,
+  subscribeUsersTC,
+  unsubscribeUsersTC,
 }) => {
   return (
     <div className={styles.UsersContainer}>
@@ -65,13 +60,7 @@ const Users: FC<IUsersProps> = ({
                   <button
                     disabled={followingInProgress.some((id: number) => id === user.id)}
                     onClick={() => {
-                      toggleInProgress(true, user.id)
-                      unsubscribeUserApi(user.id).then((response) => {
-                        if (response.data.resultCode === 0) {
-                          unsubscribeUser(user.id)
-                        }
-                        toggleInProgress(false, user.id)
-                      })
+                      unsubscribeUsersTC(user.id)
                     }}
                   >
                     Unsubscribe
@@ -80,13 +69,7 @@ const Users: FC<IUsersProps> = ({
                   <button
                     disabled={followingInProgress.some((id: number) => id === user.id)}
                     onClick={() => {
-                      toggleInProgress(true, user.id)
-                      subscribeUserApi(user.id).then((response) => {
-                        if (response.data.resultCode === 0) {
-                          subscribeUser(user.id)
-                        }
-                        toggleInProgress(false, user.id)
-                      })
+                      subscribeUsersTC(user.id)
                     }}
                   >
                     Subscribe
@@ -102,9 +85,8 @@ const Users: FC<IUsersProps> = ({
           pageSize={pageSize}
           totalUsersCount={totalUsersCount}
           currentPage={currentPage}
-          setUsers={setUsers}
           changePage={changePage}
-          toggleIsFetching={toggleIsFetching}
+          getUsersTC={getUsersTC}
         />
       </div>
     </div>
