@@ -1,35 +1,27 @@
 import React, { FC } from 'react'
 import styles from './Pagination.module.scss'
-import { IUser } from '../../main-content/models/user.interface'
-import { getUsers } from '../../../api/api'
 
 interface IPaginationProps {
   pageSize: number
   totalUsersCount: number
   currentPage: number
-  setUsers: (users: IUser[]) => void
   changePage: (pageNumber: number) => void
-  toggleIsFetching: (isFetching: boolean) => void
+  getUsersTC: (users: string, page: string, pageSize: string) => any
 }
 
 const Pagination: FC<IPaginationProps> = ({
   pageSize,
   totalUsersCount,
   currentPage,
-  setUsers,
   changePage,
-  toggleIsFetching,
+  getUsersTC,
 }) => {
   const onPageChanged = (pageNumber: number) => {
     changePage(pageNumber)
-    toggleIsFetching(true)
     const users = '/users'
     const page = `?page=${pageNumber}`
     const pageSizeUsers = `&count=${pageSize}`
-    getUsers(users, page, pageSizeUsers).then((response) => {
-      setUsers(response.data.items)
-      toggleIsFetching(false)
-    })
+    getUsersTC(users, page, pageSizeUsers)
   }
 
   const pagesCount = Math.ceil(totalUsersCount / pageSize)
