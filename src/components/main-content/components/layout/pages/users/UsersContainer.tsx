@@ -3,13 +3,22 @@ import { IState } from '../../../../models/state.interface'
 import { IUser } from '../../../../models/user.interface'
 import React from 'react'
 import Users from './Users'
-import { SetUsersAC, SetCurrentPageAC } from '../../../../../../redux/actions/actions'
+import {
+  SetUsersAC,
+  SetCurrentPageAC,
+  AddPostAC,
+  UpdatePostAC,
+} from '../../../../../../redux/actions/actions'
 import {
   getUsersTC,
   subscribeUsersTC,
   unsubscribeUsersTC,
 } from '../../../../../../redux/thunk/users-thunk'
 import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents'
+import { compose } from '@reduxjs/toolkit'
+import { getProfileTC } from '../../../../../../redux/thunk/profile-thunk'
+import { WithRouter } from '../../../../../shared/withRouter/WithRouter'
+import ProfileClassContainer from '../profile/ProfileClassContainer'
 
 interface IUsersContainerProps {
   users: IUser[]
@@ -50,12 +59,13 @@ const mapStateToProps = (state: IState) => {
   }
 }
 
-const AuthRedirectComponent = withAuthRedirect(UsersContainer)
-
-export default connect(mapStateToProps, {
-  setUsers: SetUsersAC,
-  changePage: SetCurrentPageAC,
-  getUsersTC: getUsersTC,
-  subscribeUsersTC: subscribeUsersTC,
-  unsubscribeUsersTC: unsubscribeUsersTC,
-})(AuthRedirectComponent)
+export default compose(
+  connect(mapStateToProps, {
+    setUsers: SetUsersAC,
+    changePage: SetCurrentPageAC,
+    getUsersTC: getUsersTC,
+    subscribeUsersTC: subscribeUsersTC,
+    unsubscribeUsersTC: unsubscribeUsersTC,
+  }),
+  withAuthRedirect,
+)(UsersContainer)

@@ -6,8 +6,8 @@ import Settings from './pages/settings/Settings'
 import { ActiveRoutes } from '../../../../utils/enums/active-routes.enum'
 import DialogsContainer from './pages/dialogs/DialogsContainer'
 import UsersContainer from './pages/users/UsersContainer'
-import ProfileClassContainer from './pages/profile/ProfileClassContainer'
 import LoginContainer from './pages/login/LoginContainer'
+import ProfileClassContainer from './pages/profile/ProfileClassContainer'
 
 const Layout = () => {
   return (

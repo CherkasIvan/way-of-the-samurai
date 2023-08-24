@@ -6,7 +6,7 @@ import CurrentProfile from './components/currentProfile/CurrentProfile'
 import { Navigate } from 'react-router-dom'
 import { ActiveRoutes } from '../../../../../../utils/enums/active-routes.enum'
 
-interface IProfileProps {
+export interface IProfileProps {
   profilePage: IProfilePage
   isAuth: boolean
   updatePostHandler: (text: string) => void
