@@ -1,16 +1,18 @@
 import { connect } from 'react-redux'
 import { IState } from '../../../../models/state.interface'
-import Dialogs from './Dialogs'
 import { UpdateMessageAC, AddMessageAC } from '../../../../../../redux/actions/actions'
+import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents'
+import Dialogs from './Dialogs'
 
 const mapStateToProps = (state: IState) => {
   return {
     dialogsPage: state.dialogsPage,
-    isAuth: state.auth.isAuth,
   }
 }
+
+const AuthRedirectComponent = withAuthRedirect(Dialogs)
 
 export default connect(mapStateToProps, {
   updatedMessageTextHandler: UpdateMessageAC,
   addMessageTextHandler: AddMessageAC,
-})(Dialogs)
+})(AuthRedirectComponent)

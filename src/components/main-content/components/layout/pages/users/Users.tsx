@@ -4,7 +4,8 @@ import Pagination from '../../../../../shared/pagination/Pagination'
 import DefaultUser from '../../../../../../assets/img/default-user.png'
 import { IUser } from '../../../../models/user.interface'
 import Preloader from '../../../../../shared/preloader/Preloader'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Navigate } from 'react-router-dom'
+import { ActiveRoutes } from '../../../../../../utils/enums/active-routes.enum'
 
 interface IUsersProps {
   users: IUser[]
@@ -12,6 +13,7 @@ interface IUsersProps {
   totalUsersCount: number
   currentPage: number
   isFetching: boolean
+  isAuth: boolean
   followingInProgress: number[]
   changePage: (pageNumber: number) => void
   getUsersTC: (users: string, page: string, pageSize: string) => any
@@ -25,13 +27,16 @@ const Users: FC<IUsersProps> = ({
   totalUsersCount,
   currentPage,
   isFetching,
+  isAuth,
   followingInProgress,
   changePage,
   getUsersTC,
   subscribeUsersTC,
   unsubscribeUsersTC,
 }) => {
-  return (
+  return !isAuth ? (
+    <Navigate to={ActiveRoutes.LOGIN} />
+  ) : (
     <div className={styles.UsersContainer}>
       <Preloader isFetching={isFetching}></Preloader>
       <ul className={styles.UsersList}>
