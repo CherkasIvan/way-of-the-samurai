@@ -8,6 +8,7 @@ import { IProfilePage } from '../../../../../../utils/models/profile-page.interf
 import { WithRouter } from '../../../../../shared/withRouter/WithRouter'
 import { getProfileTC } from '../../../../../../redux/thunk/profile-thunk'
 import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents'
+import { compose } from '@reduxjs/toolkit'
 
 interface IProfileClassContainerProps {
   profilePage: IProfilePage
@@ -33,8 +34,6 @@ class ProfileClassContainer extends React.Component<IProfileClassContainerProps>
   }
 }
 
-const AuthRedirectComponent = withAuthRedirect(ProfileClassContainer)
-
 const mapStateToProps = (state: IState) => {
   return {
     profilePage: state.profilePage,
@@ -42,6 +41,20 @@ const mapStateToProps = (state: IState) => {
     isFetching: state.usersPage.isFetching,
   }
 }
+
+// SHOULD BE IMPLEMENTED
+// compose(
+//   connect(mapStateToProps, {
+//     updatePostHandler: UpdatePostAC,
+//     addPostHandler: AddPostAC,
+//     getProfileTC: getProfileTC,
+//   }),
+//   WithRouter,
+//   withAuthRedirect,
+// )(ProfileClassContainer)
+
+const AuthRedirectComponent = withAuthRedirect(ProfileClassContainer)
+
 const WithUrlDataContainerComponent = WithRouter(AuthRedirectComponent)
 
 export default connect(mapStateToProps, {

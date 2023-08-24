@@ -3,6 +3,7 @@ import { IState } from '../../../../models/state.interface'
 import { UpdateMessageAC, AddMessageAC } from '../../../../../../redux/actions/actions'
 import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents'
 import Dialogs from './Dialogs'
+import { compose } from 'redux'
 
 const mapStateToProps = (state: IState) => {
   return {
@@ -10,9 +11,10 @@ const mapStateToProps = (state: IState) => {
   }
 }
 
-const AuthRedirectComponent = withAuthRedirect(Dialogs)
-
-export default connect(mapStateToProps, {
-  updatedMessageTextHandler: UpdateMessageAC,
-  addMessageTextHandler: AddMessageAC,
-})(AuthRedirectComponent)
+export default compose(
+  connect(mapStateToProps, {
+    updatedMessageTextHandler: UpdateMessageAC,
+    addMessageTextHandler: AddMessageAC,
+  }),
+  withAuthRedirect,
+)(Dialogs)
