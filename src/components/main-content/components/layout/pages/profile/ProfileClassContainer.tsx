@@ -5,8 +5,9 @@ import { IState } from '../../../../models/state.interface'
 import { connect } from 'react-redux'
 import React from 'react'
 import { IProfilePage } from '../../../../../../utils/models/profile-page.interface'
-import { withRouter } from '../../../../../../utils/functions/withRouter'
+import { WithRouter } from '../../../../../shared/withRouter/WithRouter'
 import { getProfileTC } from '../../../../../../redux/thunk/profile-thunk'
+import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents'
 
 interface IProfileClassContainerProps {
   profilePage: IProfilePage
@@ -32,19 +33,19 @@ class ProfileClassContainer extends React.Component<IProfileClassContainerProps>
   }
 }
 
+const AuthRedirectComponent = withAuthRedirect(ProfileClassContainer)
+
 const mapStateToProps = (state: IState) => {
   return {
     profilePage: state.profilePage,
     newPostText: state.profilePage.newPostText,
     isFetching: state.usersPage.isFetching,
-    isAuth: state.auth.isAuth,
   }
 }
-
-const withUrlDataContainerComponent = withRouter(ProfileClassContainer)
+const WithUrlDataContainerComponent = WithRouter(AuthRedirectComponent)
 
 export default connect(mapStateToProps, {
   updatePostHandler: UpdatePostAC,
   addPostHandler: AddPostAC,
   getProfileTC: getProfileTC,
-})(withUrlDataContainerComponent)
+})(WithUrlDataContainerComponent)

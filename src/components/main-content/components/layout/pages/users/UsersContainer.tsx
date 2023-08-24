@@ -9,11 +9,13 @@ import {
   subscribeUsersTC,
   unsubscribeUsersTC,
 } from '../../../../../../redux/thunk/users-thunk'
+import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents'
 
 interface IUsersContainerProps {
   users: IUser[]
   pageSize: number
   totalUsersCount: number
+  isAuth: boolean
   currentPage: number
   isFetching: boolean
   followingInProgress: number[]
@@ -48,10 +50,12 @@ const mapStateToProps = (state: IState) => {
   }
 }
 
+const AuthRedirectComponent = withAuthRedirect(UsersContainer)
+
 export default connect(mapStateToProps, {
   setUsers: SetUsersAC,
   changePage: SetCurrentPageAC,
   getUsersTC: getUsersTC,
   subscribeUsersTC: subscribeUsersTC,
   unsubscribeUsersTC: unsubscribeUsersTC,
-})(UsersContainer)
+})(AuthRedirectComponent)
