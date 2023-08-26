@@ -10,7 +10,7 @@ interface IProfileInfoProps {
 const ProfileInfo: FC<IProfileInfoProps> = ({ message, name }) => {
   return (
     <div className={classes.ProfileContainer}>
-      <div className={classes.userContainer}>
+      <div className={classes.UserContainer}>
         <img src={ProfileLogo} alt={ProfileLogo} className={classes.ProfileImg}></img>
         <span className={classes.ProfileName}>{name}</span>
       </div>

@@ -3,6 +3,7 @@ import classes from './CurrentProfile.module.scss'
 import ProfileLogo from '../../../../../../../../assets/img/avatar.jpg'
 import { IProfileInformation } from '../../../../../../models/profile-information.interface'
 import Preloader from '../../../../../../../shared/preloader/Preloader'
+import ProfileStatus from '../profileStatus/ProfileStatus'
 
 interface ICurrentProfileProps {
   currentProfile: IProfileInformation
@@ -14,6 +15,7 @@ const CurrentProfile: FC<ICurrentProfileProps> = ({ currentProfile }) => {
       <div className={classes.UserContainer}>
         <img src={ProfileLogo} alt={ProfileLogo} className={classes.ProfileImg}></img>
         <span className={classes.ProfileName}>{currentProfile.fullName}</span>
+        <ProfileStatus status={'some text'} />
       </div>
     </div>
   ) : (
