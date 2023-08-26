@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { LegacyRef } from 'react'
 import styles from './ProfileStatus.module.scss'
 
 interface IProfileStatusProps {
   status: string
+  updateMyStatusTC: (message: string) => any
 }
 
 interface IState {
@@ -17,7 +18,7 @@ class ProfileStatus extends React.Component<IProfileStatusProps, IState> {
       editMode: false,
     }
   }
-
+  statusInputRef: any = React.createRef()
   activateEditMode = () => {
     this.setState(() => ({
       editMode: true,
@@ -25,9 +26,11 @@ class ProfileStatus extends React.Component<IProfileStatusProps, IState> {
   }
 
   deactivateEditMode = () => {
+    const newStatusMessage = this.statusInputRef.current.value
     this.setState(() => ({
       editMode: false,
     }))
+    this.props.updateMyStatusTC(newStatusMessage)
   }
 
   render() {
@@ -42,9 +45,10 @@ class ProfileStatus extends React.Component<IProfileStatusProps, IState> {
         ) : (
           <div className={styles.ProfileInputContainer}>
             <input
+              ref={this.statusInputRef}
               autoFocus={true}
               onBlur={this.deactivateEditMode}
-              value={this.props.status}
+              defaultValue={this.props.status}
               className={styles.ProfileInput}
             />
           </div>

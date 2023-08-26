@@ -1,4 +1,4 @@
-import { getUsers, subscribeUserApi, unsubscribeUserApi } from '../../api/api'
+import { usersApi } from '../../api/api'
 import {
   SetPreloaderAC,
   SetPreloaderInProgressAC,
@@ -11,7 +11,7 @@ import {
 export const getUsersTC = (users: string, page: string, pageSize: string) => {
   return (dispatch: any) => {
     dispatch(SetPreloaderAC(true))
-    getUsers(users, page, pageSize).then((response) => {
+    usersApi.getUsers(users, page, pageSize).then((response) => {
       dispatch(SetUsersAC(response.data.items))
       dispatch(SetTotalUsersCountAC(response.data.totalCount))
       dispatch(SetPreloaderAC(false))
@@ -22,7 +22,7 @@ export const getUsersTC = (users: string, page: string, pageSize: string) => {
 export const subscribeUsersTC = (userId: number) => {
   return (dispatch: any) => {
     dispatch(SetPreloaderInProgressAC(true, userId))
-    subscribeUserApi(userId).then((response) => {
+    usersApi.subscribeUsersProfile(userId).then((response) => {
       if (response.data.resultCode === 0) {
         dispatch(UserSubscribeAC(userId))
       }
@@ -34,7 +34,7 @@ export const subscribeUsersTC = (userId: number) => {
 export const unsubscribeUsersTC = (userId: number) => {
   return (dispatch: any) => {
     dispatch(SetPreloaderInProgressAC(true, userId))
-    unsubscribeUserApi(userId).then((response) => {
+    usersApi.unsubscribeUsersProfile(userId).then((response) => {
       if (response.data.resultCode === 0) {
         dispatch(UserUnsubscribeAC(userId))
       }

@@ -11,15 +11,22 @@ export interface IProfileProps {
   isAuth: boolean
   updatePostHandler: (text: string) => void
   addPostHandler: (text: string) => void
+  updateMyStatusTC: (message: string) => any
 }
 
-const Profile: FC<IProfileProps> = ({ profilePage, updatePostHandler, addPostHandler, isAuth }) => {
+const Profile: FC<IProfileProps> = ({
+  profilePage,
+  updatePostHandler,
+  addPostHandler,
+  isAuth,
+  updateMyStatusTC,
+}) => {
   return !isAuth ? (
     <Navigate to={ActiveRoutes.LOGIN} />
   ) : (
     <div className={classes.profileContainer}>
       <div className={classes.CurrentProfile}>
-        <CurrentProfile currentProfile={profilePage.currentProfile} />
+        <CurrentProfile profilePage={profilePage} updateMyStatusTC={updateMyStatusTC} />
       </div>
 
       <PostsContainer

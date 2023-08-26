@@ -3,6 +3,7 @@ import { IProfileInformation } from '../../components/main-content/models/profil
 
 export interface IProfilePage {
   posts: IPost[]
-  currentProfile: any
+  currentProfile: IProfileInformation | null
   newPostText: string
+  status: string
 }
