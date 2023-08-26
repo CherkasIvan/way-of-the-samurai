@@ -6,9 +6,13 @@ import { connect } from 'react-redux'
 import React from 'react'
 import { IProfilePage } from '../../../../../../utils/models/profile-page.interface'
 import { WithRouter } from '../../../../../shared/withRouter/WithRouter'
-import { getProfileTC } from '../../../../../../redux/thunk/profile-thunk'
+import {
+  getProfileStatusTC,
+  getProfileTC,
+  updateMyStatusTC,
+} from '../../../../../../redux/thunk/profile-thunk'
 import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents'
-import { compose } from '@reduxjs/toolkit'
+import { profileApi } from '../../../../../../api/api'
 
 interface IProfileClassContainerProps {
   profilePage: IProfilePage
@@ -18,11 +22,14 @@ interface IProfileClassContainerProps {
   updatePostHandler: (text: string) => void
   router: any
   getProfileTC: (router: any) => any
+  getProfileStatusTC: (router: any) => any
+  updateMyStatusTC: (message: string) => any
 }
 
 class ProfileClassContainer extends React.Component<IProfileClassContainerProps> {
   componentDidMount(): void {
     this.props.getProfileTC(this.props.router)
+    this.props.getProfileStatusTC(this.props.router)
   }
 
   render(): React.ReactNode {
@@ -38,6 +45,7 @@ const mapStateToProps = (state: IState) => {
   return {
     profilePage: state.profilePage,
     newPostText: state.profilePage.newPostText,
+    status: state.profilePage.status,
     isFetching: state.usersPage.isFetching,
   }
 }
@@ -61,4 +69,6 @@ export default connect(mapStateToProps, {
   updatePostHandler: UpdatePostAC,
   addPostHandler: AddPostAC,
   getProfileTC: getProfileTC,
+  getProfileStatusTC: getProfileStatusTC,
+  updateMyStatusTC: updateMyStatusTC,
 })(WithUrlDataContainerComponent)

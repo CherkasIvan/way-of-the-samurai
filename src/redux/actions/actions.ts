@@ -43,6 +43,16 @@ export const SetProfileAC = (profile: IProfileInformation): IAction => ({
   payload: profile,
 })
 
+export const GetProfileStatusAC = (profileStatus: string): IAction => ({
+  type: StoreEnum.GET_USERS_STATUS,
+  payload: profileStatus,
+})
+
+export const UpdateMyStatusAC = (message: string): IAction => ({
+  type: StoreEnum.UPDATE_MY_STATUS,
+  payload: message,
+})
+
 export const SetCurrentPageAC = (currentPage: number): IAction => ({
   type: StoreEnum.SET_CURRENT_PAGE,
   payload: currentPage,

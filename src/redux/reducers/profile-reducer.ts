@@ -8,6 +8,7 @@ const initialState: IProfilePage = {
   posts: ActivePosts,
   currentProfile: null,
   newPostText: '',
+  status: '',
 }
 
 const profileReducer = (state: IProfilePage = initialState, action: IAction): IProfilePage => {
@@ -29,6 +30,18 @@ const profileReducer = (state: IProfilePage = initialState, action: IAction): IP
       return {
         ...state,
         currentProfile: { ...action.payload },
+      }
+    }
+    case StoreEnum.GET_USERS_STATUS: {
+      return {
+        ...state,
+        status: action.payload,
+      }
+    }
+    case StoreEnum.UPDATE_MY_STATUS: {
+      return {
+        ...state,
+        status: action.payload,
       }
     }
     case StoreEnum.UPDATE_NEW_POST_TEXT: {
