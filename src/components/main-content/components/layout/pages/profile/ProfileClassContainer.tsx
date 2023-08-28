@@ -12,7 +12,6 @@ import {
   updateMyStatusTC,
 } from '../../../../../../redux/thunk/profile-thunk'
 import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents'
-import { profileApi } from '../../../../../../api/api'
 
 interface IProfileClassContainerProps {
   profilePage: IProfilePage
