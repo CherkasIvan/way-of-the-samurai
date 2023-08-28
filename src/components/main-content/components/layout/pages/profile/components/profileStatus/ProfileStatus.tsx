@@ -8,6 +8,7 @@ interface IProfileStatusProps {
 
 interface IState {
   editMode: boolean
+  status: string
 }
 
 class ProfileStatus extends React.Component<IProfileStatusProps, IState> {
@@ -16,21 +17,34 @@ class ProfileStatus extends React.Component<IProfileStatusProps, IState> {
 
     this.state = {
       editMode: false,
+      status: this.props.status,
     }
   }
-  statusInputRef: any = React.createRef()
   activateEditMode = () => {
     this.setState(() => ({
       editMode: true,
     }))
   }
 
+  onStatusChange = (e: any) => {
+    this.setState(() => ({
+      status: e.target.value,
+    }))
+  }
+
+  componentDidUpdate(prevProps: Readonly<IProfileStatusProps>): void {
+    if (prevProps !== this.props) {
+      this.setState(() => ({
+        status: this.props.status,
+      }))
+    }
+  }
+
   deactivateEditMode = () => {
-    const newStatusMessage = this.statusInputRef.current.value
     this.setState(() => ({
       editMode: false,
     }))
-    this.props.updateMyStatusTC(newStatusMessage)
+    this.props.updateMyStatusTC(this.state.status)
   }
 
   render() {
@@ -45,10 +59,10 @@ class ProfileStatus extends React.Component<IProfileStatusProps, IState> {
         ) : (
           <div className={styles.ProfileInputContainer}>
             <input
-              ref={this.statusInputRef}
               autoFocus={true}
               onBlur={this.deactivateEditMode}
-              defaultValue={this.props.status}
+              onChange={this.onStatusChange}
+              value={this.state.status}
               className={styles.ProfileInput}
             />
           </div>
