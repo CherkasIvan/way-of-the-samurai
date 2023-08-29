@@ -17,6 +17,7 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^6.12.1",
     "react-scripts": "5.0.1",
+    "redux-form": "^8.3.10",
     "redux-thunk": "^2.4.2",
     "web-vitals": "^2.1.4"
   },
@@ -52,6 +53,7 @@
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
     "@types/react-router-dom": "^5.3.3",
+    "@types/redux-form": "^8.3.5",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "eslint": "^8.47.0",
     "eslint-config-prettier": "^9.0.0",

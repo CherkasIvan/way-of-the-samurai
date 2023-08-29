@@ -7,6 +7,16 @@ const instance = axios.create({
 })
 
 export const authApi = {
+  login() {
+    const login = '/auth/login'
+    return instance.get(login)
+  },
+
+  logout() {
+    const login = '/auth/login'
+    return instance.delete(login)
+  },
+
   getMe() {
     const auth = '/auth/me'
     return instance.get(auth)
