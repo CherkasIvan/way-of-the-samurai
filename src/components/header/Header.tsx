@@ -3,7 +3,7 @@ import classes from './Header.module.scss'
 import { ActiveRoutes } from '../../utils/enums/active-routes.enum'
 import { NavLink } from 'react-router-dom'
 
-export interface IHeaderProps {
+interface IHeaderProps {
   isAuth: boolean
   login: string | null
 }
