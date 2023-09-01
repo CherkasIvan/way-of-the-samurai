@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { IState } from '../../../../models/state.interface'
-import { UpdateMessageAC, AddMessageAC } from '../../../../../../redux/actions/actions'
+import { AddMessageAC } from '../../../../../../redux/actions/actions'
 import Login from './Login'
 
 const mapStateToProps = (state: IState) => {
@@ -10,6 +10,5 @@ const mapStateToProps = (state: IState) => {
 }
 
 export default connect(mapStateToProps, {
-  updatedMessageTextHandler: UpdateMessageAC,
   addMessageTextHandler: AddMessageAC,
 })(Login)

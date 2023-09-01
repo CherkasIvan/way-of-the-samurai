@@ -13,16 +13,6 @@ export const AddMessageAC = (message: string): IAction => ({
   payload: message,
 })
 
-export const UpdatePostAC = (message: string): IAction => ({
-  type: StoreEnum.UPDATE_NEW_POST_TEXT,
-  payload: message,
-})
-
-export const UpdateMessageAC = (message: string): IAction => ({
-  type: StoreEnum.UPDATE_MESSAGE,
-  payload: message,
-})
-
 export const UserSubscribeAC = (userId: number): IAction => ({
   type: StoreEnum.USER_SUBSCRIBE,
   payload: userId,
@@ -76,4 +66,9 @@ export const SetPreloaderInProgressAC = (isFetching: boolean, userId: number): I
 export const SetUserDataAC = (id: number, email: string, login: string): IAction => ({
   type: StoreEnum.SET_USER_DATA,
   payload: { id, email, login },
+})
+
+export const SetAuthUserAC = (login: string, password: string, rememberMe?: boolean): IAction => ({
+  type: StoreEnum.SET_AUTH_USER,
+  payload: { login, password, rememberMe },
 })

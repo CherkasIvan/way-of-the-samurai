@@ -9,18 +9,11 @@ import { ActiveRoutes } from '../../../../../../utils/enums/active-routes.enum'
 export interface IProfileProps {
   profilePage: IProfilePage
   isAuth: boolean
-  updatePostHandler: (text: string) => void
   addPostHandler: (text: string) => void
   updateMyStatusTC: (message: string) => any
 }
 
-const Profile: FC<IProfileProps> = ({
-  profilePage,
-  updatePostHandler,
-  addPostHandler,
-  isAuth,
-  updateMyStatusTC,
-}) => {
+const Profile: FC<IProfileProps> = ({ profilePage, addPostHandler, isAuth, updateMyStatusTC }) => {
   return !isAuth ? (
     <Navigate to={ActiveRoutes.LOGIN} />
   ) : (
@@ -28,12 +21,7 @@ const Profile: FC<IProfileProps> = ({
       <div className={classes.CurrentProfile}>
         <CurrentProfile profilePage={profilePage} updateMyStatusTC={updateMyStatusTC} />
       </div>
-
-      <PostsContainer
-        postsData={profilePage.posts}
-        updatePostHandler={updatePostHandler}
-        addPostHandler={addPostHandler}
-      />
+      <PostsContainer postsData={profilePage.posts} addPostHandler={addPostHandler} />
     </div>
   )
 }

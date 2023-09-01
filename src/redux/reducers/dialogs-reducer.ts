@@ -8,7 +8,6 @@ import { IDialogsPage } from '../../utils/models/dialogs-page.interface'
 const initialState: IDialogsPage = {
   users: ActiveUsers,
   messages: ActiveMessages,
-  newMessageText: '',
 }
 
 const dialogsReducer = (state: IDialogsPage = initialState, action: IAction): IDialogsPage => {
@@ -16,19 +15,13 @@ const dialogsReducer = (state: IDialogsPage = initialState, action: IAction): ID
     case StoreEnum.ADD_MESSAGE: {
       const actualMessage: IMessage = {
         id: state.messages.length + 1,
-        message: state.newMessageText,
+        message: action.payload,
       }
       const stateCopy = {
         ...state,
         messages: [...state.messages],
       }
       stateCopy.messages.push(actualMessage)
-      stateCopy.newMessageText = ''
-      return stateCopy
-    }
-    case StoreEnum.UPDATE_MESSAGE: {
-      const stateCopy = { ...state }
-      stateCopy.newMessageText = action.payload
       return stateCopy
     }
     default:

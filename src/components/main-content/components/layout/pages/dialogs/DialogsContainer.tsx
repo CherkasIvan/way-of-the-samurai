@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { IState } from '../../../../models/state.interface'
-import { UpdateMessageAC, AddMessageAC } from '../../../../../../redux/actions/actions'
+import { AddMessageAC } from '../../../../../../redux/actions/actions'
 import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents'
 import Dialogs from './Dialogs'
 import { compose } from 'redux'
@@ -13,8 +13,7 @@ const mapStateToProps = (state: IState) => {
 
 export default compose(
   connect(mapStateToProps, {
-    updatedMessageTextHandler: UpdateMessageAC,
-    addMessageTextHandler: AddMessageAC,
+    addMessageText: AddMessageAC,
   }),
   withAuthRedirect,
 )(Dialogs)
