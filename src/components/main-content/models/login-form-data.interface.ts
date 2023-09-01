@@ -1,4 +1,4 @@
-export interface LoginFormData {
+export interface ILoginFormData {
   login: string
   password: string
   rememberMe?: boolean

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ILoginPage } from '../utils/models/login-page.interface'
 
 const instance = axios.create({
   withCredentials: true,
@@ -7,9 +8,10 @@ const instance = axios.create({
 })
 
 export const authApi = {
-  login() {
+  login(authData: ILoginPage) {
     const login = '/auth/login'
-    return instance.get(login)
+    const body = authData
+    return instance.post(login, body)
   },
 
   logout() {

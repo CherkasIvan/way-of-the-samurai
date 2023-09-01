@@ -1,5 +1,5 @@
 import { authApi } from '../../api/api'
-import { SetUserDataAC } from '../actions/actions'
+import { SetAuthUserAC, SetUserDataAC } from '../actions/actions'
 
 export const getMeTC = () => {
   return (dispatch: any) => {
@@ -11,3 +11,14 @@ export const getMeTC = () => {
     })
   }
 }
+
+// export const getAuthTC = () => {
+//   return (dispatch: any) => {
+//     authApi.login().then((response) => {
+//       if (response.data.resultCode === 0) {
+//         const { id, login, email } = response.data.data
+//         dispatch(SetAuthUserAC(id, email, login))
+//       }
+//     })
+//   }
+// }

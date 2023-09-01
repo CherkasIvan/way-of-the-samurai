@@ -44,12 +44,6 @@ const profileReducer = (state: IProfilePage = initialState, action: IAction): IP
         status: action.payload,
       }
     }
-    case StoreEnum.UPDATE_NEW_POST_TEXT: {
-      return {
-        ...state,
-        newPostText: action.payload,
-      }
-    }
     default:
       return state
   }

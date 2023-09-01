@@ -4,22 +4,13 @@ import { IPost } from '../../../../../../models/post.interface'
 
 interface IPostContainerProps {
   postsData: IPost[]
-  updatePostHandler: (text: string) => void
   addPostHandler: (text: string) => void
 }
 
-const PostsContainer: FC<IPostContainerProps> = ({
-  postsData,
-  addPostHandler,
-  updatePostHandler: updatePostHandler,
-}) => {
+const PostsContainer: FC<IPostContainerProps> = ({ postsData, addPostHandler }) => {
   return (
     <div>
-      <Posts
-        postsData={postsData}
-        updatePostHandler={updatePostHandler}
-        addPostHandler={addPostHandler}
-      />
+      <Posts postsData={postsData} addPost={addPostHandler} />
     </div>
   )
 }

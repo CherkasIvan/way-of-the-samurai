@@ -3,12 +3,7 @@ import { IState } from '../../../../models/state.interface'
 import { IUser } from '../../../../models/user.interface'
 import React from 'react'
 import Users from './Users'
-import {
-  SetUsersAC,
-  SetCurrentPageAC,
-  AddPostAC,
-  UpdatePostAC,
-} from '../../../../../../redux/actions/actions'
+import { SetUsersAC, SetCurrentPageAC } from '../../../../../../redux/actions/actions'
 import {
   getUsersTC,
   subscribeUsersTC,
