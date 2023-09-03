@@ -1,6 +1,11 @@
-import React, { FC, useRef } from 'react'
+import React from 'react'
 import classes from './AddTextAreaMessage.module.scss'
 import { Field, reduxForm } from 'redux-form'
+import { maxLengthCreator, requiredField } from '../../../utils/validators/validators'
+import { Textarea } from '../forms-controls/FormsControls'
+
+const maxLength20 = maxLengthCreator(20)
+const required = requiredField
 
 const AddTextAreaMessage = (props: {
   handleSubmit: React.FormEventHandler<HTMLFormElement> | undefined
@@ -11,7 +16,8 @@ const AddTextAreaMessage = (props: {
         type='textarea'
         placeholder={'ADD MESSAGE'}
         name={'newMessageBody'}
-        component={'textarea'}
+        component={Textarea}
+        validate={[required, maxLength20]}
       ></Field>
       <button>Add new message</button>
     </form>
