@@ -2,6 +2,7 @@
   "name": "way-of-the-samurai",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://cherkasivan.github.io/way-of-the-samurai/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
