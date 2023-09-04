@@ -1,5 +1,5 @@
 export interface ILoginPage {
-  login: string
-  password: string
-  rememberMe?: boolean
+  email: string;
+  password: string;
+  rememberMe?: boolean;
 }

@@ -1,13 +1,13 @@
-import { StoreEnum } from '../../utils/enums/store.enum'
-import { IAction } from '../../utils/models/action.interface'
-import { IAuth } from '../../utils/models/auth.interface'
+import { StoreEnum } from '../../utils/enums/store.enum';
+import { IAction } from '../../utils/models/action.interface';
+import { IAuth } from '../../utils/models/auth.interface';
 
 const initialState: IAuth = {
   id: null,
   email: null,
   login: null,
   isAuth: false,
-}
+};
 
 const authReducer = (state: IAuth = initialState, action: IAction): IAuth => {
   switch (action.type) {
@@ -15,12 +15,11 @@ const authReducer = (state: IAuth = initialState, action: IAction): IAuth => {
       return {
         ...state,
         ...action.payload,
-        isAuth: true,
-      }
+      };
     }
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default authReducer
+export default authReducer;
