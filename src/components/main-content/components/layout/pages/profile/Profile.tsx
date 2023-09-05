@@ -1,16 +1,17 @@
-import { FC } from 'react'
-import classes from './Profile.module.scss'
-import { IProfilePage } from '../../../../../../utils/models/profile-page.interface'
-import PostsContainer from './components/posts/PostsContainer'
-import CurrentProfile from './components/currentProfile/CurrentProfile'
-import { Navigate } from 'react-router-dom'
-import { ActiveRoutes } from '../../../../../../utils/enums/active-routes.enum'
+import { FC } from 'react';
+import classes from './Profile.module.scss';
+import { IProfilePage } from '../../../../../../utils/models/profile-page.interface';
+import PostsContainer from './components/posts/PostsContainer';
+import CurrentProfile from './components/currentProfile/CurrentProfile';
+import { Navigate } from 'react-router-dom';
+import { ActiveRoutes } from '../../../../../../utils/enums/active-routes.enum';
 
 export interface IProfileProps {
-  profilePage: IProfilePage
-  isAuth: boolean
-  addPostHandler: (text: string) => void
-  updateMyStatusTC: (message: string) => any
+  profilePage: IProfilePage;
+  isAuth: boolean;
+  authorizedUserId: number;
+  addPostHandler: (text: string) => void;
+  updateMyStatusTC: (message: string) => any;
 }
 
 const Profile: FC<IProfileProps> = ({ profilePage, addPostHandler, isAuth, updateMyStatusTC }) => {
@@ -23,7 +24,7 @@ const Profile: FC<IProfileProps> = ({ profilePage, addPostHandler, isAuth, updat
       </div>
       <PostsContainer postsData={profilePage.posts} addPostHandler={addPostHandler} />
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

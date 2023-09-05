@@ -12,15 +12,8 @@ interface ILoginProps {
   logoutUser: () => void;
 }
 
-const Login: FC<ILoginProps> = ({
-  addMessageTextHandler,
-  loginPage,
-  loginUser,
-  logoutUser,
-  isAuth,
-}) => {
+const Login: FC<ILoginProps> = ({ loginUser, isAuth }) => {
   const onSubmit = (formData: any) => {
-    console.log(formData);
     loginUser(formData.EMAIL, formData.password, formData.rememberMe);
   };
 

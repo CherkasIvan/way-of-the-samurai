@@ -3,7 +3,7 @@ import { IAction } from '../../utils/models/action.interface';
 import { IAuth } from '../../utils/models/auth.interface';
 
 const initialState: IAuth = {
-  id: null,
+  userId: null,
   email: null,
   login: null,
   isAuth: false,

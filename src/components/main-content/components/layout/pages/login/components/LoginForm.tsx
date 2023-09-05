@@ -9,6 +9,7 @@ const maxLength10 = maxLengthCreator(10);
 const required = requiredField;
 
 const LoginForm = (props: any) => {
+  console.log(props);
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
@@ -34,6 +35,7 @@ const LoginForm = (props: any) => {
         <Field type='checkbox' component={'input'} name={'rememberMe'} />
         <span>Remember me</span>
       </div>
+      {props.error && <div className={styles.Error}>{props.error}</div>}
       <div>
         <button>Login</button>
       </div>
