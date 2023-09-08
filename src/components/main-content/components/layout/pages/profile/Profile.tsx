@@ -14,8 +14,14 @@ export interface IProfileProps {
   updateMyStatusTC: (message: string) => any;
 }
 
-const Profile: FC<IProfileProps> = ({ profilePage, addPostHandler, isAuth, updateMyStatusTC }) => {
-  return !isAuth ? (
+const Profile: FC<IProfileProps> = ({
+  profilePage,
+  addPostHandler,
+  isAuth,
+  authorizedUserId,
+  updateMyStatusTC,
+}) => {
+  return !isAuth && !authorizedUserId ? (
     <Navigate to={ActiveRoutes.LOGIN} />
   ) : (
     <div className={classes.profileContainer}>

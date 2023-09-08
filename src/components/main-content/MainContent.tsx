@@ -1,14 +1,17 @@
-import classes from './MainContent.module.scss'
-import Layout from './components/layout/Layout'
-import NavigationContainer from './components/navigation/NavigationContainer'
+import { Component, ReactNode } from 'react';
+import classes from './MainContent.module.scss';
+import NavigationContainer from './components/navigation/NavigationContainer';
+import LayoutContainer from './components/layout/layoutContainer';
 
-const MainContent = () => {
-  return (
-    <main className={classes.mainContainer}>
-      <NavigationContainer />
-      <Layout />
-    </main>
-  )
+class MainContent extends Component {
+  render(): ReactNode {
+    return (
+      <main className={classes.mainContainer}>
+        <NavigationContainer />
+        <LayoutContainer />
+      </main>
+    );
+  }
 }
 
-export default MainContent
+export default MainContent;

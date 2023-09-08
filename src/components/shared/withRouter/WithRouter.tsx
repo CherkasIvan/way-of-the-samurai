@@ -5,7 +5,6 @@ export const WithRouter = (Component: React.ElementType) => {
     const location = useLocation();
     const navigate = useNavigate();
     const params = useParams();
-    debugger;
     return <Component {...props} router={{ location, navigate, params }} />;
   };
 

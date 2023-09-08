@@ -77,3 +77,12 @@ export const SetAuthUserAC = (login: string, password: string, rememberMe?: bool
   type: StoreEnum.SET_AUTH_USER,
   payload: { login, password, rememberMe },
 });
+
+export const SetInitialized = (initialized: boolean): IAction => ({
+  type: StoreEnum.SET_INITIALIZED,
+  payload: initialized,
+});
+
+export const InitializedSuccessAC = (): IAction => ({
+  type: StoreEnum.INITIALIZED_SUCCESS,
+});
