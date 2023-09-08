@@ -1,66 +1,71 @@
-import { connect } from 'react-redux'
-import { IState } from '../../../../models/state.interface'
-import { IUser } from '../../../../models/user.interface'
-import React from 'react'
-import Users from './Users'
-import { SetUsersAC, SetCurrentPageAC } from '../../../../../../redux/actions/actions'
+import { connect } from 'react-redux';
+import { IState } from '../../../../models/state.interface';
+import { IUser } from '../../../../models/user.interface';
+import React from 'react';
+import Users from './Users';
+import { SetUsersAC, SetCurrentPageAC } from '../../../../../../redux/actions/actions';
 import {
-  getUsersTC,
+  requestUsersTC,
   subscribeUsersTC,
   unsubscribeUsersTC,
-} from '../../../../../../redux/thunk/users-thunk'
-import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents'
-import { compose } from '@reduxjs/toolkit'
-import { getProfileTC } from '../../../../../../redux/thunk/profile-thunk'
-import { WithRouter } from '../../../../../shared/withRouter/WithRouter'
-import ProfileClassContainer from '../profile/ProfileClassContainer'
+} from '../../../../../../redux/thunk/users-thunk';
+import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents';
+import { compose } from '@reduxjs/toolkit';
+import {
+  getCurrentPage,
+  getFollowingInProgress,
+  getIsFetching,
+  getPageSize,
+  getTotalUsersCount,
+  getUsers,
+} from '../../../../../../redux/selectors/users.selector';
 
 interface IUsersContainerProps {
-  users: IUser[]
-  pageSize: number
-  totalUsersCount: number
-  isAuth: boolean
-  currentPage: number
-  isFetching: boolean
-  followingInProgress: number[]
-  setUsers: (users: IUser[]) => void
-  changePage: (pageNumber: number) => void
-  getUsersTC: (users: string, page: string, pageSize: string) => any
-  subscribeUsersTC: (userId: number) => any
-  unsubscribeUsersTC: (userId: number) => any
+  users: IUser[];
+  pageSize: number;
+  totalUsersCount: number;
+  isAuth: boolean;
+  currentPage: number;
+  isFetching: boolean;
+  followingInProgress: number[];
+  setUsers: (users: IUser[]) => void;
+  changePage: (pageNumber: number) => void;
+  getUsersTC: (users: string, page: string, pageSize: string) => void;
+  subscribeUsersTC: (userId: number) => void;
+  unsubscribeUsersTC: (userId: number) => void;
 }
 
 class UsersContainer extends React.Component<IUsersContainerProps> {
   componentDidMount(): void {
-    const users = '/users'
-    const page = `?page=${this.props.currentPage}`
-    const pageSize = `&count=${this.props.pageSize}`
-    this.props.getUsersTC(users, page, pageSize)
+    const users = '/users';
+    const page = `?page=${this.props.currentPage}`;
+    const pageSize = `&count=${this.props.pageSize}`;
+    this.props.getUsersTC(users, page, pageSize);
   }
 
   render(): React.ReactNode {
-    return <Users {...this.props} />
+    return <Users {...this.props} />;
   }
 }
 
 const mapStateToProps = (state: IState) => {
   return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    totalUsersCount: state.usersPage.totalUsersCount,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
-    followingInProgress: state.usersPage.followingInProgress,
-  }
-}
+    users: getUsers(state),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    followingInProgress: getFollowingInProgress(state),
+  };
+};
 
 export default compose(
   connect(mapStateToProps, {
     setUsers: SetUsersAC,
     changePage: SetCurrentPageAC,
-    getUsersTC: getUsersTC,
+    getUsersTC: requestUsersTC,
     subscribeUsersTC: subscribeUsersTC,
     unsubscribeUsersTC: unsubscribeUsersTC,
   }),
   withAuthRedirect,
-)(UsersContainer)
+)(UsersContainer);
