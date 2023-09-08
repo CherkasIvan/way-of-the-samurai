@@ -4,10 +4,13 @@ import { ILoginPage } from '../../utils/models/login-page.interface';
 const initialState: ILoginPage = {
   email: '',
   password: '',
-  rememberMe: false,
+  rememberMe: false
 };
 
-const loginReducer = (state: ILoginPage = initialState, action: IAction): ILoginPage => {
+const loginReducer = (
+  state: ILoginPage = initialState,
+  action: IAction
+): ILoginPage => {
   return state;
 };
 

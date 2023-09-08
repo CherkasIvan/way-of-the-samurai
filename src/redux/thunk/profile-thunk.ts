@@ -3,7 +3,7 @@ import {
   GetProfileStatusAC,
   SetPreloaderAC,
   SetProfileAC,
-  UpdateMyStatusAC,
+  UpdateMyStatusAC
 } from '../actions/actions';
 
 export const getProfileTC = (router: any) => {
@@ -34,14 +34,18 @@ export const getProfileStatusTC = (router: any) => {
     const profileStatus = '/profile/status';
     const userId = router.params.userId;
     !userId
-      ? profileApi.getUsersProfileStatus(profileStatus, '29840').then((response) => {
-          dispatch(GetProfileStatusAC(response.data));
-          dispatch(SetPreloaderAC(false));
-        })
-      : profileApi.getUsersProfileStatus(profileStatus, userId).then((response) => {
-          dispatch(GetProfileStatusAC(response.data));
-          dispatch(SetPreloaderAC(false));
-        });
+      ? profileApi
+          .getUsersProfileStatus(profileStatus, '29840')
+          .then((response) => {
+            dispatch(GetProfileStatusAC(response.data));
+            dispatch(SetPreloaderAC(false));
+          })
+      : profileApi
+          .getUsersProfileStatus(profileStatus, userId)
+          .then((response) => {
+            dispatch(GetProfileStatusAC(response.data));
+            dispatch(SetPreloaderAC(false));
+          });
   };
 };
 
@@ -49,11 +53,13 @@ export const updateMyStatusTC = (message: string) => {
   return (dispatch: any) => {
     dispatch(SetPreloaderAC(true));
     const profileStatus = '/profile/status';
-    profileApi.updateMyProfileStatus(profileStatus, message).then((response) => {
-      if (response.data.resultCode === 0) {
-        dispatch(UpdateMyStatusAC(message));
-        dispatch(SetPreloaderAC(false));
-      }
-    });
+    profileApi
+      .updateMyProfileStatus(profileStatus, message)
+      .then((response) => {
+        if (response.data.resultCode === 0) {
+          dispatch(UpdateMyStatusAC(message));
+          dispatch(SetPreloaderAC(false));
+        }
+      });
   };
 };

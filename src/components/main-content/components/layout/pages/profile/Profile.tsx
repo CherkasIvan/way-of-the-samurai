@@ -19,16 +19,22 @@ const Profile: FC<IProfileProps> = ({
   addPostHandler,
   isAuth,
   authorizedUserId,
-  updateMyStatusTC,
+  updateMyStatusTC
 }) => {
   return !isAuth && !authorizedUserId ? (
     <Navigate to={ActiveRoutes.LOGIN} />
   ) : (
     <div className={classes.profileContainer}>
       <div className={classes.CurrentProfile}>
-        <CurrentProfile profilePage={profilePage} updateMyStatusTC={updateMyStatusTC} />
+        <CurrentProfile
+          profilePage={profilePage}
+          updateMyStatusTC={updateMyStatusTC}
+        />
       </div>
-      <PostsContainer postsData={profilePage.posts} addPostHandler={addPostHandler} />
+      <PostsContainer
+        postsData={profilePage.posts}
+        addPostHandler={addPostHandler}
+      />
     </div>
   );
 };

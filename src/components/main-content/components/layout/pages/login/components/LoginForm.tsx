@@ -2,7 +2,10 @@ import React, { FC } from 'react';
 import styles from './LoginForm.module.scss';
 import { Field, reduxForm } from 'redux-form';
 import { Input } from '../../../../../../shared/forms-controls/FormsControls';
-import { maxLengthCreator, requiredField } from '../../../../../../../utils/validators/validators';
+import {
+  maxLengthCreator,
+  requiredField
+} from '../../../../../../../utils/validators/validators';
 
 const maxLength20 = maxLengthCreator(30);
 const maxLength10 = maxLengthCreator(10);
@@ -14,7 +17,7 @@ const LoginForm = (props: any) => {
     <form onSubmit={props.handleSubmit}>
       <div>
         <Field
-          type='text'
+          type="text"
           placeholder={'EMAIL'}
           name={'EMAIL'}
           component={Input}
@@ -23,7 +26,7 @@ const LoginForm = (props: any) => {
       </div>
       <div>
         <Field
-          type='password'
+          type="password"
           placeholder={'PASSWORD'}
           name={'password'}
           typeof={'password'}
@@ -32,7 +35,11 @@ const LoginForm = (props: any) => {
         />
       </div>
       <div>
-        <Field type='checkbox' component={'input'} name={'rememberMe'} />
+        <Field
+          type="checkbox"
+          component={'input'}
+          name={'rememberMe'}
+        />
         <span>Remember me</span>
       </div>
       {props.error && <div className={styles.Error}>{props.error}</div>}

@@ -7,5 +7,5 @@ export enum ActiveRoutes {
   SETTINGS = '/settings',
   POSTS = '/posts',
   USERS = '/users',
-	LOGIN = '/login',
+  LOGIN = '/login'
 }

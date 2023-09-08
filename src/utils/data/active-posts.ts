@@ -5,30 +5,30 @@ export const ActivePosts: IPost[] = [
     id: 1,
     name: 'Ivan',
     message: 'hi!',
-    counter: 1,
+    counter: 1
   },
   {
     id: 2,
     name: 'Alisa',
     message: 'helloe',
-    counter: 3,
+    counter: 3
   },
   {
     id: 3,
     name: 'Veronica',
     message: 'Good job',
-    counter: 0,
+    counter: 0
   },
   {
     id: 4,
     name: 'Andrey',
     message: 'Music is everething!',
-    counter: 12,
+    counter: 12
   },
   {
     id: 5,
     name: 'Sergeiy',
     message: 'Car wash',
-    counter: 16,
-  },
+    counter: 16
+  }
 ];

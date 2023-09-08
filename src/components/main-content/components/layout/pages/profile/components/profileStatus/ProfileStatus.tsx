@@ -1,58 +1,60 @@
-import React, { LegacyRef } from 'react'
-import styles from './ProfileStatus.module.scss'
+import React, { LegacyRef } from 'react';
+import styles from './ProfileStatus.module.scss';
 
 interface IProfileStatusProps {
-  status: string
-  updateMyStatusTC: (message: string) => any
+  status: string;
+  updateMyStatusTC: (message: string) => any;
 }
 
 interface IState {
-  editMode: boolean
-  status: string
+  editMode: boolean;
+  status: string;
 }
 
 class ProfileStatus extends React.Component<IProfileStatusProps, IState> {
   constructor(props: IProfileStatusProps) {
-    super(props)
+    super(props);
 
     this.state = {
       editMode: false,
-      status: this.props.status,
-    }
+      status: this.props.status
+    };
   }
   activateEditMode = () => {
     this.setState(() => ({
-      editMode: true,
-    }))
-  }
+      editMode: true
+    }));
+  };
 
   onStatusChange = (e: any) => {
     this.setState(() => ({
-      status: e.target.value,
-    }))
-  }
+      status: e.target.value
+    }));
+  };
 
   componentDidUpdate(prevProps: Readonly<IProfileStatusProps>): void {
     if (prevProps !== this.props) {
       this.setState(() => ({
-        status: this.props.status,
-      }))
+        status: this.props.status
+      }));
     }
   }
 
   deactivateEditMode = () => {
     this.setState(() => ({
-      editMode: false,
-    }))
-    this.props.updateMyStatusTC(this.state.status)
-  }
+      editMode: false
+    }));
+    this.props.updateMyStatusTC(this.state.status);
+  };
 
   render() {
     return (
       <>
         {!this.state.editMode ? (
           <div className={styles.ProfileStatusContainer}>
-            <span onDoubleClick={this.activateEditMode} className={styles.ProfileActualStatus}>
+            <span
+              onDoubleClick={this.activateEditMode}
+              className={styles.ProfileActualStatus}>
               {this.props.status}
             </span>
           </div>
@@ -68,8 +70,8 @@ class ProfileStatus extends React.Component<IProfileStatusProps, IState> {
           </div>
         )}
       </>
-    )
+    );
   }
 }
 
-export default ProfileStatus
+export default ProfileStatus;

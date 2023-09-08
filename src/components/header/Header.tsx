@@ -12,7 +12,10 @@ interface IHeaderProps {
 const Header: FC<IHeaderProps> = ({ isAuth, login, logoutTC }) => {
   return (
     <header className={classes.Container}>
-      <img src={require('../../assets/img/logo.jpg')} alt='logo.jpg' />
+      <img
+        src={require('../../assets/img/logo.jpg')}
+        alt="logo.jpg"
+      />
 
       <div className={classes.LoginBlock}>
         {isAuth ? (

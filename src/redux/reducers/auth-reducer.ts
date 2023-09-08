@@ -6,7 +6,7 @@ const initialState: IAuth = {
   userId: null,
   email: null,
   login: null,
-  isAuth: false,
+  isAuth: false
 };
 
 const authReducer = (state: IAuth = initialState, action: IAction): IAuth => {
@@ -14,7 +14,7 @@ const authReducer = (state: IAuth = initialState, action: IAction): IAuth => {
     case StoreEnum.SET_USER_DATA: {
       return {
         ...state,
-        ...action.payload,
+        ...action.payload
       };
     }
     default:

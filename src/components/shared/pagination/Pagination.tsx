@@ -1,12 +1,12 @@
-import React, { FC } from 'react'
-import styles from './Pagination.module.scss'
+import React, { FC } from 'react';
+import styles from './Pagination.module.scss';
 
 interface IPaginationProps {
-  pageSize: number
-  totalUsersCount: number
-  currentPage: number
-  changePage: (pageNumber: number) => void
-  getUsersTC: (users: string, page: string, pageSize: string) => any
+  pageSize: number;
+  totalUsersCount: number;
+  currentPage: number;
+  changePage: (pageNumber: number) => void;
+  getUsersTC: (users: string, page: string, pageSize: string) => any;
 }
 
 const Pagination: FC<IPaginationProps> = ({
@@ -14,21 +14,21 @@ const Pagination: FC<IPaginationProps> = ({
   totalUsersCount,
   currentPage,
   changePage,
-  getUsersTC,
+  getUsersTC
 }) => {
   const onPageChanged = (pageNumber: number) => {
-    changePage(pageNumber)
-    const users = '/users'
-    const page = `?page=${pageNumber}`
-    const pageSizeUsers = `&count=${pageSize}`
-    getUsersTC(users, page, pageSizeUsers)
-  }
+    changePage(pageNumber);
+    const users = '/users';
+    const page = `?page=${pageNumber}`;
+    const pageSizeUsers = `&count=${pageSize}`;
+    getUsersTC(users, page, pageSizeUsers);
+  };
 
-  const pagesCount = Math.ceil(totalUsersCount / pageSize)
-  const pages: number[] = []
+  const pagesCount = Math.ceil(totalUsersCount / pageSize);
+  const pages: number[] = [];
 
   for (let i = 1; i <= pagesCount; i++) {
-    pages.push(i)
+    pages.push(i);
   }
 
   return (
@@ -38,14 +38,15 @@ const Pagination: FC<IPaginationProps> = ({
           <button
             key={pageNumber}
             onClick={(e) => onPageChanged(pageNumber)}
-            className={currentPage === pageNumber ? styles.ActivePage : styles.Page}
-          >
+            className={
+              currentPage === pageNumber ? styles.ActivePage : styles.Page
+            }>
             {pageNumber}
           </button>
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
-export default Pagination
+export default Pagination;

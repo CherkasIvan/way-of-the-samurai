@@ -17,7 +17,7 @@ const reducers = combineReducers({
   sidebar: sidebarReducer,
   auth: authReducer,
   layout: layoutReducer,
-  form: formReducer,
+  form: formReducer
 });
 
 const store = createStore(reducers, applyMiddleware(ThunkMiddleware));

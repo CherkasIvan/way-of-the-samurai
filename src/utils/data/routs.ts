@@ -4,26 +4,26 @@ import { ActiveRoutes } from '../enums/active-routes.enum';
 export const Routes: IRoutes[] = [
   {
     href: ActiveRoutes.PROFILE,
-    label: 'Profile',
+    label: 'Profile'
   },
   {
     href: ActiveRoutes.USERS,
-    label: 'Users',
+    label: 'Users'
   },
   {
     href: ActiveRoutes.DIALOGS,
-    label: 'Dialogs',
+    label: 'Dialogs'
   },
   {
     href: ActiveRoutes.NEWS,
-    label: 'News',
+    label: 'News'
   },
   {
     href: ActiveRoutes.MUSIC,
-    label: 'Music',
+    label: 'Music'
   },
   {
     href: ActiveRoutes.SETTINGS,
-    label: 'Settings',
-  },
+    label: 'Settings'
+  }
 ];

@@ -1,27 +1,28 @@
-import classes from './Navigation.module.scss'
-import { Routes } from '../../../../utils/data/routs'
-import { NavLink } from 'react-router-dom'
-import { FC } from 'react'
+import classes from './Navigation.module.scss';
+import { Routes } from '../../../../utils/data/routs';
+import { NavLink } from 'react-router-dom';
+import { FC } from 'react';
 
 interface INavigationProps {
-  isAuth: boolean
+  isAuth: boolean;
 }
 
 const Navigation: FC<INavigationProps> = (isAuth) => {
   const listItems = Routes.map((el, index) => (
-    <li className={classes.navigationItem} key={index}>
+    <li
+      className={classes.navigationItem}
+      key={index}>
       <NavLink
         className={({ isActive }) => {
-          const linkClasses = [classes.navigationItemLink]
-          if (isActive) linkClasses.push(classes.active)
-          return linkClasses.join(' ')
+          const linkClasses = [classes.navigationItemLink];
+          if (isActive) linkClasses.push(classes.active);
+          return linkClasses.join(' ');
         }}
-        to={el.href}
-      >
+        to={el.href}>
         {el.label}
       </NavLink>
     </li>
-  ))
+  ));
 
   return isAuth ? (
     <>
@@ -32,10 +33,12 @@ const Navigation: FC<INavigationProps> = (isAuth) => {
   ) : (
     <>
       <nav>
-        <ul className={classes.navigationList}>{listItems.splice(1, 1).shift()}</ul>
+        <ul className={classes.navigationList}>
+          {listItems.splice(1, 1).shift()}
+        </ul>
       </nav>
     </>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;

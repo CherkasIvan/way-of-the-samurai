@@ -6,12 +6,16 @@ import {
   SetTotalUsersCountAC,
   SetUsersAC,
   UserSubscribeAC,
-  UserUnsubscribeAC,
+  UserUnsubscribeAC
 } from '../actions/actions';
 
 type IDispatch = (arg: IAction) => IAction;
 
-export const requestUsersTC = (users: string, page: string, pageSize: string) => {
+export const requestUsersTC = (
+  users: string,
+  page: string,
+  pageSize: string
+) => {
   return (dispatch: IDispatch) => {
     dispatch(SetPreloaderAC(true));
     usersApi.getUsers(users, page, pageSize).then((response) => {

@@ -10,7 +10,11 @@ const Preloader: FC<IPreloaderProps> = ({ isFetching }) => {
   return (
     <div>
       {isFetching ? (
-        <img className={styles.Preloader} src={Spinner} alt={Spinner} />
+        <img
+          className={styles.Preloader}
+          src={Spinner}
+          alt={Spinner}
+        />
       ) : null}
     </div>
   );

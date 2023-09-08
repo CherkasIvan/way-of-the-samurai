@@ -9,7 +9,7 @@ import { WithRouter } from '../../../../../shared/withRouter/WithRouter';
 import {
   getProfileStatusTC,
   getProfileTC,
-  updateMyStatusTC,
+  updateMyStatusTC
 } from '../../../../../../redux/thunk/profile-thunk';
 import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents';
 
@@ -34,7 +34,10 @@ class ProfileClassContainer extends React.Component<IProfileClassContainerProps>
   render(): React.ReactNode {
     return (
       <div className={classes.profileContainer}>
-        <Profile {...this.props} profilePage={this.props.profilePage} />
+        <Profile
+          {...this.props}
+          profilePage={this.props.profilePage}
+        />
       </div>
     );
   }
@@ -46,7 +49,7 @@ const mapStateToProps = (state: IState) => {
     newPostText: state.profilePage.newPostText,
     status: state.profilePage.status,
     isFetching: state.usersPage.isFetching,
-    authorizedUserId: state.auth.userId,
+    authorizedUserId: state.auth.userId
   };
 };
 
@@ -69,5 +72,5 @@ export default connect(mapStateToProps, {
   addPostHandler: AddPostAC,
   getProfileTC: getProfileTC,
   getProfileStatusTC: getProfileStatusTC,
-  updateMyStatusTC: updateMyStatusTC,
+  updateMyStatusTC: updateMyStatusTC
 })(WithUrlDataContainerComponent);

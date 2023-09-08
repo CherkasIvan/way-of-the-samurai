@@ -9,10 +9,13 @@ const initialState: IUsersPage = {
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
-  followingInProgress: [],
+  followingInProgress: []
 };
 
-const usersReducer = (state: IUsersPage = initialState, action: IAction): IUsersPage => {
+const usersReducer = (
+  state: IUsersPage = initialState,
+  action: IAction
+): IUsersPage => {
   switch (action.type) {
     case StoreEnum.USER_SUBSCRIBE: {
       return {
@@ -22,7 +25,7 @@ const usersReducer = (state: IUsersPage = initialState, action: IAction): IUsers
             return { ...user, followed: true };
           }
           return user;
-        }),
+        })
       };
     }
     case StoreEnum.USER_UNSUBSCRIBE: {
@@ -33,13 +36,13 @@ const usersReducer = (state: IUsersPage = initialState, action: IAction): IUsers
             return { ...user, followed: false };
           }
           return user;
-        }),
+        })
       };
     }
     case StoreEnum.SET_USERS: {
       return {
         ...state,
-        users: [...action.payload],
+        users: [...action.payload]
       };
     }
     case StoreEnum.SET_CURRENT_PAGE: {
@@ -58,7 +61,7 @@ const usersReducer = (state: IUsersPage = initialState, action: IAction): IUsers
           ? [...state.followingInProgress, action.payload.id]
           : state.followingInProgress.filter((userId: number) => {
               userId !== action.payload.id;
-            }),
+            })
       };
     }
     default:

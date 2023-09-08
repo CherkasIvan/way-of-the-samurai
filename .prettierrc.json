@@ -1,9 +1,14 @@
 {
-  "semi": true,
-  "tabWidth": 2,
-  "printWidth": 100,
   "singleQuote": true,
-  "trailingComma": "all",
-  "jsxSingleQuote": true,
-  "bracketSpacing": true
+  "semi": true,
+  "proseWrap": "preserve",
+  "trailingComma": "none",
+  "bracketSameLine": true,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "singleAttributePerLine": true,
+  "tabWidth": 2,
+  "useTabs": false,
+  "importOrderSeparation": true,
+  "importOrderParserPlugins": ["decorators-legacy", "typescript"]
 }

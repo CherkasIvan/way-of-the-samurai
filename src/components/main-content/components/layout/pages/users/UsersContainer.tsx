@@ -3,11 +3,14 @@ import { IState } from '../../../../models/state.interface';
 import { IUser } from '../../../../models/user.interface';
 import React from 'react';
 import Users from './Users';
-import { SetUsersAC, SetCurrentPageAC } from '../../../../../../redux/actions/actions';
+import {
+  SetUsersAC,
+  SetCurrentPageAC
+} from '../../../../../../redux/actions/actions';
 import {
   requestUsersTC,
   subscribeUsersTC,
-  unsubscribeUsersTC,
+  unsubscribeUsersTC
 } from '../../../../../../redux/thunk/users-thunk';
 import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents';
 import { compose } from '@reduxjs/toolkit';
@@ -17,7 +20,7 @@ import {
   getIsFetching,
   getPageSize,
   getTotalUsersCount,
-  getUsers,
+  getUsers
 } from '../../../../../../redux/selectors/users.selector';
 
 interface IUsersContainerProps {
@@ -55,7 +58,7 @@ const mapStateToProps = (state: IState) => {
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),
     isFetching: getIsFetching(state),
-    followingInProgress: getFollowingInProgress(state),
+    followingInProgress: getFollowingInProgress(state)
   };
 };
 
@@ -65,7 +68,7 @@ export default compose(
     changePage: SetCurrentPageAC,
     getUsersTC: requestUsersTC,
     subscribeUsersTC: subscribeUsersTC,
-    unsubscribeUsersTC: unsubscribeUsersTC,
+    unsubscribeUsersTC: unsubscribeUsersTC
   }),
-  withAuthRedirect,
+  withAuthRedirect
 )(UsersContainer);

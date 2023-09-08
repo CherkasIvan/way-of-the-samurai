@@ -1,10 +1,10 @@
-import { IUser } from '../../components/main-content/models/user.interface'
+import { IUser } from '../../components/main-content/models/user.interface';
 
 export interface IUsersPage {
-  users: IUser[]
-  pageSize: number
-  totalUsersCount: number
-  currentPage: number
-  isFetching: boolean
-  followingInProgress: number[]
+  users: IUser[];
+  pageSize: number;
+  totalUsersCount: number;
+  currentPage: number;
+  isFetching: boolean;
+  followingInProgress: number[];
 }

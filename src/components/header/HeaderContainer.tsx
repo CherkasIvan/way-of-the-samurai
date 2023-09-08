@@ -5,9 +5,9 @@ import { logoutTC } from '../../redux/thunk/auth-thunk';
 
 const mapStateToProps = (state: IState) => ({
   isAuth: state.auth.isAuth,
-  login: state.auth.login,
+  login: state.auth.login
 });
 
 export default connect(mapStateToProps, {
-  logoutTC: logoutTC,
+  logoutTC: logoutTC
 })(Header);
