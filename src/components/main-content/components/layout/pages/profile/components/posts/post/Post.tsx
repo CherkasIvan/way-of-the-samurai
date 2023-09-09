@@ -11,7 +11,7 @@ interface IPostProps {
 }
 
 const Post: FC<IPostProps> = ({ message, name, counter }) => {
-  const [count, setCount] = useState(counter);
+  const [count, setCount] = useState<number>(counter);
 
   return (
     <div className={classes.PostContainer}>

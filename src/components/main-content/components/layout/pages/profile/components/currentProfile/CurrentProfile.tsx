@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import classes from './CurrentProfile.module.scss';
 import ProfileLogo from '../../../../../../../../assets/img/avatar.jpg';
 import Preloader from '../../../../../../../shared/preloader/Preloader';
-import ProfileStatus from '../profileStatus/ProfileStatus';
 import { IProfilePage } from '../../../../../../../../utils/models/profile-page.interface';
+import ProfileStatusWithHooks from '../profileStatus/ProfileStatusWithHooks';
 
 interface ICurrentProfileProps {
   profilePage: IProfilePage;
@@ -24,7 +24,7 @@ const CurrentProfile: FC<ICurrentProfileProps> = ({
         <span className={classes.ProfileName}>
           {profilePage.currentProfile.fullName}
         </span>
-        <ProfileStatus
+        <ProfileStatusWithHooks
           status={profilePage.status || 'Click here for change status'}
           updateMyStatusTC={updateMyStatusTC}
         />
