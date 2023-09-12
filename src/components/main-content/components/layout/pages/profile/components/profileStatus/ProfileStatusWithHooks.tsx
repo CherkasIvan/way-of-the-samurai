@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styles from './ProfileStatus.module.scss';
 
 interface IProfileStatusProps {
@@ -12,6 +12,10 @@ const ProfileStatusWithHooks: FC<IProfileStatusProps> = ({
 }) => {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [statusChange, setStatusChange] = useState<string>(status);
+
+  useEffect(() => {
+    setStatusChange(status);
+  }, [status]);
 
   const activateEditMode = () => {
     setEditMode(true);
