@@ -42,7 +42,9 @@ const LoginForm = (props: any) => {
         />
         <span>Remember me</span>
       </div>
-      {props.error && <div className={styles.Error}>{props.error}</div>}
+      {props.error ? (
+        <div className={styles.Error}>{props.error}</div>
+      ) : undefined}
       <div>
         <button>Login</button>
       </div>

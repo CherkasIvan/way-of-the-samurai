@@ -5,10 +5,10 @@ export const FormControl = (props: any) => {
   const hasError = props.meta.error && props.meta.touched;
   return (
     <div className={styles.FormControl}>
-      <div className={hasError && styles.FormControlError}>
+      <div className={hasError ? styles.FormControlError : undefined}>
         {props.children}
       </div>
-      {hasError && <span>{props.meta.error}</span>}
+      {hasError ? <span>{props.meta.error}</span> : undefined}
     </div>
   );
 };
