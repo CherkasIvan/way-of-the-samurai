@@ -1,4 +1,5 @@
 import { profileApi } from '../../api/api';
+import { IAction } from '../../utils/models/action.interface';
 import {
   GetProfileStatusAC,
   SetPreloaderAC,
@@ -6,8 +7,10 @@ import {
   UpdateMyStatusAC
 } from '../actions/actions';
 
+type IDispatch = (arg: IAction) => IAction;
+
 export const getProfileTC = (router: any) => {
-  return (dispatch: any) => {
+  return (dispatch: IDispatch) => {
     dispatch(SetPreloaderAC(true));
     const profile = '/profile';
     const userId = router.params.userId;
@@ -29,7 +32,7 @@ export const getProfileTC = (router: any) => {
 };
 
 export const getProfileStatusTC = (router: any) => {
-  return (dispatch: any) => {
+  return (dispatch: IDispatch) => {
     dispatch(SetPreloaderAC(true));
     const profileStatus = '/profile/status';
     const userId = router.params.userId;

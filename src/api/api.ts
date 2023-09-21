@@ -31,6 +31,7 @@ export const usersApi = {
   },
 
   subscribeUsersProfile(userId: number) {
+    console.log(userId);
     return instance.post(`/follow/${userId}`);
   },
 
