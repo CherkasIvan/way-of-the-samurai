@@ -3,7 +3,7 @@ import styles from './Pagination.module.scss';
 
 interface IPaginationProps {
   pageSize: number;
-  totalUsersCount: number;
+  totalItemsCount: number;
   currentPage: number;
   changePage: (pageNumber: number) => void;
   getUsersTC: (users: string, page: string, pageSize: string) => any;
@@ -11,7 +11,7 @@ interface IPaginationProps {
 
 const Pagination: FC<IPaginationProps> = ({
   pageSize,
-  totalUsersCount,
+  totalItemsCount,
   currentPage,
   changePage,
   getUsersTC
@@ -24,7 +24,7 @@ const Pagination: FC<IPaginationProps> = ({
     getUsersTC(users, page, pageSizeUsers);
   };
 
-  const pagesCount = Math.ceil(totalUsersCount / pageSize);
+  const pagesCount = Math.ceil(totalItemsCount / pageSize);
   const pages: number[] = [];
 
   for (let i = 1; i <= pagesCount; i++) {

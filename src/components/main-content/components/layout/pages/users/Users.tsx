@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styles from './Users.module.scss';
 import Pagination from '../../../../../shared/pagination/Pagination';
 import { IUser } from '../../../../models/user.interface';
@@ -36,6 +36,11 @@ const Users: FC<IUsersProps> = ({
   getUsersTC,
   followingInProgress
 }) => {
+let portionCount = Math.ceil(pageSize / portionSize)
+let [portionNumber, setPortionNumber] = useState(1)
+let leftPortionNumber = portionNumber / portionSize
+
+
   return !isAuth ? (
     <Navigate to={ActiveRoutes.LOGIN} />
   ) : (
@@ -56,7 +61,7 @@ const Users: FC<IUsersProps> = ({
       <div className={styles.PaginationContainer}>
         <Pagination
           pageSize={pageSize}
-          totalUsersCount={totalUsersCount}
+          totalItemsCount={totalUsersCount}
           currentPage={currentPage}
           changePage={changePage}
           getUsersTC={getUsersTC}
