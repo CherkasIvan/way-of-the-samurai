@@ -18,6 +18,7 @@ interface IUsersProps {
   currentPage: number;
   isFetching: boolean;
   isAuth: boolean;
+  portionSize: number;
   followingInProgress: number[];
   changePage: (pageNumber: number) => void;
   getUsersTC: (users: string, page: string, pageSize: string) => void;
@@ -34,18 +35,24 @@ const Users: FC<IUsersProps> = ({
   isAuth,
   changePage,
   getUsersTC,
-  followingInProgress
+  followingInProgress,
+  portionSize = 10
 }) => {
-let portionCount = Math.ceil(pageSize / portionSize)
-let [portionNumber, setPortionNumber] = useState(1)
-let leftPortionNumber = portionNumber / portionSize
-
-
   return !isAuth ? (
     <Navigate to={ActiveRoutes.LOGIN} />
   ) : (
     <div className={styles.UsersContainer}>
       <Preloader isFetching={isFetching}></Preloader>
+      <div className={styles.PaginationContainer}>
+        <Pagination
+          pageSize={pageSize}
+          totalItemsCount={totalUsersCount}
+          currentPage={currentPage}
+          changePage={changePage}
+          getUsersTC={getUsersTC}
+          portionSize={portionSize}
+        />
+      </div>
       <ul className={styles.UsersList}>
         {users.map((user: IUser) => (
           <div key={user.id}>
@@ -58,15 +65,6 @@ let leftPortionNumber = portionNumber / portionSize
           </div>
         ))}
       </ul>
-      <div className={styles.PaginationContainer}>
-        <Pagination
-          pageSize={pageSize}
-          totalItemsCount={totalUsersCount}
-          currentPage={currentPage}
-          changePage={changePage}
-          getUsersTC={getUsersTC}
-        />
-      </div>
     </div>
   );
 };

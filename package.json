@@ -9,6 +9,7 @@
     "@types/react": "^18.2.14",
     "axios": "^1.4.0",
     "babel-plugin-module-resolver": "^5.0.0",
+    "classnames": "^2.3.2",
     "node-sass": "^9.0.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.8.1",
