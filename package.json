@@ -10,7 +10,6 @@
     "axios": "^1.4.0",
     "babel-plugin-module-resolver": "^5.0.0",
     "classnames": "^2.3.2",
-    "node-sass": "^9.0.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -21,6 +20,8 @@
     "redux-form": "^8.3.10",
     "redux-thunk": "^2.4.2",
     "reselect": "^4.1.8",
+    "sass": "^1.69.3",
+    "sass-loader": "^13.3.2",
     "web-vitals": "^2.1.4"
   },
   "resolutions": {
