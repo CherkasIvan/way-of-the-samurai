@@ -1,0 +1,21 @@
+.Paginator {
+	display: flex;
+	justify-content: space-between;
+	column-gap: 20px;
+
+	.ChangeSetButton {
+		color: fuchsia;
+	}
+
+	.PaginationContainer {
+		.pageNumber {
+			padding: 2px;
+			color: #ffffff;
+		}
+
+		.pageNumber.selectedPage {
+			font-weight: 700;
+			color: #e91515;
+		}
+	}
+}

@@ -5,7 +5,7 @@ import {
   maxLengthCreator,
   requiredField
 } from '../../../utils/validators/validators';
-import { FormControl, Textarea } from '../forms-controls/FormsControls';
+import { Textarea } from '../forms-controls/FormsControls';
 
 const required = requiredField;
 const maxLength10 = maxLengthCreator(10);
@@ -28,7 +28,7 @@ const AddTextAreaPost = (props: {
   );
 };
 
-const AddTextAreaPostReduxForm = reduxForm({ form: 'addTextAreaPost' })(
+const AddTextAreaPostReduxForm = reduxForm({ form: 'newPostBody' })(
   AddTextAreaPost
 );
 export default AddTextAreaPostReduxForm;

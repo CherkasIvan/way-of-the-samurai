@@ -29,6 +29,7 @@ interface IUsersContainerProps {
   totalUsersCount: number;
   isAuth: boolean;
   currentPage: number;
+	portionSize: number;
   isFetching: boolean;
   followingInProgress: number[];
   setUsers: (users: IUser[]) => void;

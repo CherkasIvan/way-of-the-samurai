@@ -1,15 +1,18 @@
 import { stopSubmit } from 'redux-form';
 import { authApi } from '../../api/api';
 import { SetUserDataAC } from '../actions/actions';
+import { IAction } from '../../utils/models/action.interface';
+
+type IDispatch = (arg: IAction) => IAction;
 
 export const getMeTC = () => {
-  return (dispatch: any) => {
-    authApi.getMe().then((response) => {
-      if (response.data.resultCode === 0) {
-        const { id, login, email } = response.data.data;
-        dispatch(SetUserDataAC(id, email, login, true));
-      }
-    });
+  return async (dispatch: IDispatch) => {
+    const response = await authApi.getMe();
+
+    if (response.data.resultCode === 0) {
+      const { id, login, email } = response.data.data;
+      dispatch(SetUserDataAC(id, email, login, true));
+    }
   };
 };
 
@@ -18,27 +21,25 @@ export const loginTC = (
   password: string,
   rememberMe: boolean
 ) => {
-  return (dispatch: any) => {
-    authApi.login({ email, password, rememberMe }).then((response) => {
-      if (response.data.resultCode === 0) {
-        dispatch(getMeTC());
-      } else {
-        const message =
-          response.data.messages.length > 0
-            ? response.data.messages[0]
-            : 'Some error';
-        dispatch(stopSubmit('login', { _error: message }));
-      }
-    });
+  return async (dispatch: any) => {
+    const response = await authApi.login({ email, password, rememberMe });
+    if (response.data.resultCode === 0) {
+      dispatch(getMeTC());
+    } else {
+      const message =
+        response.data.messages.length > 0
+          ? response.data.messages[0]
+          : 'Some error';
+      dispatch(stopSubmit('login', { _error: message }));
+    }
   };
 };
 
 export const logoutTC = () => {
-  return (dispatch: any) => {
-    authApi.logout().then((response) => {
-      if (response.data.resultCode === 0) {
-        dispatch(SetUserDataAC(null, null, null, false));
-      }
-    });
+  return async (dispatch: any) => {
+    const response = await authApi.logout();
+    if (response.data.resultCode === 0) {
+      dispatch(SetUserDataAC(null, null, null, false));
+    }
   };
 };
