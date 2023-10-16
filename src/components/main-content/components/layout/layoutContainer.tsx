@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Layout from './Layout';
 import { getMeTC } from '../../../../redux/thunk/auth-thunk';
-import { withAuthRedirect } from '../../../shared/redirect/RedirectComponents';
+import { withAuthRedirect } from '../../../../utils/hoc/redirect/RedirectComponents';
 import { IState } from '../../models/state.interface';
 
 const mapStateToProps = (state: IState) => ({

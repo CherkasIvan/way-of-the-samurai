@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { IState } from '../../../../models/state.interface';
 import { AddMessageAC } from '../../../../../../redux/actions/actions';
-import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents';
+import { withAuthRedirect } from '../../../../../../utils/hoc/redirect/RedirectComponents';
 import Dialogs from './Dialogs';
 import { compose } from 'redux';
 

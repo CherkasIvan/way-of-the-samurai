@@ -7,7 +7,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/react": "^18.2.14",
-    "axios": "^1.4.0",
+    "axios": "^1.5.1",
     "babel-plugin-module-resolver": "^5.0.0",
     "classnames": "^2.3.2",
     "normalize.css": "^8.0.1",

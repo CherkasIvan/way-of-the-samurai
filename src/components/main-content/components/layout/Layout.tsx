@@ -1,16 +1,18 @@
 import classes from './Layout.module.scss';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import Music from './pages/music/Music';
-import News from './pages/news/News';
-import Settings from './pages/settings/Settings';
 import { ActiveRoutes } from '../../../../utils/enums/active-routes.enum';
-import DialogsContainer from './pages/dialogs/DialogsContainer';
-import UsersContainer from './pages/users/UsersContainer';
-import LoginContainer from './pages/login/LoginContainer';
-import ProfileClassContainer from './pages/profile/ProfileClassContainer';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { getMeTC } from '../../../../redux/thunk/auth-thunk';
 import Preloader from '../../../shared/preloader/Preloader';
+
+const ProfileClassContainer= React.lazy(() => import('./pages/profile/ProfileClassContainer'));
+const LoginContainer= React.lazy(() => import('./pages/login/LoginContainer'));
+const UsersContainer= React.lazy(() => import('./pages/users/UsersContainer'));
+const DialogsContainer= React.lazy(() => import('./pages/dialogs/DialogsContainer'));
+const Music= React.lazy(() => import('./pages/music/Music'));
+const News= React.lazy(() => import('./pages/news/News'));
+const Settings= React.lazy(() => import('./pages/settings/Settings'));
+
 
 interface ILayoutProps {
   initialized: boolean;
@@ -25,6 +27,7 @@ class Layout extends React.Component<ILayoutProps> {
       <Preloader isFetching={false} />
     ) : (
       <div className={classes.profileContainer}>
+				<Suspense fallback={ <div><Preloader isFetching={false}/></div>}>
         <Routes>
           <Route
             path={ActiveRoutes.DEFAULT}
@@ -63,6 +66,7 @@ class Layout extends React.Component<ILayoutProps> {
             element={<Settings />}
           />
         </Routes>
+				</Suspense>
       </div>
     );
   }

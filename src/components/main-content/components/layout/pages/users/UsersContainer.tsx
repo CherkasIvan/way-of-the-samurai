@@ -12,7 +12,7 @@ import {
   subscribeUsersTC,
   unsubscribeUsersTC
 } from '../../../../../../redux/thunk/users-thunk';
-import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents';
+import { withAuthRedirect } from '../../../../../../utils/hoc/redirect/RedirectComponents';
 import { compose } from '@reduxjs/toolkit';
 import {
   getCurrentPage,

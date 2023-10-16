@@ -5,13 +5,13 @@ import { IState } from '../../../../models/state.interface';
 import { connect } from 'react-redux';
 import React from 'react';
 import { IProfilePage } from '../../../../../../utils/models/profile-page.interface';
-import { WithRouter } from '../../../../../shared/withRouter/WithRouter';
+import { WithRouter } from '../../../../../../utils/hoc/withRouter/WithRouter';
 import {
   getProfileStatusTC,
   getProfileTC,
   updateMyStatusTC
 } from '../../../../../../redux/thunk/profile-thunk';
-import { withAuthRedirect } from '../../../../../shared/redirect/RedirectComponents';
+import { withAuthRedirect } from '../../../../../../utils/hoc/redirect/RedirectComponents';
 
 interface IProfileClassContainerProps {
   profilePage: IProfilePage;

@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
-import { ActiveRoutes } from '../../../utils/enums/active-routes.enum';
+import { ActiveRoutes } from '../../enums/active-routes.enum';
 import React from 'react';
-import { IState } from '../../main-content/models/state.interface';
+import { IState } from '../../../components/main-content/models/state.interface';
 import { connect } from 'react-redux';
 
 const mapStateToPropsForRedirect = (state: IState) => {

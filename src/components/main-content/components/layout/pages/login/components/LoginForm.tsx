@@ -7,12 +7,12 @@ import {
   requiredField
 } from '../../../../../../../utils/validators/validators';
 
+
 const maxLength20 = maxLengthCreator(30);
 const maxLength10 = maxLengthCreator(10);
 const required = requiredField;
 
 const LoginForm = (props: any) => {
-  console.log(props);
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
