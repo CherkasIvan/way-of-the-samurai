@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CherkasIvan/way-of-the-samurai/static/css/main.0cc09fb3.css",
-    "main.js": "/CherkasIvan/way-of-the-samurai/static/js/main.cdf463c8.js",
+    "main.css": "/CherkasIvan/way-of-the-samurai/static/css/main.b3b4c6ee.css",
+    "main.js": "/CherkasIvan/way-of-the-samurai/static/js/main.be2470fd.js",
     "static/css/778.69366e3d.chunk.css": "/CherkasIvan/way-of-the-samurai/static/css/778.69366e3d.chunk.css",
     "static/js/778.30523fda.chunk.js": "/CherkasIvan/way-of-the-samurai/static/js/778.30523fda.chunk.js",
     "static/css/838.d81cd449.chunk.css": "/CherkasIvan/way-of-the-samurai/static/css/838.d81cd449.chunk.css",
@@ -19,8 +19,8 @@
     "static/media/Spinner-1s-200px.svg": "/CherkasIvan/way-of-the-samurai/static/media/Spinner-1s-200px.efb690b4b7e09988569e51790d9bd702.svg",
     "static/media/like.svg": "/CherkasIvan/way-of-the-samurai/static/media/like.8869ecd067d68fa3c00c596f1851a5b3.svg",
     "index.html": "/CherkasIvan/way-of-the-samurai/index.html",
-    "main.0cc09fb3.css.map": "/CherkasIvan/way-of-the-samurai/static/css/main.0cc09fb3.css.map",
-    "main.cdf463c8.js.map": "/CherkasIvan/way-of-the-samurai/static/js/main.cdf463c8.js.map",
+    "main.b3b4c6ee.css.map": "/CherkasIvan/way-of-the-samurai/static/css/main.b3b4c6ee.css.map",
+    "main.be2470fd.js.map": "/CherkasIvan/way-of-the-samurai/static/js/main.be2470fd.js.map",
     "778.69366e3d.chunk.css.map": "/CherkasIvan/way-of-the-samurai/static/css/778.69366e3d.chunk.css.map",
     "778.30523fda.chunk.js.map": "/CherkasIvan/way-of-the-samurai/static/js/778.30523fda.chunk.js.map",
     "838.d81cd449.chunk.css.map": "/CherkasIvan/way-of-the-samurai/static/css/838.d81cd449.chunk.css.map",
@@ -35,7 +35,7 @@
     "434.db4b9b1b.chunk.js.map": "/CherkasIvan/way-of-the-samurai/static/js/434.db4b9b1b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0cc09fb3.css",
-    "static/js/main.cdf463c8.js"
+    "static/css/main.b3b4c6ee.css",
+    "static/js/main.be2470fd.js"
   ]
 }
