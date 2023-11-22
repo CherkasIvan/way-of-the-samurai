@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import classes from './CurrentProfile.module.scss';
 import ProfileLogo from '../../../../../../../../assets/img/avatar.jpg';
+import userPhoto from '../../../../../../../../assets/img/userPhoto.jpg';
 import Preloader from '../../../../../../../shared/preloader/Preloader';
 import { IProfilePage } from '../../../../../../../../utils/models/profile-page.interface';
 import ProfileStatusWithHooks from '../profileStatus/ProfileStatusWithHooks';
@@ -18,7 +19,7 @@ const CurrentProfile: FC<ICurrentProfileProps> = ({
     <div className={classes.ProfileContainer}>
       <div className={classes.UserContainer}>
         <img
-          src={ProfileLogo}
+          src={userPhoto || ProfileLogo}
           alt={ProfileLogo}
           className={classes.ProfileImg}></img>
         <span className={classes.ProfileName}>
