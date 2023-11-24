@@ -2,7 +2,6 @@ import classes from './Layout.module.scss';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { ActiveRoutes } from '../../../../utils/enums/active-routes.enum';
 import React, { Suspense } from 'react';
-import { getMeTC } from '../../../../redux/thunk/auth-thunk';
 import Preloader from '../../../shared/preloader/Preloader';
 
 const ProfileClassContainer= React.lazy(() => import('./pages/profile/ProfileClassContainer'));
@@ -28,44 +27,44 @@ class Layout extends React.Component<ILayoutProps> {
     ) : (
       <div className={classes.profileContainer}>
 				<Suspense fallback={ <div><Preloader isFetching={false}/></div>}>
-        <Routes>
-          <Route
-            path={ActiveRoutes.DEFAULT}
-            element={<Navigate to={ActiveRoutes.PROFILE} />}
-          />
-          <Route
-            path={ActiveRoutes.PROFILE + '/:userId?'}
-            element={<ProfileClassContainer />}
-          />
-          <Route
-            path={ActiveRoutes.USERS}
-            element={<UsersContainer />}
-          />
-          <Route
-            path={ActiveRoutes.DIALOGS}
-            element={<DialogsContainer />}
-          />
-          <Route
-            path={ActiveRoutes.DIALOGS + '/*'}
-            element={<DialogsContainer />}
-          />
-          <Route
-            path={ActiveRoutes.LOGIN}
-            element={<LoginContainer />}
-          />
-          <Route
-            path={ActiveRoutes.MUSIC}
-            element={<Music />}
-          />
-          <Route
-            path={ActiveRoutes.NEWS}
-            element={<News />}
-          />
-          <Route
-            path={ActiveRoutes.SETTINGS}
-            element={<Settings />}
-          />
-        </Routes>
+          <Routes>
+            <Route
+              path={ActiveRoutes.DEFAULT}
+              element={<Navigate to={ActiveRoutes.PROFILE} />}
+            />
+            <Route
+              path={ActiveRoutes.PROFILE + '/:userId?'}
+              element={<ProfileClassContainer />}
+            />
+            <Route
+              path={ActiveRoutes.USERS}
+              element={<UsersContainer />}
+            />
+            <Route
+              path={ActiveRoutes.DIALOGS}
+              element={<DialogsContainer />}
+            />
+            <Route
+              path={ActiveRoutes.DIALOGS + '/*'}
+              element={<DialogsContainer />}
+            />
+            <Route
+              path={ActiveRoutes.LOGIN}
+              element={<LoginContainer />}
+            />
+            <Route
+              path={ActiveRoutes.MUSIC}
+              element={<Music />}
+            />
+            <Route
+              path={ActiveRoutes.NEWS}
+              element={<News />}
+            />
+            <Route
+              path={ActiveRoutes.SETTINGS}
+              element={<Settings />}
+            />
+          </Routes>
 				</Suspense>
       </div>
     );

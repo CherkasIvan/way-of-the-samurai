@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import classes from './Dialogs.module.scss';
-import AddTextAreaMessage from '../../../../../shared/add-post/AddTextAreaPost';
 import UserContainer from './components/user/UserContainer';
 import MessageContainer from './components/message/MessageContainer';
 import { IDialogsPage } from '../../../../../../utils/models/dialogs-page.interface';

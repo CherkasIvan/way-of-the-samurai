@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import LoginReduxForm from './components/LoginForm';
 import { ILoginPage } from '../../../../../../utils/models/login-page.interface';
 import { Navigate } from 'react-router-dom';

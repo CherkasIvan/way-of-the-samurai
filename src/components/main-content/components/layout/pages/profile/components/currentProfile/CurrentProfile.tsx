@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import classes from './CurrentProfile.module.scss';
 import ProfileLogo from '../../../../../../../../assets/img/avatar.jpg';
 import userPhoto from '../../../../../../../../assets/img/userPhoto.jpg';
@@ -20,7 +20,7 @@ const CurrentProfile: FC<ICurrentProfileProps> = ({
       <div className={classes.UserContainer}>
         <img
           src={userPhoto || ProfileLogo}
-          alt={ProfileLogo}
+          alt={userPhoto || ProfileLogo}
           className={classes.ProfileImg}></img>
         <span className={classes.ProfileName}>
           {profilePage.currentProfile.fullName}

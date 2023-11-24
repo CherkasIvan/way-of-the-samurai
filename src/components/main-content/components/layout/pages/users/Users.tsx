@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC } from 'react';
 import styles from './Users.module.scss';
 import Pagination from '../../../../../shared/pagination/Pagination';
 import { IUser } from '../../../../models/user.interface';
@@ -6,10 +6,6 @@ import Preloader from '../../../../../shared/preloader/Preloader';
 import { Navigate } from 'react-router-dom';
 import { ActiveRoutes } from '../../../../../../utils/enums/active-routes.enum';
 import User from './User';
-import {
-  subscribeUsersTC,
-  unsubscribeUsersTC
-} from '../../../../../../redux/thunk/users-thunk';
 
 interface IUsersProps {
   users: IUser[];
@@ -36,6 +32,8 @@ const Users: FC<IUsersProps> = ({
   changePage,
   getUsersTC,
   followingInProgress,
+  unsubscribeUsersTC,
+  subscribeUsersTC,
   portionSize = 10
 }) => {
   return !isAuth ? (

@@ -1,4 +1,3 @@
-import React, { FC } from 'react';
 import styles from './LoginForm.module.scss';
 import { Field, reduxForm } from 'redux-form';
 import { Input } from '../../../../../../shared/forms-controls/FormsControls';

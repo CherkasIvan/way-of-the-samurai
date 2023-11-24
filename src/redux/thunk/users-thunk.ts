@@ -26,21 +26,15 @@ export const requestUsersTC = (
 };
 
 export const subscribeUsersTC = (userId: number) => {
-	console.log(userId)
 	return async (dispatch: IDispatch) => {
-		console.log(userId)
 		try {
-			console.log(userId);
 			dispatch(SetPreloaderInProgressAC(true, userId));
-			console.log(userId);
 			const response = await usersApi.subscribeUsersProfile(userId);
-			console.log(response.data.resultCode);
 			if (response.data.resultCode === 0) {
 				dispatch(UserSubscribeAC(userId));
 			}
 			dispatch(SetPreloaderInProgressAC(false, userId));
 		} catch {
-			console.log(userId);
 			console.error('error');
 		}
 	}
@@ -48,11 +42,8 @@ export const subscribeUsersTC = (userId: number) => {
 
 
 export const unsubscribeUsersTC = (userId: number) => {
-	console.log(userId);
 	return async (dispatch: IDispatch) => {
-		console.log(userId);
 		try {
-			console.log(userId);
 			dispatch(SetPreloaderInProgressAC(true, userId));
 			const response = await usersApi.unsubscribeUsersProfile(userId);
 			if (response.data.resultCode === 0) {
@@ -60,7 +51,6 @@ export const unsubscribeUsersTC = (userId: number) => {
 			}
 			dispatch(SetPreloaderInProgressAC(false, userId));
 		} catch {
-			console.log(userId);
 			console.error('error');
 		}
 	};
