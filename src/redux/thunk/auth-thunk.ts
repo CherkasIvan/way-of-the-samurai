@@ -1,9 +1,8 @@
 import { stopSubmit } from 'redux-form';
 import { authApi } from '../../api/api';
 import { SetUserDataAC } from '../actions/actions';
-import { IAction } from '../../utils/models/action.interface';
+import { IDispatch } from '../../utils/models/dispatch.type';
 
-type IDispatch = (arg: IAction) => IAction;
 
 export const getMeTC = () => {
   return async (dispatch: IDispatch) => {
@@ -36,7 +35,7 @@ export const loginTC = (
 };
 
 export const logoutTC = () => {
-  return async (dispatch: any) => {
+  return async (dispatch: IDispatch) => {
     const response = await authApi.logout();
     if (response.data.resultCode === 0) {
       dispatch(SetUserDataAC(null, null, null, false));

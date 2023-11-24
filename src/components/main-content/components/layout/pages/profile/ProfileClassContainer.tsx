@@ -53,17 +53,6 @@ const mapStateToProps = (state: IState) => {
   };
 };
 
-// SHOULD BE IMPLEMENTED
-// compose(
-//   connect(mapStateToProps, {
-//     updatePostHandler: UpdatePostAC,
-//     addPostHandler: AddPostAC,
-//     getProfileTC: getProfileTC,
-//   }),
-//   WithRouter,
-//   withAuthRedirect,
-// )(ProfileClassContainer)
-
 const AuthRedirectComponent = withAuthRedirect(ProfileClassContainer);
 
 const WithUrlDataContainerComponent = WithRouter(AuthRedirectComponent);

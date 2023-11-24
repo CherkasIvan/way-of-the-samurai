@@ -1,5 +1,5 @@
 import { usersApi } from '../../api/api';
-import { IAction } from '../../utils/models/action.interface';
+import { IDispatch } from '../../utils/models/dispatch.type';
 import {
 	SetPreloaderAC,
 	SetPreloaderInProgressAC,
@@ -8,8 +8,6 @@ import {
 	UserSubscribeAC,
 	UserUnsubscribeAC
 } from '../actions/actions';
-
-type IDispatch = (arg: IAction) => IAction;
 
 export const requestUsersTC = (
 	users: string,

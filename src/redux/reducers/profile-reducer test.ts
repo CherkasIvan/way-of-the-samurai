@@ -10,7 +10,7 @@ it('new post should be added', () => {
     newPostText: '',
     status: ''
   };
-  let action = AddPostAC('Hello Ivan, you are the best');
-  let newState = profileReducer(initialState, action);
+  const action = AddPostAC('Hello Ivan, you are the best');
+  const newState = profileReducer(initialState, action);
   expect(newState.posts.length).toBe(6);
 });

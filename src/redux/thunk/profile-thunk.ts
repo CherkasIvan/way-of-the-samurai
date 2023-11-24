@@ -1,5 +1,5 @@
 import { profileApi } from '../../api/api';
-import { IAction } from '../../utils/models/action.interface';
+import { IDispatch } from '../../utils/models/dispatch.type';
 import {
   GetProfileStatusAC,
   SetPreloaderAC,
@@ -7,7 +7,7 @@ import {
   UpdateMyStatusAC
 } from '../actions/actions';
 
-type IDispatch = (arg: IAction) => IAction;
+
 
 export const getProfileTC = (router: any) => {
   return (dispatch: IDispatch) => {
@@ -53,7 +53,7 @@ export const getProfileStatusTC = (router: any) => {
 };
 
 export const updateMyStatusTC = (message: string) => {
-  return (dispatch: any) => {
+  return (dispatch: IDispatch) => {
     dispatch(SetPreloaderAC(true));
     const profileStatus = '/profile/status';
     profileApi
