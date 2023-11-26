@@ -31,6 +31,7 @@ class ProfileClassContainer extends React.Component<IProfileClassContainerProps>
     this.props.getProfileStatusTC(this.props.router);
   }
 
+
   render(): React.ReactNode {
     return (
       <div className={classes.profileContainer}>

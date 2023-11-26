@@ -6,4 +6,5 @@ export interface IProfilePage {
   currentProfile: IProfileInformation | null;
   newPostText: string;
   status: string;
+  photos: any
 }

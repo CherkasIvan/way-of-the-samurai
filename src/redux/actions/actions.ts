@@ -43,6 +43,11 @@ export const UpdateMyStatusAC = (message: string): IAction => ({
   payload: message
 });
 
+export const SavePhotoSuccessAC = (photos: any): IAction => ({
+  type: StoreEnum.SAVE_PHOTO_SUCCESS,
+  payload: photos
+});
+
 export const SetCurrentPageAC = (currentPage: number): IAction => ({
   type: StoreEnum.SET_CURRENT_PAGE,
   payload: currentPage

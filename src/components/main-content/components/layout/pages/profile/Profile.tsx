@@ -2,16 +2,16 @@ import { FC } from 'react';
 import classes from './Profile.module.scss';
 import { IProfilePage } from '../../../../../../utils/models/profile-page.interface';
 import PostsContainer from './components/posts/PostsContainer';
-import CurrentProfile from './components/currentProfile/CurrentProfile';
 import { Navigate } from 'react-router-dom';
 import { ActiveRoutes } from '../../../../../../utils/enums/active-routes.enum';
+import ActualProfile from './components/actualProfile/ActualProfile';
 
 export interface IProfileProps {
   profilePage: IProfilePage;
   isAuth: boolean;
   authorizedUserId: number;
   addPostHandler: (text: string) => void;
-  updateMyStatusTC: (message: string) => any;
+  updateMyStatusTC: (message: string) => void;
 }
 
 const Profile: FC<IProfileProps> = ({
@@ -26,7 +26,7 @@ const Profile: FC<IProfileProps> = ({
   ) : (
     <div className={classes.profileContainer}>
       <div className={classes.CurrentProfile}>
-        <CurrentProfile
+        <ActualProfile
           profilePage={profilePage}
           updateMyStatusTC={updateMyStatusTC}
         />

@@ -1,0 +1,35 @@
+.ProfileContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  margin-bottom: 20px;
+
+  .UserContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ProfileImg {
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .ProfileText {
+    color: green;
+  }
+
+  .ChangeButtonName {
+    padding: 5px 10px;
+    font-weight: 700;
+    color: white;
+    border-radius: 8px;
+    border: 2px solid white
+  }
+
+  .ChangeButtonName:hover {
+    color: red;
+    border: 2px solid red
+  }
+}

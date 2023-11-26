@@ -7,7 +7,6 @@ import { IDispatch } from '../../utils/models/dispatch.type';
 export const getMeTC = () => {
   return async (dispatch: IDispatch) => {
     const response = await authApi.getMe();
-
     if (response.data.resultCode === 0) {
       const { id, login, email } = response.data.data;
       dispatch(SetUserDataAC(id, email, login, true));

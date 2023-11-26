@@ -31,12 +31,10 @@ export const usersApi = {
 	},
 
 	subscribeUsersProfile(userId: number) {
-		console.log(userId);
 		return instance.post(`/follow/${userId}`);
 	},
 
 	unsubscribeUsersProfile(userId: number) {
-		console.log(userId);
 		return instance.delete(`/follow/${userId}`);
 	}
 };
@@ -52,5 +50,13 @@ export const profileApi = {
 
 	updateMyProfileStatus(profileStatus: string, status: string) {
 		return instance.put(profileStatus, { status: status });
+	},
+
+	savePhoto(profilePhoto: string, photo: any) {
+		const formData = new FormData
+		formData.append('image', photo)
+		return instance.put(profilePhoto, formData, { headers: {
+			'Content-Type': 'multipart/form-data'
+		}});
 	}
 };

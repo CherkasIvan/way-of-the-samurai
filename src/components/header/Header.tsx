@@ -1,15 +1,21 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import classes from './Header.module.scss';
 import { ActiveRoutes } from '../../utils/enums/active-routes.enum';
 import { NavLink } from 'react-router-dom';
+import CurrentProfile from './currentProfile/CurrentProfile';
+import { IProfilePage } from '../../utils/models/profile-page.interface';
 
 interface IHeaderProps {
+  profilePage: IProfilePage;
   isAuth: boolean;
-  login: string | null;
-  logoutTC: () => any;
+  logoutTC: () => void;
+  updateMyStatusTC: (message: string) => void;
+  savePhotoTC: (photo:any) => void
+  login: any ;
+  userId: any;
 }
 
-const Header: FC<IHeaderProps> = ({ isAuth, login, logoutTC }) => {
+const Header: FC<IHeaderProps> = ({ isAuth, logoutTC, savePhotoTC, login, userId, profilePage, updateMyStatusTC }) => {
   return (
     <header className={classes.Container}>
       <img
@@ -19,12 +25,20 @@ const Header: FC<IHeaderProps> = ({ isAuth, login, logoutTC }) => {
 
       <div className={classes.LoginBlock}>
         {isAuth ? (
-          <div>
-            <button onClick={logoutTC}>Logout</button>
-            <span>{login}</span>
+          <div className={classes.isLogin}>
+              <button className={classes.LogoutButton} onClick={logoutTC}>
+                Logout
+              </button>
+              <CurrentProfile
+              profilePage={profilePage}
+              updateMyStatusTC={updateMyStatusTC}
+              savePhotoTC={savePhotoTC}
+              />  
           </div>
         ) : (
-          <NavLink to={ActiveRoutes.LOGIN}>Login</NavLink>
+          <NavLink to={ActiveRoutes.LOGIN}>
+            Login
+          </NavLink>
         )}
       </div>
     </header>

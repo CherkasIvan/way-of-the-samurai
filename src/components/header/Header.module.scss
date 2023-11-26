@@ -9,9 +9,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70px;
-  height: 70px;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
+
+  .isLogin{
+    text-align: center;
+
+    .LogoutButton{
+      color: white;
+      padding: 5px 10px;
+      background: red;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+
+    .LogoutButton:hover{
+      color: red;
+      background: white;
+    }
+  }
 }
 
 .LoginBlock a {

@@ -8,6 +8,7 @@ it('new post should be added', () => {
     posts: ActivePosts,
     currentProfile: null,
     newPostText: '',
+    photos: [],
     status: ''
   };
   const action = AddPostAC('Hello Ivan, you are the best');

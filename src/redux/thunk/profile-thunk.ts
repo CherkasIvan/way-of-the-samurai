@@ -2,12 +2,11 @@ import { profileApi } from '../../api/api';
 import { IDispatch } from '../../utils/models/dispatch.type';
 import {
   GetProfileStatusAC,
+  SavePhotoSuccessAC,
   SetPreloaderAC,
   SetProfileAC,
   UpdateMyStatusAC
 } from '../actions/actions';
-
-
 
 export const getProfileTC = (router: any) => {
   return (dispatch: IDispatch) => {
@@ -61,6 +60,21 @@ export const updateMyStatusTC = (message: string) => {
       .then((response) => {
         if (response.data.resultCode === 0) {
           dispatch(UpdateMyStatusAC(message));
+          dispatch(SetPreloaderAC(false));
+        }
+      });
+  };
+};
+
+export const savePhotoTC = (file: any) => {
+  return (dispatch: IDispatch) => {
+    dispatch(SetPreloaderAC(true));
+    const profilePhoto = '/profile/photo';
+    profileApi
+      .savePhoto(profilePhoto, file)
+      .then((response) => {
+        if (response.data.resultCode === 0) {
+          dispatch(SavePhotoSuccessAC(file));
           dispatch(SetPreloaderAC(false));
         }
       });

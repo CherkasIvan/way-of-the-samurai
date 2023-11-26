@@ -8,7 +8,8 @@ const initialState: IProfilePage = {
   posts: ActivePosts,
   currentProfile: null,
   newPostText: '',
-  status: ''
+  status: '',
+  photos: []
 };
 
 const profileReducer = (
@@ -45,6 +46,12 @@ const profileReducer = (
       return {
         ...state,
         status: action.payload
+      };
+    }
+    case StoreEnum.SAVE_PHOTO_SUCCESS: {
+      return {
+        ...state,
+        photos: action.payload
       };
     }
     default:
