@@ -27,7 +27,7 @@ const Profile: FC<IProfileProps> = ({
     <div className={classes.profileContainer}>
       <div className={classes.CurrentProfile}>
         <ActualProfile
-          profilePage={profilePage}
+          currentProfile={profilePage.currentProfile}
           updateMyStatusTC={updateMyStatusTC}
         />
       </div>
