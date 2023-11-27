@@ -9,6 +9,7 @@ export interface IProfileInformation {
     vk: string;
     website: string;
     youtube: string;
+    [key: string]: string;
   };
   fullName: string;
   lookingForAJob: boolean;

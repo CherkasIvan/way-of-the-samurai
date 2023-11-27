@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import classes from './CurrentProfile.module.scss';
 import ProfileLogo from '../../../assets/img/default-user.png';
 import Preloader from '../../shared/preloader/Preloader';
@@ -16,17 +16,20 @@ const CurrentProfile: FC<ICurrentProfileProps> = ({
   updateMyStatusTC,
   savePhotoTC
 }) => {
-  let file:any
+  const [file , setFile] = useState(null)
 
   const uploadPhoto = () => {
-    console.log(file)
-    // savePhotoTC(file)
+    savePhotoTC(file)
+    setFile(null)
   }
-  console.log(file)
+
+  const deletePhoto = () => {
+    setFile(null)
+  }
+
   const onMainPhotoSelected = (e: any) => {
     if(e.target.files.length) {
-      file = e.target.files[0]
-      savePhotoTC(file)
+      setFile(e.target.files[0])
     }
   }
 
@@ -49,7 +52,9 @@ const CurrentProfile: FC<ICurrentProfileProps> = ({
           updateMyStatusTC={updateMyStatusTC}
         />
         <input className={classes.ChangeButtonName} type={'file'} onChange={onMainPhotoSelected}/>
-       {file && <button className='uploadFileButton' onClick={uploadPhoto}></button>}
+
+        {file && <button className='uploadFileButton' onClick={uploadPhoto}>Upload photo</button>}
+        {file && <button className='deleteFileButton' onClick={deletePhoto}>x</button>}
       </div>
     </div>
   ) : (

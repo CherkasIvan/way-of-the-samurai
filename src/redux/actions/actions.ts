@@ -43,7 +43,7 @@ export const UpdateMyStatusAC = (message: string): IAction => ({
   payload: message
 });
 
-export const SavePhotoSuccessAC = (photos: any): IAction => ({
+export const SavePhotoSuccessAC = (photos: unknown): IAction => ({
   type: StoreEnum.SAVE_PHOTO_SUCCESS,
   payload: photos
 });
