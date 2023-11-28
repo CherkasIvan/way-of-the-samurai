@@ -9,14 +9,20 @@ import ProfileData from '../profileData/ProfileData';
 interface IActualProfileProps {
   currentProfile: IProfileInformation | null;
   updateMyStatusTC: (message: string) => void;
+  saveProfileTC: (formData:any) => void
 }
 
 
 const ActualProfile: FC<IActualProfileProps> = ({
-  currentProfile,
+  currentProfile, saveProfileTC
 }) => {
   const owner = currentProfile?.userId === 29840
   const [editMode, setEditMode]= useState(false)
+
+  const onSubmit = (formData:any) => {
+    saveProfileTC(formData)
+    console.log(formData)
+  }
 
   return currentProfile ? (
     <div className={classes.ProfileContainer}>
@@ -27,13 +33,15 @@ const ActualProfile: FC<IActualProfileProps> = ({
             || ProfileLogo}
           alt={ProfileLogo}
           className={classes.ProfileImg}></img>
-        <span className={classes.ProfileName}>
-          {currentProfile.fullName}
-        </span>
 
           { 
-          editMode ? <ProfileDataForm currentProfile={currentProfile} owner={owner} toEditMode={() => setEditMode(false)}/> :
-          <ProfileData currentProfile={currentProfile} owner={owner} toEditMode={() => setEditMode(true)}/>
+          editMode ? <ProfileDataForm currentProfile={currentProfile} 
+                                      owner={owner} 
+                                      toEditMode={() => setEditMode(false)} 
+                                      onSubmit={onSubmit}/> :
+                    <ProfileData currentProfile={currentProfile} 
+                                 owner={owner} 
+                                 toEditMode={() => setEditMode(true)}/>
           }
 
       </div>

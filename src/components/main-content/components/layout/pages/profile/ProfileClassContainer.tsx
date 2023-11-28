@@ -23,6 +23,7 @@ interface IProfileClassContainerProps {
   getProfileTC: (router: any) => any;
   getProfileStatusTC: (router: any) => any;
   updateMyStatusTC: (message: string) => any;
+  saveProfileTC: (formData: any) => void
 }
 
 class ProfileClassContainer extends React.Component<IProfileClassContainerProps> {
@@ -62,5 +63,6 @@ export default connect(mapStateToProps, {
   addPostHandler: AddPostAC,
   getProfileTC: getProfileTC,
   getProfileStatusTC: getProfileStatusTC,
-  updateMyStatusTC: updateMyStatusTC
+  updateMyStatusTC: updateMyStatusTC,
+  // saveProfileTC: saveProfileTC
 })(WithUrlDataContainerComponent);

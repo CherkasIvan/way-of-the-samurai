@@ -21,6 +21,12 @@ const ProfileData: FC<IProfileDataProps> = ({currentProfile, owner, toEditMode }
                 </div>
               }
               <div>
+                <span className={classes.fullName}>
+                  <b>Fullname: </b> {currentProfile.fullName}
+                </span>
+              </div>
+              
+              <div>
                 <span className={classes.lookingForAJob}><b>Lookung for a job: </b> {currentProfile.lookingForAJob ? 'yes' : 'no'}</span>
               </div>
   

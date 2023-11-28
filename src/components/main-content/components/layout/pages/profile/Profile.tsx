@@ -12,11 +12,13 @@ export interface IProfileProps {
   authorizedUserId: number;
   addPostHandler: (text: string) => void;
   updateMyStatusTC: (message: string) => void;
+  saveProfileTC: (formData: any) => void
 }
 
 const Profile: FC<IProfileProps> = ({
   profilePage,
   addPostHandler,
+  saveProfileTC,
   isAuth,
   authorizedUserId,
   updateMyStatusTC
@@ -28,6 +30,7 @@ const Profile: FC<IProfileProps> = ({
       <div className={classes.CurrentProfile}>
         <ActualProfile
           currentProfile={profilePage.currentProfile}
+          saveProfileTC={saveProfileTC}
           updateMyStatusTC={updateMyStatusTC}
         />
       </div>
