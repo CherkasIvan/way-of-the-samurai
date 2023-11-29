@@ -33,14 +33,22 @@ export const Input = (props: any) => {
   );
 };
 
-export const CreateField = (placeholder:string, name:string, validators: any[], component:any, props = {}, text = '' ) => (
+export const CreateField = (
+  placeholder: string,
+  name: string,
+  validators: any[],
+  component: any,
+  props = {},
+  text = ''
+) => (
   <div>
-    <Field placeholder={placeholder}
-          name={name}
-          validate={validators}
-          component={component}
-          {...props}
+    <Field
+      placeholder={placeholder}
+      name={name}
+      validate={validators}
+      component={component}
+      {...props}
     />
     {text}
   </div>
-)
+);

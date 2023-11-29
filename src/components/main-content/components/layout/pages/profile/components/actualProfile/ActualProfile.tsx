@@ -3,8 +3,8 @@ import classes from './ActualProfile.module.scss';
 import ProfileLogo from '../../../../../../../../assets/img/default-user.png';
 import Preloader from '../../../../../../../shared/preloader/Preloader';
 import { IProfileInformation } from '../../../../../../models/profile-information.interface';
-import ProfileDataForm from '../profileDataForm/ProfileDataForm';
 import ProfileData from '../profileData/ProfileData';
+import ProfileDataReduxForm from '../profileDataForm/ProfileDataForm';
 
 interface IActualProfileProps {
   myStatus: string;
@@ -25,7 +25,7 @@ const ActualProfile: FC<IActualProfileProps> = ({
   const [editMode, setEditMode] = useState(false);
 
   const onSubmit = (formData: any) => {
-    saveProfileTC(formData);
+    // saveProfileTC(formData);
     console.log(formData);
   };
 
@@ -42,12 +42,7 @@ const ActualProfile: FC<IActualProfileProps> = ({
           className={classes.ProfileImg}></img>
 
         {editMode ? (
-          <ProfileDataForm
-            currentProfile={currentProfile}
-            owner={owner}
-            toEditMode={() => setEditMode(false)}
-            onSubmit={onSubmit}
-          />
+          <ProfileDataReduxForm onSubmit={onSubmit} />
         ) : (
           <ProfileData
             status={owner ? myStatus : status}

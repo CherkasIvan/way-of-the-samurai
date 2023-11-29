@@ -1,59 +1,26 @@
-import { FC } from 'react';
 import classes from './ProfileDataForm.module.scss';
-import { IProfileInformation } from '../../../../../../models/profile-information.interface';
-import Contact from '../contact/Contact';
-import { reduxForm, InjectedFormProps, FormSubmitHandler } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import {
   CreateField,
   Input,
   Textarea
 } from '../../../../../../../shared/forms-controls/FormsControls';
 
-type FormValues = {
-  fullName: string;
-  lookingForAJob: boolean;
-  lookingForAJobDescription: string;
-  aboutMe: string;
-};
-
-// Add the second generic argument to InjectedFormProps
-interface IProfileDataFormProps {
-  currentProfile: IProfileInformation | null;
-  owner: boolean;
-  toEditMode: () => void;
-  onSubmit: any;
-}
-
-const ProfileDataForm: FC<IProfileDataFormProps> = ({
-  currentProfile,
-  owner,
-  toEditMode,
-  onSubmit
-}) => {
+const ProfileDataForm = (props: any) => {
   return (
-    <form onSubmit={onSubmit}>
-      {owner && (
-        <div>
-          <button
-            type="submit"
-            onClick={toEditMode}>
-            Save
-          </button>
-        </div>
-      )}
+    <form onSubmit={props.handleSubmit}>
+      <div>
+        <button type="submit">Save</button>
+      </div>
       <div>
         <span className={classes.fullName}>
-          {' '}
-          {currentProfile?.fullName}
           <b>Fullname: </b> {CreateField('Full name', 'fullName', [], Input)}
         </span>
       </div>
 
       <div>
         <span className={classes.lookingForAJob}>
-          {' '}
-          {currentProfile?.lookingForAJob}
-          <b>Looking for a job: </b>{' '}
+          <b>Looking for a job: </b>
           {CreateField('Looking for a job', 'lookingForAJob', [], Input, {
             type: 'checkbox'
           })}
@@ -62,9 +29,7 @@ const ProfileDataForm: FC<IProfileDataFormProps> = ({
 
       <div>
         <span className={classes.lookingForAJobDescription}>
-          {' '}
-          {currentProfile?.lookingForAJobDescription}
-          <b>My professional skills: </b>{' '}
+          <b>My professional skills: </b>
           {CreateField(
             'Looking for a job',
             'lookingForAJobDescription',
@@ -76,8 +41,6 @@ const ProfileDataForm: FC<IProfileDataFormProps> = ({
 
       <div>
         <span className={classes.aboutMe}>
-          {' '}
-          {currentProfile?.aboutMe}
           <b>About me: </b> {CreateField('About me', 'aboutMe', [], Textarea)}
         </span>
       </div>
@@ -93,6 +56,8 @@ return  <Contact key={key} contactTitle={key} contactValue={currentProfile.conta
   );
 };
 
-// Pass the same generic arguments to reduxForm
+const ProfileDataReduxForm = reduxForm({ form: 'profileForm' })(
+  ProfileDataForm
+);
 
-export default ProfileDataForm;
+export default ProfileDataReduxForm;
