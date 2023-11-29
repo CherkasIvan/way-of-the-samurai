@@ -19,6 +19,7 @@ interface IProfileClassContainerProps {
   isAuth: boolean;
   authorizedUserId: number;
   status: string;
+  myStatus: string;
   addPostHandler: (text: string) => void;
   router: any;
   getProfileTC: (router: any) => any;
@@ -50,6 +51,7 @@ const mapStateToProps = (state: IState) => {
     profilePage: state.profilePage,
     newPostText: state.profilePage.newPostText,
     status: state.profilePage.status,
+    myStatus: state.profilePage.myStatus,
     isFetching: state.usersPage.isFetching,
     authorizedUserId: state.auth.userId
   };

@@ -10,6 +10,7 @@ export interface IProfileProps {
   profilePage: IProfilePage;
   isAuth: boolean;
   status: string;
+  myStatus: string;
   authorizedUserId: number;
   addPostHandler: (text: string) => void;
   updateMyStatusTC: (message: string) => void;
@@ -22,6 +23,7 @@ const Profile: FC<IProfileProps> = ({
   saveProfileTC,
   isAuth,
   status,
+  myStatus,
   authorizedUserId,
   updateMyStatusTC
 }) => {
@@ -31,6 +33,7 @@ const Profile: FC<IProfileProps> = ({
     <div className={classes.profileContainer}>
       <div className={classes.CurrentProfile}>
         <ActualProfile
+          myStatus={myStatus}
           status={status}
           currentProfile={profilePage.currentProfile}
           saveProfileTC={saveProfileTC}

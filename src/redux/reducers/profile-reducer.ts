@@ -59,7 +59,7 @@ const profileReducer = (
     case StoreEnum.UPDATE_MY_STATUS: {
       return {
         ...state,
-        status: action.payload
+        myStatus: action.payload
       };
     }
     case StoreEnum.SAVE_PHOTO_SUCCESS: {

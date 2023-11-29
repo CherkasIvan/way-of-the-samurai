@@ -7,6 +7,7 @@ import ProfileDataForm from '../profileDataForm/ProfileDataForm';
 import ProfileData from '../profileData/ProfileData';
 
 interface IActualProfileProps {
+  myStatus: string;
   status: string;
   currentProfile: IProfileInformation | null;
   updateMyStatusTC: (message: string) => void;
@@ -15,6 +16,7 @@ interface IActualProfileProps {
 
 const ActualProfile: FC<IActualProfileProps> = ({
   currentProfile,
+  myStatus,
   saveProfileTC,
   updateMyStatusTC,
   status
@@ -48,7 +50,7 @@ const ActualProfile: FC<IActualProfileProps> = ({
           />
         ) : (
           <ProfileData
-            status={status}
+            status={owner ? myStatus : status}
             currentProfile={currentProfile}
             owner={owner}
             toEditMode={() => setEditMode(true)}
