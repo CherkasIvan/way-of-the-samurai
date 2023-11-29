@@ -7,6 +7,7 @@ it('new post should be added', () => {
   const initialState: IProfilePage = {
     posts: ActivePosts,
     currentProfile: null,
+    myProfile: null,
     newPostText: '',
     photos: [],
     status: ''

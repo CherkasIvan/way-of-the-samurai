@@ -7,6 +7,7 @@ import { IProfilePage } from '../../utils/models/profile-page.interface';
 const initialState: IProfilePage = {
   posts: ActivePosts,
   currentProfile: null,
+  myProfile: null,
   newPostText: '',
   status: '',
   photos: []
@@ -34,6 +35,12 @@ const profileReducer = (
       return {
         ...state,
         currentProfile: { ...action.payload }
+      };
+    }
+    case StoreEnum.SET_MY_PROFILE: {
+      return {
+        ...state,
+        myProfile: { ...action.payload }
       };
     }
     case StoreEnum.GET_USERS_STATUS: {

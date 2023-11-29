@@ -33,6 +33,11 @@ export const SetProfileAC = (profile: IProfileInformation): IAction => ({
   payload: profile
 });
 
+export const SetMyProfileAC = (myProfile: IProfileInformation): IAction => ({
+  type: StoreEnum.SET_MY_PROFILE,
+  payload: myProfile
+});
+
 export const GetProfileStatusAC = (profileStatus: string): IAction => ({
   type: StoreEnum.GET_USERS_STATUS,
   payload: profileStatus

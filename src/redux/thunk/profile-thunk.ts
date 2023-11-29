@@ -5,6 +5,7 @@ import {
   SavePhotoSuccessAC,
   SetPreloaderAC,
   SetProfileAC,
+  SetMyProfileAC,
   UpdateMyStatusAC
 } from '../actions/actions';
 
@@ -21,6 +22,7 @@ export const getProfileTC = (router: any) => {
     !userId
       ? profileApi.getUsersProfile(profile, '29840').then((response) => {
           dispatch(SetProfileAC(response.data));
+          dispatch(SetMyProfileAC(response.data));
           dispatch(SetPreloaderAC(false));
         })
       : profileApi.getUsersProfile(profile, userId).then((response) => {
@@ -70,13 +72,11 @@ export const savePhotoTC = (file: any) => {
   return (dispatch: IDispatch) => {
     dispatch(SetPreloaderAC(true));
     const profilePhoto = '/profile/photo';
-    profileApi
-      .savePhoto(profilePhoto, file)
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          dispatch(SavePhotoSuccessAC(file));
-          dispatch(SetPreloaderAC(false));
-        }
-      });
+    profileApi.savePhoto(profilePhoto, file).then((response) => {
+      if (response.data.resultCode === 0) {
+        dispatch(SavePhotoSuccessAC(file));
+        dispatch(SetPreloaderAC(false));
+      }
+    });
   };
 };

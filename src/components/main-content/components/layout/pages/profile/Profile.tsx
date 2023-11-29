@@ -9,10 +9,11 @@ import ActualProfile from './components/actualProfile/ActualProfile';
 export interface IProfileProps {
   profilePage: IProfilePage;
   isAuth: boolean;
+  status: string;
   authorizedUserId: number;
   addPostHandler: (text: string) => void;
   updateMyStatusTC: (message: string) => void;
-  saveProfileTC: (formData: any) => void
+  saveProfileTC: (formData: any) => void;
 }
 
 const Profile: FC<IProfileProps> = ({
@@ -20,6 +21,7 @@ const Profile: FC<IProfileProps> = ({
   addPostHandler,
   saveProfileTC,
   isAuth,
+  status,
   authorizedUserId,
   updateMyStatusTC
 }) => {
@@ -29,6 +31,7 @@ const Profile: FC<IProfileProps> = ({
     <div className={classes.profileContainer}>
       <div className={classes.CurrentProfile}>
         <ActualProfile
+          status={status}
           currentProfile={profilePage.currentProfile}
           saveProfileTC={saveProfileTC}
           updateMyStatusTC={updateMyStatusTC}

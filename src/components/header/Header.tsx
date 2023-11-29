@@ -3,19 +3,25 @@ import classes from './Header.module.scss';
 import { ActiveRoutes } from '../../utils/enums/active-routes.enum';
 import { NavLink } from 'react-router-dom';
 import CurrentProfile from './currentProfile/CurrentProfile';
-import { IProfilePage } from '../../utils/models/profile-page.interface';
+import { IProfileInformation } from '../main-content/models/profile-information.interface';
 
 interface IHeaderProps {
-  profilePage: IProfilePage;
+  myProfile: IProfileInformation | null;
   isAuth: boolean;
   logoutTC: () => void;
   updateMyStatusTC: (message: string) => void;
-  savePhotoTC: (photo:any) => void
-  login: any ;
-  userId: any;
+  savePhotoTC: (photo: any) => void;
+  status: string;
 }
 
-const Header: FC<IHeaderProps> = ({ isAuth, logoutTC, savePhotoTC, login, userId, profilePage, updateMyStatusTC }) => {
+const Header: FC<IHeaderProps> = ({
+  isAuth,
+  logoutTC,
+  savePhotoTC,
+  myProfile,
+  updateMyStatusTC,
+  status
+}) => {
   return (
     <header className={classes.Container}>
       <img
@@ -26,19 +32,20 @@ const Header: FC<IHeaderProps> = ({ isAuth, logoutTC, savePhotoTC, login, userId
       <div className={classes.LoginBlock}>
         {isAuth ? (
           <div className={classes.isLogin}>
-              <button className={classes.LogoutButton} onClick={logoutTC}>
-                Logout
-              </button>
-              <CurrentProfile
-              profilePage={profilePage}
+            <button
+              className={classes.LogoutButton}
+              onClick={logoutTC}>
+              Logout
+            </button>
+            <CurrentProfile
+              status={status}
+              myProfile={myProfile}
               updateMyStatusTC={updateMyStatusTC}
               savePhotoTC={savePhotoTC}
-              />  
+            />
           </div>
         ) : (
-          <NavLink to={ActiveRoutes.LOGIN}>
-            Login
-          </NavLink>
+          <NavLink to={ActiveRoutes.LOGIN}>Login</NavLink>
         )}
       </div>
     </header>

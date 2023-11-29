@@ -2,59 +2,71 @@ import { FC, useState } from 'react';
 import classes from './CurrentProfile.module.scss';
 import ProfileLogo from '../../../assets/img/default-user.png';
 import Preloader from '../../shared/preloader/Preloader';
-import { IProfilePage } from '../../../utils/models/profile-page.interface';
 import ProfileStatusWithHooks from '../../main-content/components/layout/pages/profile/components/profileStatus/ProfileStatusWithHooks';
+import { IProfileInformation } from '../../main-content/models/profile-information.interface';
 
 interface ICurrentProfileProps {
-  profilePage: IProfilePage;
+  status: string;
+  myProfile: IProfileInformation | null;
   updateMyStatusTC: (message: string) => void;
-  savePhotoTC: (photo: any) => void
+  savePhotoTC: (photo: any) => void;
 }
 
 const CurrentProfile: FC<ICurrentProfileProps> = ({
-  profilePage,
+  status,
+  myProfile,
   updateMyStatusTC,
   savePhotoTC
 }) => {
-  const [file , setFile] = useState(null)
+  const [file, setFile] = useState(null);
 
   const uploadPhoto = () => {
-    savePhotoTC(file)
-    setFile(null)
-  }
+    savePhotoTC(file);
+    setFile(null);
+  };
 
   const deletePhoto = () => {
-    setFile(null)
-  }
+    setFile(null);
+  };
 
   const onMainPhotoSelected = (e: any) => {
-    if(e.target.files.length) {
-      setFile(e.target.files[0])
+    if (e.target.files.length) {
+      setFile(e.target.files[0]);
     }
-  }
+  };
 
-  return profilePage.currentProfile ? (
+  return myProfile ? (
     <div className={classes.ProfileContainer}>
       <div className={classes.UserContainer}>
         <img
-          src={profilePage.currentProfile.photos.small 
-            || profilePage.currentProfile.photos.large
-            || ProfileLogo}
-          alt={profilePage.currentProfile.photos.small 
-            || profilePage.currentProfile.photos.large
-            || ProfileLogo}
+          src={myProfile.photos.small || myProfile.photos.large || ProfileLogo}
+          alt={myProfile.photos.small || myProfile.photos.large || ProfileLogo}
           className={classes.ProfileImg}></img>
-        <span className={classes.ProfileName}>
-          {profilePage.currentProfile.fullName}
-        </span>
+        <span className={classes.ProfileName}>{myProfile.fullName}</span>
         <ProfileStatusWithHooks
-          status={profilePage.status || 'Click here for change status'}
+          status={status || 'Click here for change status'}
           updateMyStatusTC={updateMyStatusTC}
         />
-        <input className={classes.ChangeButtonName} type={'file'} onChange={onMainPhotoSelected}/>
+        <input
+          className={classes.ChangeButtonName}
+          type={'file'}
+          onChange={onMainPhotoSelected}
+        />
 
-        {file && <button className='uploadFileButton' onClick={uploadPhoto}>Upload photo</button>}
-        {file && <button className='deleteFileButton' onClick={deletePhoto}>x</button>}
+        {file && (
+          <button
+            className="uploadFileButton"
+            onClick={uploadPhoto}>
+            Upload photo
+          </button>
+        )}
+        {file && (
+          <button
+            className="deleteFileButton"
+            onClick={deletePhoto}>
+            x
+          </button>
+        )}
       </div>
     </div>
   ) : (

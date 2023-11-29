@@ -18,12 +18,13 @@ interface IProfileClassContainerProps {
   isFetching: boolean;
   isAuth: boolean;
   authorizedUserId: number;
+  status: string;
   addPostHandler: (text: string) => void;
   router: any;
   getProfileTC: (router: any) => any;
   getProfileStatusTC: (router: any) => any;
   updateMyStatusTC: (message: string) => any;
-  saveProfileTC: (formData: any) => void
+  saveProfileTC: (formData: any) => void;
 }
 
 class ProfileClassContainer extends React.Component<IProfileClassContainerProps> {
@@ -31,7 +32,6 @@ class ProfileClassContainer extends React.Component<IProfileClassContainerProps>
     this.props.getProfileTC(this.props.router);
     this.props.getProfileStatusTC(this.props.router);
   }
-
 
   render(): React.ReactNode {
     return (
@@ -63,6 +63,6 @@ export default connect(mapStateToProps, {
   addPostHandler: AddPostAC,
   getProfileTC: getProfileTC,
   getProfileStatusTC: getProfileStatusTC,
-  updateMyStatusTC: updateMyStatusTC,
+  updateMyStatusTC: updateMyStatusTC
   // saveProfileTC: saveProfileTC
 })(WithUrlDataContainerComponent);

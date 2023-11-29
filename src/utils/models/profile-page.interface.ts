@@ -4,7 +4,8 @@ import { IProfileInformation } from '../../components/main-content/models/profil
 export interface IProfilePage {
   posts: IPost[];
   currentProfile: IProfileInformation | null;
+  myProfile: IProfileInformation | null;
   newPostText: string;
   status: string;
-  photos: unknown
+  photos: unknown;
 }
