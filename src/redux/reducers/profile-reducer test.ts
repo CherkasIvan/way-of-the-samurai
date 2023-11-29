@@ -10,7 +10,8 @@ it('new post should be added', () => {
     myProfile: null,
     newPostText: '',
     photos: [],
-    status: ''
+    status: '',
+    myStatus: ''
   };
   const action = AddPostAC('Hello Ivan, you are the best');
   const newState = profileReducer(initialState, action);

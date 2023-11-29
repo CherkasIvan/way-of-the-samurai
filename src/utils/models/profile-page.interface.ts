@@ -7,5 +7,6 @@ export interface IProfilePage {
   myProfile: IProfileInformation | null;
   newPostText: string;
   status: string;
+  myStatus: string;
   photos: unknown;
 }

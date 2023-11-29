@@ -10,6 +10,7 @@ const initialState: IProfilePage = {
   myProfile: null,
   newPostText: '',
   status: '',
+  myStatus: '',
   photos: []
 };
 
@@ -47,6 +48,12 @@ const profileReducer = (
       return {
         ...state,
         status: action.payload
+      };
+    }
+    case StoreEnum.GET_MY_STATUS: {
+      return {
+        ...state,
+        myStatus: action.payload
       };
     }
     case StoreEnum.UPDATE_MY_STATUS: {

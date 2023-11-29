@@ -6,7 +6,8 @@ import {
   SetPreloaderAC,
   SetProfileAC,
   SetMyProfileAC,
-  UpdateMyStatusAC
+  UpdateMyStatusAC,
+  GetMyProfileStatusAC
 } from '../actions/actions';
 
 export const getProfileTC = (router: any) => {
@@ -41,7 +42,7 @@ export const getProfileStatusTC = (router: any) => {
       ? profileApi
           .getUsersProfileStatus(profileStatus, '29840')
           .then((response) => {
-            dispatch(GetProfileStatusAC(response.data));
+            dispatch(GetMyProfileStatusAC(response.data));
             dispatch(SetPreloaderAC(false));
           })
       : profileApi

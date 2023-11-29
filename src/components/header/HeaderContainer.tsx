@@ -9,7 +9,7 @@ const mapStateToProps = (state: IState) => ({
   login: state.auth.login,
   userId: state.auth.userId,
   myProfile: state.profilePage.myProfile,
-  status: state.profilePage.status
+  myStatus: state.profilePage.myStatus
 });
 
 export default connect(mapStateToProps, {

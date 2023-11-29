@@ -11,7 +11,7 @@ interface IHeaderProps {
   logoutTC: () => void;
   updateMyStatusTC: (message: string) => void;
   savePhotoTC: (photo: any) => void;
-  status: string;
+  myStatus: string;
 }
 
 const Header: FC<IHeaderProps> = ({
@@ -20,7 +20,7 @@ const Header: FC<IHeaderProps> = ({
   savePhotoTC,
   myProfile,
   updateMyStatusTC,
-  status
+  myStatus
 }) => {
   return (
     <header className={classes.Container}>
@@ -38,7 +38,7 @@ const Header: FC<IHeaderProps> = ({
               Logout
             </button>
             <CurrentProfile
-              status={status}
+              myStatus={myStatus}
               myProfile={myProfile}
               updateMyStatusTC={updateMyStatusTC}
               savePhotoTC={savePhotoTC}

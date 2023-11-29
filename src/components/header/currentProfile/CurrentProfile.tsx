@@ -6,14 +6,14 @@ import ProfileStatusWithHooks from '../../main-content/components/layout/pages/p
 import { IProfileInformation } from '../../main-content/models/profile-information.interface';
 
 interface ICurrentProfileProps {
-  status: string;
+  myStatus: string;
   myProfile: IProfileInformation | null;
   updateMyStatusTC: (message: string) => void;
   savePhotoTC: (photo: any) => void;
 }
 
 const CurrentProfile: FC<ICurrentProfileProps> = ({
-  status,
+  myStatus,
   myProfile,
   updateMyStatusTC,
   savePhotoTC
@@ -44,7 +44,7 @@ const CurrentProfile: FC<ICurrentProfileProps> = ({
           className={classes.ProfileImg}></img>
         <span className={classes.ProfileName}>{myProfile.fullName}</span>
         <ProfileStatusWithHooks
-          status={status || 'Click here for change status'}
+          status={myStatus || 'Click here for change status'}
           updateMyStatusTC={updateMyStatusTC}
         />
         <input

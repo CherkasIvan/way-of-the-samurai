@@ -43,6 +43,11 @@ export const GetProfileStatusAC = (profileStatus: string): IAction => ({
   payload: profileStatus
 });
 
+export const GetMyProfileStatusAC = (myStatus: string): IAction => ({
+  type: StoreEnum.GET_MY_STATUS,
+  payload: myStatus
+});
+
 export const UpdateMyStatusAC = (message: string): IAction => ({
   type: StoreEnum.UPDATE_MY_STATUS,
   payload: message
