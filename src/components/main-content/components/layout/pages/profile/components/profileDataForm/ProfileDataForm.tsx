@@ -1,5 +1,5 @@
 import classes from './ProfileDataForm.module.scss';
-import { reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import {
   CreateField,
   Input,
@@ -21,9 +21,11 @@ const ProfileDataForm = (props: any) => {
       <div>
         <span className={classes.lookingForAJob}>
           <b>Looking for a job: </b>
-          {CreateField('Looking for a job', 'lookingForAJob', [], Input, {
-            type: 'checkbox'
-          })}
+          <Field
+            type="checkbox"
+            component={'input'}
+            name={'lookingForAJob'}
+          />
         </span>
       </div>
 
@@ -45,18 +47,27 @@ const ProfileDataForm = (props: any) => {
         </span>
       </div>
 
-      {/* <div>
-<span className={classes.lookingForAJob}>
-<b>Contacts: </b>{Object.keys(currentProfile.contacts).map((key:string) => {
-return  <Contact key={key} contactTitle={key} contactValue={currentProfile.contacts[key as keyof IProfileInformation]}/>
-}
-)}</span>
-</div> */}
+      <div>
+        <span className={classes.contacts}>
+          <b>Contacts: </b>
+          {Object.keys(props.initialValues.contacts).map((key: string) => {
+            return (
+              <div key={key}>
+                <b>
+                  {key}: {CreateField(key, `contacts.${key}`, [], Input)}
+                </b>
+              </div>
+            );
+          })}
+        </span>
+      </div>
+
+      {props.error && <div>{props.error}</div>}
     </form>
   );
 };
 
-const ProfileDataReduxForm = reduxForm({ form: 'profileForm' })(
+const ProfileDataReduxForm = reduxForm({ form: 'edit-profile' })(
   ProfileDataForm
 );
 

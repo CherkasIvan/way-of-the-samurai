@@ -1,3 +1,4 @@
+import { stopSubmit } from 'redux-form';
 import { profileApi } from '../../api/api';
 import { IDispatch } from '../../utils/models/dispatch.type';
 import {
@@ -77,6 +78,23 @@ export const savePhotoTC = (file: any) => {
       if (response.data.resultCode === 0) {
         dispatch(SavePhotoSuccessAC(file));
         dispatch(SetPreloaderAC(false));
+      }
+    });
+  };
+};
+
+export const saveProfileTC = (profile: any) => {
+  return (dispatch: IDispatch) => {
+    dispatch(SetPreloaderAC(true));
+    const updateProfile = '/profile';
+    profileApi.saveProfile(updateProfile, profile).then((response) => {
+      if (response.data.resultCode === 0) {
+        dispatch(SetPreloaderAC(false));
+      } else {
+        dispatch(
+          stopSubmit('edit-profile', { _error: response.data.messages[0] })
+        );
+        return Promise.reject(response.data.messages[0]);
       }
     });
   };

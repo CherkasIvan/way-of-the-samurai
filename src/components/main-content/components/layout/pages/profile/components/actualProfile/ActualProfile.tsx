@@ -4,7 +4,7 @@ import ProfileLogo from '../../../../../../../../assets/img/default-user.png';
 import Preloader from '../../../../../../../shared/preloader/Preloader';
 import { IProfileInformation } from '../../../../../../models/profile-information.interface';
 import ProfileData from '../profileData/ProfileData';
-import ProfileDataReduxForm from '../profileDataForm/ProfileDataForm';
+import ProfileDataForm from '../profileDataForm/ProfileDataForm';
 
 interface IActualProfileProps {
   myStatus: string;
@@ -18,15 +18,14 @@ const ActualProfile: FC<IActualProfileProps> = ({
   currentProfile,
   myStatus,
   saveProfileTC,
-  updateMyStatusTC,
   status
 }) => {
   const owner = currentProfile?.userId === 29840;
   const [editMode, setEditMode] = useState(false);
 
   const onSubmit = (formData: any) => {
-    // saveProfileTC(formData);
-    console.log(formData);
+    saveProfileTC(formData);
+    setEditMode(false);
   };
 
   return currentProfile ? (
@@ -42,7 +41,10 @@ const ActualProfile: FC<IActualProfileProps> = ({
           className={classes.ProfileImg}></img>
 
         {editMode ? (
-          <ProfileDataReduxForm onSubmit={onSubmit} />
+          <ProfileDataForm
+            initialValues={currentProfile}
+            onSubmit={onSubmit}
+          />
         ) : (
           <ProfileData
             status={owner ? myStatus : status}

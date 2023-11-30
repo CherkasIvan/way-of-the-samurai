@@ -9,6 +9,7 @@ import { WithRouter } from '../../../../../../utils/hoc/withRouter/WithRouter';
 import {
   getProfileStatusTC,
   getProfileTC,
+  saveProfileTC,
   updateMyStatusTC
 } from '../../../../../../redux/thunk/profile-thunk';
 import { withAuthRedirect } from '../../../../../../utils/hoc/redirect/RedirectComponents';
@@ -65,6 +66,6 @@ export default connect(mapStateToProps, {
   addPostHandler: AddPostAC,
   getProfileTC: getProfileTC,
   getProfileStatusTC: getProfileStatusTC,
-  updateMyStatusTC: updateMyStatusTC
-  // saveProfileTC: saveProfileTC
+  updateMyStatusTC: updateMyStatusTC,
+  saveProfileTC: saveProfileTC
 })(WithUrlDataContainerComponent);

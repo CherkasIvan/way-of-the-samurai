@@ -18,17 +18,20 @@ export const Textarea = (props: any) => {
     <FormControl {...props}>
       <textarea
         {...props.input}
-        placeholder={props.placeholder}></textarea>
+        placeholder={props.placeholder}
+      />
     </FormControl>
   );
 };
 
 export const Input = (props: any) => {
+  const { input, meta, child, restProps } = props;
   return (
     <FormControl {...props}>
       <input
-        {...props.input}
-        placeholder={props.placeholder}></input>
+        {...input}
+        {...restProps}
+      />
     </FormControl>
   );
 };

@@ -6,7 +6,6 @@ import {
   requiredField
 } from '../../../../../../../utils/validators/validators';
 
-
 const maxLength20 = maxLengthCreator(30);
 const maxLength10 = maxLengthCreator(10);
 const required = requiredField;
