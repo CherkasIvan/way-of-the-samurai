@@ -11,6 +11,7 @@ const maxLength10 = maxLengthCreator(10);
 const required = requiredField;
 
 const LoginForm = (props: any) => {
+  console.log(props);
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
@@ -40,6 +41,20 @@ const LoginForm = (props: any) => {
         />
         <span>Remember me</span>
       </div>
+
+      {props.captchaUrl && <img src={props.captchaUrl}></img>}
+      {props.captchaUrl && (
+        <div>
+          <Field
+            type="text"
+            placeholder={'Symbols from img'}
+            name={'captcha'}
+            component={Input}
+            validate={[required]}
+          />
+        </div>
+      )}
+
       {props.error ? (
         <div className={styles.Error}>{props.error}</div>
       ) : undefined}

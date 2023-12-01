@@ -6,17 +6,20 @@ const initialState: IAuth = {
   userId: null,
   email: null,
   login: null,
-  isAuth: false
+  isAuth: false,
+  captchaUrl: null
 };
 
 const authReducer = (state: IAuth = initialState, action: IAction): IAuth => {
   switch (action.type) {
-    case StoreEnum.SET_USER_DATA: {
+    case StoreEnum.SET_USER_DATA:
+    case StoreEnum.GET_CAPTCHA_URL_SUCCESS: {
       return {
         ...state,
         ...action.payload
       };
     }
+
     default:
       return state;
   }

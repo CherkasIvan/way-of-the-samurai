@@ -1,8 +1,7 @@
 import { stopSubmit } from 'redux-form';
-import { authApi } from '../../api/api';
-import { SetUserDataAC } from '../actions/actions';
+import { authApi, securityApi } from '../../api/api';
+import { GetCaptchaUrlSuccessAC, SetUserDataAC } from '../actions/actions';
 import { IDispatch } from '../../utils/models/dispatch.type';
-
 
 export const getMeTC = () => {
   return async (dispatch: IDispatch) => {
@@ -17,13 +16,22 @@ export const getMeTC = () => {
 export const loginTC = (
   email: string,
   password: string,
-  rememberMe: boolean
+  rememberMe: boolean,
+  captcha: string
 ) => {
   return async (dispatch: any) => {
-    const response = await authApi.login({ email, password, rememberMe });
+    const response = await authApi.login({
+      email,
+      password,
+      rememberMe,
+      captcha
+    });
     if (response.data.resultCode === 0) {
       dispatch(getMeTC());
     } else {
+      if (response.data.resultCode === 10) {
+        dispatch(getCaptchaTC());
+      }
       const message =
         response.data.messages.length > 0
           ? response.data.messages[0]
@@ -39,5 +47,14 @@ export const logoutTC = () => {
     if (response.data.resultCode === 0) {
       dispatch(SetUserDataAC(null, null, null, false));
     }
+  };
+};
+
+export const getCaptchaTC = () => {
+  return async (dispatch: IDispatch) => {
+    const getCaptchaUrl = '/security/get-captcha-url';
+    const response = await securityApi.getCaptchaUrl(getCaptchaUrl);
+    const captchaUrl = response.data.url;
+    dispatch(GetCaptchaUrlSuccessAC(captchaUrl));
   };
 };

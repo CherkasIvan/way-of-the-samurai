@@ -11,9 +11,9 @@ const instance = axios.create({
 });
 
 export const authApi = {
-  login({ email, password, rememberMe = false }: ILoginPage) {
+  login({ email, password, rememberMe = false, captcha }: ILoginPage) {
     const authMe = '/auth/login';
-    const body = { email, password, rememberMe };
+    const body = { email, password, rememberMe, captcha };
     return instance.post(authMe, body);
   },
 
@@ -67,5 +67,11 @@ export const profileApi = {
 
   saveProfile(updateProfileUrl: string, profile: any) {
     return instance.put(updateProfileUrl, profile);
+  }
+};
+
+export const securityApi = {
+  getCaptchaUrl(captchaUrl: string) {
+    return instance.get(captchaUrl);
   }
 };
