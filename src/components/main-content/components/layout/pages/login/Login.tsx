@@ -14,8 +14,13 @@ interface ILoginProps {
   ) => void;
 }
 
-const Login = (props: any) => {
-  const onSubmit = (formData: any) => {
+const Login: FC<ILoginProps> = (props: any) => {
+  const onSubmit = (formData: {
+    EMAIL: string;
+    password: string;
+    rememberMe: boolean;
+    captcha: string;
+  }) => {
     props.loginUser(
       formData.EMAIL,
       formData.password,

@@ -1,9 +1,14 @@
-import { IState } from '../../components/main-content/models/state.interface';
-import { IAction } from '../../utils/models/action.interface';
+// import { IAction } from '../../utils/models/action.interface';
+import { ISidebar } from '../../utils/models/sidebar.interface';
 
-const initialState = {};
+const initialState: ISidebar = {
+  initialValue: []
+};
 
-const sidebarReducer = (state: any = initialState, action: IAction): IState => {
+const sidebarReducer = (
+  state: ISidebar = initialState
+  // action: IAction
+): ISidebar => {
   return state;
 };
 

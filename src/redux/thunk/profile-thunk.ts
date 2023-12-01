@@ -10,6 +10,7 @@ import {
   UpdateMyStatusAC,
   GetMyProfileStatusAC
 } from '../actions/actions';
+import { IProfileInformation } from '../../components/main-content/models/profile-information.interface';
 
 export const getProfileTC = (router: any) => {
   return (dispatch: IDispatch) => {
@@ -83,7 +84,7 @@ export const savePhotoTC = (file: any) => {
   };
 };
 
-export const saveProfileTC = (profile: any) => {
+export const saveProfileTC = (profile: IProfileInformation) => {
   return (dispatch: IDispatch) => {
     dispatch(SetPreloaderAC(true));
     const updateProfile = '/profile';

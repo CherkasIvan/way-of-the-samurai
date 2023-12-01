@@ -10,7 +10,7 @@ interface IHeaderProps {
   isAuth: boolean;
   logoutTC: () => void;
   updateMyStatusTC: (message: string) => void;
-  savePhotoTC: (photo: any) => void;
+  savePhotoTC: (photo: Blob) => void;
   myStatus: string;
 }
 

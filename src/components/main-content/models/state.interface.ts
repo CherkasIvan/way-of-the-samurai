@@ -4,13 +4,14 @@ import { IUsersPage } from '../../../utils/models/users-page.interface';
 import { IAuth } from '../../../utils/models/auth.interface';
 import { ILoginPage } from '../../../utils/models/login-page.interface';
 import { ILayout } from '../../../utils/models/layout.interface';
+import { ISidebar } from '../../../utils/models/sidebar.interface';
 
 export interface IState {
   profilePage: IProfilePage;
   dialogsPage: IDialogsPage;
   usersPage: IUsersPage;
   loginPage: ILoginPage;
-  sidebar: unknown;
+  sidebar: ISidebar;
   layout: ILayout;
   auth: IAuth;
 }

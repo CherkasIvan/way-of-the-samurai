@@ -1,9 +1,9 @@
-import React, { LegacyRef } from 'react';
+import React, { ChangeEvent } from 'react';
 import styles from './ProfileStatus.module.scss';
 
 interface IProfileStatusProps {
   status: string;
-  updateMyStatusTC: (message: string) => any;
+  updateMyStatusTC: (message: string) => void;
 }
 
 interface IState {
@@ -26,7 +26,7 @@ class ProfileStatus extends React.Component<IProfileStatusProps, IState> {
     }));
   };
 
-  onStatusChange = (e: any) => {
+  onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
     this.setState(() => ({
       status: e.target.value
     }));
