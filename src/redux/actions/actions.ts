@@ -91,6 +91,11 @@ export const SetUserDataAC = (
   payload: { id, email, login, isAuth }
 });
 
+export const GetCaptchaUrlSuccessAC = (captchaUrl: string): IAction => ({
+  type: StoreEnum.GET_CAPTCHA_URL_SUCCESS,
+  payload: { captchaUrl }
+});
+
 export const SetAuthUserAC = (
   login: string,
   password: string,

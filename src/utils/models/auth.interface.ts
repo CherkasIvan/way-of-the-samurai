@@ -3,4 +3,5 @@ export interface IAuth {
   email: string | null;
   login: string | null;
   isAuth: boolean;
+  captchaUrl: string | null;
 }

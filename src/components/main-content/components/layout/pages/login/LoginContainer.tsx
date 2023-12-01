@@ -1,18 +1,15 @@
 import { connect } from 'react-redux';
 import { IState } from '../../../../models/state.interface';
-import { AddMessageAC } from '../../../../../../redux/actions/actions';
 import Login from './Login';
-import { loginTC, logoutTC } from '../../../../../../redux/thunk/auth-thunk';
+import { loginTC } from '../../../../../../redux/thunk/auth-thunk';
 
 const mapStateToProps = (state: IState) => {
   return {
-    loginPage: state.loginPage,
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl
   };
 };
 
 export default connect(mapStateToProps, {
-  addMessageTextHandler: AddMessageAC,
-  loginUser: loginTC,
-  logoutUser: logoutTC
+  loginUser: loginTC
 })(Login);
