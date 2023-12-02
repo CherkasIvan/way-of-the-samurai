@@ -71,7 +71,7 @@ export const updateMyStatusTC = (message: string) => {
   };
 };
 
-export const savePhotoTC = (file: any) => {
+export const savePhotoTC = (file: Blob) => {
   return (dispatch: IDispatch) => {
     dispatch(SetPreloaderAC(true));
     const profilePhoto = '/profile/photo';
