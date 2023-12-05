@@ -4,29 +4,55 @@ import { ActiveRoutes } from '../../../../utils/enums/active-routes.enum';
 import React, { Suspense } from 'react';
 import Preloader from '../../../shared/preloader/Preloader';
 
-const ProfileClassContainer= React.lazy(() => import('./pages/profile/ProfileClassContainer'));
-const LoginContainer= React.lazy(() => import('./pages/login/LoginContainer'));
-const UsersContainer= React.lazy(() => import('./pages/users/UsersContainer'));
-const DialogsContainer= React.lazy(() => import('./pages/dialogs/DialogsContainer'));
-const Music= React.lazy(() => import('./pages/music/Music'));
-const News= React.lazy(() => import('./pages/news/News'));
-const Settings= React.lazy(() => import('./pages/settings/Settings'));
-
+const ProfileClassContainer = React.lazy(
+  () => import('./pages/profile/ProfileClassContainer')
+);
+const LoginContainer = React.lazy(() => import('./pages/login/LoginContainer'));
+const UsersContainer = React.lazy(() => import('./pages/users/UsersContainer'));
+const DialogsContainer = React.lazy(
+  () => import('./pages/dialogs/DialogsContainer')
+);
+const Music = React.lazy(() => import('./pages/music/Music'));
+const News = React.lazy(() => import('./pages/news/News'));
+const Settings = React.lazy(() => import('./pages/settings/Settings'));
+const Error = React.lazy(() => import('./pages/error/Error'));
 
 interface ILayoutProps {
   initialized: boolean;
   getMeTC: () => void;
 }
 class Layout extends React.Component<ILayoutProps> {
+  catchAllUnhandledErrors = () => {
+    <Route
+      path={ActiveRoutes.DEFAULT}
+      element={<Navigate to={ActiveRoutes.PROFILE} />}
+    />;
+    alert('some error occurred');
+  };
+
   componentDidMount(): void {
     this.props.getMeTC();
+    window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors);
   }
+
+  componentWillUnmount(): void {
+    window.removeEventListener(
+      'unhandledrejection',
+      this.catchAllUnhandledErrors
+    );
+  }
+
   render(): React.ReactNode {
     return !this.props.initialized ? (
       <Preloader isFetching={false} />
     ) : (
       <div className={classes.profileContainer}>
-				<Suspense fallback={ <div><Preloader isFetching={false}/></div>}>
+        <Suspense
+          fallback={
+            <div>
+              <Preloader isFetching={false} />
+            </div>
+          }>
           <Routes>
             <Route
               path={ActiveRoutes.DEFAULT}
@@ -64,8 +90,12 @@ class Layout extends React.Component<ILayoutProps> {
               path={ActiveRoutes.SETTINGS}
               element={<Settings />}
             />
+            <Route
+              path="*"
+              element={<Error />}
+            />
           </Routes>
-				</Suspense>
+        </Suspense>
       </div>
     );
   }

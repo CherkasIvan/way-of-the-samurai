@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import styles from './Pagination.module.scss';
 import cn from 'classnames';
 
@@ -7,7 +7,7 @@ interface IPaginationProps {
   totalItemsCount: number;
   currentPage: number;
   changePage: (pageNumber: number) => void;
-  getUsersTC: (users: string, page: string, pageSize: string) => any;
+  getUsersTC: (users: string, page: string, pageSize: string) => void;
   portionSize: number;
 }
 
@@ -66,7 +66,7 @@ const Pagination: FC<IPaginationProps> = ({
                   styles.pageNumber
                 )}
                 key={p}
-                onClick={(e) => {
+                onClick={() => {
                   onPageChanged(p);
                 }}>
                 {p}

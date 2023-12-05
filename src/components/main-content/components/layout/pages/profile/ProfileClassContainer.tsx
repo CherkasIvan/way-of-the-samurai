@@ -23,9 +23,9 @@ interface IProfileClassContainerProps {
   myStatus: string;
   addPostHandler: (text: string) => void;
   router: any;
-  getProfileTC: (router: any) => any;
-  getProfileStatusTC: (router: any) => any;
-  updateMyStatusTC: (message: string) => any;
+  getProfileTC: (router: any) => void;
+  getProfileStatusTC: (router: any) => void;
+  updateMyStatusTC: (message: string) => void;
   saveProfileTC: (formData: any) => void;
 }
 

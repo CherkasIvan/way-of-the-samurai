@@ -9,7 +9,7 @@ interface ICurrentProfileProps {
   myStatus: string;
   myProfile: IProfileInformation | null;
   updateMyStatusTC: (message: string) => void;
-  savePhotoTC: (photo: any) => void;
+  savePhotoTC: (photo: Blob) => void;
 }
 
 const CurrentProfile: FC<ICurrentProfileProps> = ({
@@ -21,8 +21,10 @@ const CurrentProfile: FC<ICurrentProfileProps> = ({
   const [file, setFile] = useState(null);
 
   const uploadPhoto = () => {
-    savePhotoTC(file);
-    setFile(null);
+    if (file) {
+      savePhotoTC(file);
+      setFile(null);
+    }
   };
 
   const deletePhoto = () => {

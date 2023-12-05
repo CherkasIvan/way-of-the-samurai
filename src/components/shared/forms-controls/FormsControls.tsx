@@ -1,7 +1,8 @@
+import { IFormControl } from '../../main-content/models/form-control.interface';
 import styles from './FormsControls.module.scss';
 import { Field } from 'redux-form';
 
-export const FormControl = (props: any) => {
+export const FormControl = (props: IFormControl) => {
   const hasError = props.meta.error && props.meta.touched;
   return (
     <div className={styles.FormControl}>
@@ -25,7 +26,7 @@ export const Textarea = (props: any) => {
 };
 
 export const Input = (props: any) => {
-  const { input, meta, child, restProps } = props;
+  const { input, restProps } = props;
   return (
     <FormControl {...props}>
       <input

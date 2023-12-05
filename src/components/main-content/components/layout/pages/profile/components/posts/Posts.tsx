@@ -23,7 +23,7 @@ const Posts: FC<IPostProps> = React.memo(({ postsData, addPost }) => {
     [postsData, addPost]
   );
 
-  const handleSubmit = (formData: any) => {
+  const handleSubmit = (formData: { newPostBody: string }) => {
     addPost(formData.newPostBody);
   };
 

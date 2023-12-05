@@ -1,14 +1,12 @@
-import React, {Suspense} from 'react';
+import { FC, Suspense } from 'react';
 import Preloader from '../../../components/shared/preloader/Preloader';
 
-export const WithSuspense = (Component:any) => {
+export const WithSuspense = (Component: FC) => {
   const ComponentWithSuspense = (props: any) => {
-
     return (
-		<Suspense fallback={<Preloader isFetching={false} />}>
-      <Component
-        {...props}
-      /></Suspense>
+      <Suspense fallback={<Preloader isFetching={false} />}>
+        <Component {...props} />
+      </Suspense>
     );
   };
 

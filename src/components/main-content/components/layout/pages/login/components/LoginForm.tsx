@@ -11,7 +11,6 @@ const maxLength10 = maxLengthCreator(10);
 const required = requiredField;
 
 const LoginForm = (props: any) => {
-  console.log(props);
   return (
     <form onSubmit={props.handleSubmit}>
       <div>

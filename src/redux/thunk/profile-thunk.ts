@@ -10,6 +10,7 @@ import {
   UpdateMyStatusAC,
   GetMyProfileStatusAC
 } from '../actions/actions';
+import { IProfileInformation } from '../../components/main-content/models/profile-information.interface';
 
 export const getProfileTC = (router: any) => {
   return (dispatch: IDispatch) => {
@@ -59,18 +60,22 @@ export const updateMyStatusTC = (message: string) => {
   return (dispatch: IDispatch) => {
     dispatch(SetPreloaderAC(true));
     const profileStatus = '/profile/status';
-    profileApi
-      .updateMyProfileStatus(profileStatus, message)
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          dispatch(UpdateMyStatusAC(message));
-          dispatch(SetPreloaderAC(false));
-        }
-      });
+    try {
+      profileApi
+        .updateMyProfileStatus(profileStatus, message)
+        .then((response) => {
+          if (response.data.resultCode === 0) {
+            dispatch(UpdateMyStatusAC(message));
+            dispatch(SetPreloaderAC(false));
+          }
+        });
+    } catch {
+      console.log('error');
+    }
   };
 };
 
-export const savePhotoTC = (file: any) => {
+export const savePhotoTC = (file: Blob) => {
   return (dispatch: IDispatch) => {
     dispatch(SetPreloaderAC(true));
     const profilePhoto = '/profile/photo';
@@ -83,7 +88,7 @@ export const savePhotoTC = (file: any) => {
   };
 };
 
-export const saveProfileTC = (profile: any) => {
+export const saveProfileTC = (profile: IProfileInformation) => {
   return (dispatch: IDispatch) => {
     dispatch(SetPreloaderAC(true));
     const updateProfile = '/profile';

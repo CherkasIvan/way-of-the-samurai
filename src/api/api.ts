@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { ILoginPage } from '../utils/models/login-page.interface';
+import { IProfileInformation } from '../components/main-content/models/profile-information.interface';
 
 const instance = axios.create({
   withCredentials: true,
@@ -55,7 +56,8 @@ export const profileApi = {
     return instance.put(profileStatus, { status: status });
   },
 
-  savePhoto(profilePhoto: string, photo: any) {
+  savePhoto(profilePhoto: string, photo: Blob) {
+    console.log(typeof photo);
     const formData = new FormData();
     formData.append('image', photo);
     return instance.put(profilePhoto, formData, {
@@ -65,7 +67,7 @@ export const profileApi = {
     });
   },
 
-  saveProfile(updateProfileUrl: string, profile: any) {
+  saveProfile(updateProfileUrl: string, profile: IProfileInformation) {
     return instance.put(updateProfileUrl, profile);
   }
 };

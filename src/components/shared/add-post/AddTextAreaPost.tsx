@@ -28,7 +28,7 @@ const AddTextAreaPost = (props: {
   );
 };
 
-const AddTextAreaPostReduxForm = reduxForm({ form: 'newPostBody' })(
+const AddTextAreaPostReduxForm = reduxForm<any>({ form: 'newPostBody' })(
   AddTextAreaPost
 );
 export default AddTextAreaPostReduxForm;
