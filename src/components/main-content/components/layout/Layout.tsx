@@ -22,9 +22,26 @@ interface ILayoutProps {
   getMeTC: () => void;
 }
 class Layout extends React.Component<ILayoutProps> {
+  catchAllUnhandledErrors = () => {
+    <Route
+      path={ActiveRoutes.DEFAULT}
+      element={<Navigate to={ActiveRoutes.PROFILE} />}
+    />;
+    alert('some error occurred');
+  };
+
   componentDidMount(): void {
     this.props.getMeTC();
+    window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors);
   }
+
+  componentWillUnmount(): void {
+    window.removeEventListener(
+      'unhandledrejection',
+      this.catchAllUnhandledErrors
+    );
+  }
+
   render(): React.ReactNode {
     return !this.props.initialized ? (
       <Preloader isFetching={false} />
