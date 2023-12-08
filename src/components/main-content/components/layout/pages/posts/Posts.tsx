@@ -7,10 +7,10 @@ import PropTypes from 'prop-types';
 
 interface IPostProps {
   postsData: IPost[];
-  addPost: (text: string) => void;
+  addPostAC: (message: string) => void;
 }
 
-const Posts: FC<IPostProps> = React.memo(({ postsData, addPost }) => {
+const Posts: FC<IPostProps> = React.memo(({ postsData, addPostAC }) => {
   const posts = postsData.map(
     (el: IPost) => (
       <Post
@@ -20,11 +20,11 @@ const Posts: FC<IPostProps> = React.memo(({ postsData, addPost }) => {
         counter={el.counter}
         key={el.id}></Post>
     ),
-    [postsData, addPost]
+    [postsData, addPostAC]
   );
 
   const handleSubmit = (formData: { newPostBody: string }) => {
-    addPost(formData.newPostBody);
+    addPostAC(formData.newPostBody);
   };
 
   return (
@@ -38,7 +38,7 @@ const Posts: FC<IPostProps> = React.memo(({ postsData, addPost }) => {
 
 Posts.propTypes = {
   postsData: PropTypes.any,
-  addPost: PropTypes.any
+  addPostAC: PropTypes.any
 };
 
 Posts.displayName = 'Posts';
