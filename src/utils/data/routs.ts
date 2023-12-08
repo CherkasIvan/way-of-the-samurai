@@ -19,6 +19,10 @@ export const Routes: IRoutes[] = [
     label: 'News'
   },
   {
+    href: ActiveRoutes.POSTS,
+    label: 'Posts'
+  },
+  {
     href: ActiveRoutes.MUSIC,
     label: 'Music'
   },

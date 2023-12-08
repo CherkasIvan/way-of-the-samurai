@@ -23,7 +23,6 @@ const Navigation: FC<INavigationProps> = (isAuth) => {
       </NavLink>
     </li>
   ));
-
   return isAuth ? (
     <>
       <nav>

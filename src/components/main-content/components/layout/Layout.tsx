@@ -12,6 +12,7 @@ const UsersContainer = React.lazy(() => import('./pages/users/UsersContainer'));
 const DialogsContainer = React.lazy(
   () => import('./pages/dialogs/DialogsContainer')
 );
+const PostsContainer = React.lazy(() => import('./pages/posts/PostsContainer'));
 const Music = React.lazy(() => import('./pages/music/Music'));
 const News = React.lazy(() => import('./pages/news/News'));
 const Settings = React.lazy(() => import('./pages/settings/Settings'));
@@ -81,6 +82,10 @@ class Layout extends React.Component<ILayoutProps> {
             <Route
               path={ActiveRoutes.MUSIC}
               element={<Music />}
+            />
+            <Route
+              path={ActiveRoutes.POSTS}
+              element={<PostsContainer />}
             />
             <Route
               path={ActiveRoutes.NEWS}
