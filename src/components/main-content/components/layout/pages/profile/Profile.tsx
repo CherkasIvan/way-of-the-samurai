@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import classes from './Profile.module.scss';
 import { IProfilePage } from '../../../../../../utils/models/profile-page.interface';
-import PostsContainer from './components/posts/PostsContainer';
+import PostsContainer from '../posts/PostsContainer';
 import { Navigate } from 'react-router-dom';
 import { ActiveRoutes } from '../../../../../../utils/enums/active-routes.enum';
 import ActualProfile from './components/actualProfile/ActualProfile';
@@ -12,14 +12,12 @@ export interface IProfileProps {
   status: string;
   myStatus: string;
   authorizedUserId: number;
-  addPostHandler: (text: string) => void;
   updateMyStatusTC: (message: string) => void;
   saveProfileTC: (formData: any) => void;
 }
 
 const Profile: FC<IProfileProps> = ({
   profilePage,
-  addPostHandler,
   saveProfileTC,
   isAuth,
   status,
@@ -40,10 +38,6 @@ const Profile: FC<IProfileProps> = ({
           updateMyStatusTC={updateMyStatusTC}
         />
       </div>
-      <PostsContainer
-        postsData={profilePage.posts}
-        addPostHandler={addPostHandler}
-      />
     </div>
   );
 };

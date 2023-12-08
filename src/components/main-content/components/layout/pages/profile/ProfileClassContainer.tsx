@@ -1,5 +1,4 @@
 import Profile from './Profile';
-import { AddPostAC } from '../../../../../../redux/actions/actions';
 import classes from './Profile.module.scss';
 import { IState } from '../../../../models/state.interface';
 import { connect } from 'react-redux';
@@ -21,7 +20,6 @@ interface IProfileClassContainerProps {
   authorizedUserId: number;
   status: string;
   myStatus: string;
-  addPostHandler: (text: string) => void;
   router: any;
   getProfileTC: (router: any) => void;
   getProfileStatusTC: (router: any) => void;
@@ -63,7 +61,6 @@ const AuthRedirectComponent = withAuthRedirect(ProfileClassContainer);
 const WithUrlDataContainerComponent = WithRouter(AuthRedirectComponent);
 
 export default connect(mapStateToProps, {
-  addPostHandler: AddPostAC,
   getProfileTC: getProfileTC,
   getProfileStatusTC: getProfileStatusTC,
   updateMyStatusTC: updateMyStatusTC,

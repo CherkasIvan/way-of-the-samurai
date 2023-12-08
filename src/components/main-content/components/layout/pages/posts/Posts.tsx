@@ -1,7 +1,7 @@
-import Post from '../../components/posts/post/Post';
+import Post from './post/Post';
 import classes from './Posts.module.scss';
-import { IPost } from '../../../../../../models/post.interface';
-import AddTextAreaPostReduxForm from '../../../../../../../shared/add-post/AddTextAreaPost';
+import { IPost } from '../../../../models/post.interface';
+import AddTextAreaPostReduxForm from '../../../../../shared/add-post/AddTextAreaPost';
 import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 

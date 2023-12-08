@@ -1,7 +1,7 @@
 import React, { useState, FC } from 'react';
 import classes from './Post.module.scss';
-import ProfileInfo from '../../profileInfo/ProfileInfo';
-import LikeImg from '../../../../../../../../../assets/img/like.svg';
+import ProfileInfo from '../../profile/components/profileInfo/ProfileInfo';
+import LikeImg from '../../../../../../../assets/img/like.svg';
 
 interface IPostProps {
   message: string;
