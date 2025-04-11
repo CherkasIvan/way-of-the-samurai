@@ -11,17 +11,15 @@ interface IPostProps {
 }
 
 const Posts: FC<IPostProps> = React.memo(({ postsData, addPost }) => {
-  const posts = postsData.map(
-    (el: IPost) => (
-      <Post
-        message={el.message}
-        name={el.name}
-        id={el.id}
-        counter={el.counter}
-        key={el.id}></Post>
-    ),
-    [postsData, addPost]
-  );
+  const posts = postsData.map((el: IPost) => (
+    <Post
+      message={el.message}
+      name={el.name}
+      id={el.id}
+      counter={el.counter}
+      key={el.id}
+    />
+  ));
 
   const handleSubmit = (formData: { newPostBody: string }) => {
     addPost(formData.newPostBody);
@@ -37,8 +35,8 @@ const Posts: FC<IPostProps> = React.memo(({ postsData, addPost }) => {
 });
 
 Posts.propTypes = {
-  postsData: PropTypes.any,
-  addPost: PropTypes.any
+  postsData: PropTypes.array.isRequired,
+  addPost: PropTypes.func.isRequired
 };
 
 Posts.displayName = 'Posts';
